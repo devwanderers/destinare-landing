@@ -1,0 +1,233 @@
+.logo {
+    height: 32px;
+    margin: 16px;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.count-down {
+    text-align: center;
+    .count-numbers {
+        font-size: 4rem;
+        line-height: 4rem;
+        padding: 0;
+    }
+
+    @media @min768 {
+        .count-numbers {
+            font-size: 7rem;
+            line-height: 7rem;
+        }
+    }
+    @media @min1024 {
+        .count-numbers {
+            font-size: 8rem;
+            line-height: 8rem;
+        }
+    }
+    // @media @min1280 {
+    //     .count-numbers {
+    //         font-size: 10rem;
+    //         line-height: 10rem;
+    //     }
+    // }
+}
+
+.custom-menu-filter {
+    box-shadow: none;
+    box-sizing: border-box;
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+    line-height: 0;
+    list-style: none;
+    outline: none;
+}
+
+.custom-menu-filter-item {
+    padding-left: 24px;
+    line-height: 40px;
+    height: 40px;
+}
+
+.section {
+    margin: 0 auto;
+    // min-width: 375px;
+    max-width: 1100px;
+    padding: 0 25px;
+    @media @min768 {
+        padding: 0 40px;
+    }
+    @media @min1024 {
+        padding: 0 55px;
+    }
+}
+
+.section2 {
+    margin: 0 auto;
+    max-width: 1000px;
+    @media @min768 {
+        padding: 0 20px;
+    }
+    @media @min1024 {
+        padding: 0;
+    }
+}
+
+.section-title-line {
+    height: 50%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+.css-generic {
+    -ms-flex-align: stretch;
+    -ms-flex-direction: column;
+    -ms-flex-negative: 0;
+    -ms-flex-preferred-size: auto;
+    -webkit-align-items: stretch;
+    -webkit-box-align: stretch;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+    -webkit-flex-basis: auto;
+    -webkit-flex-direction: column;
+    -webkit-flex-shrink: 0;
+    align-items: stretch;
+    border: 0 solid black;
+    box-sizing: border-box;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex-basis: auto;
+    flex-direction: column;
+    flex-shrink: 0;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    min-height: 0px;
+    min-width: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+    position: relative;
+    z-index: 0;
+}
+
+.wrapper-line {
+    position: absolute;
+    display: none;
+
+    @media @min1024 {
+        display: flex;
+    }
+}
+
+.wrapper-line-lt {
+    left: 0;
+    top: 0;
+    // height: 60%;
+    // width: 80%;
+    border-left: 1px;
+    border-top: 1px;
+
+    .line-decoration {
+        position: relative;
+        flex-grow: 1;
+        // background-color: red;
+        > div {
+            position: absolute;
+            left: 0;
+            // bottom: 1.75rem;
+            // height: 5rem;
+            margin-left: -4px;
+            // margin-bottom: 3%;
+            // right: 0;
+            background-color: green;
+        }
+    }
+}
+
+.wrapper-line-rt {
+    right: 0;
+    top: 0;
+    // height: 60%;
+    // width: 80%;
+    border-right: 1px;
+    border-top: 1px;
+    .line-decoration {
+        position: relative;
+        flex-grow: 1;
+        // background-color: red;
+        > div {
+            position: absolute;
+            right: 0;
+            // bottom: 1.75rem;
+            // height: 5rem;
+            margin-right: -4px;
+            // margin-bottom: 3%;
+            // right: 0;
+            background-color: green;
+        }
+    }
+}
+
+.landSlide img {
+    width: 12rem;
+    margin: 0 auto;
+    @media @min768 {
+        width: 20rem;
+    }
+}
+
+.landSlide {
+    transform: scale(0.8);
+    transition: transform 300ms;
+    opacity: 0.5;
+}
+
+.activeSlide {
+    transform: scale(1.1);
+    // transition: transform 300ms;
+    opacity: 1;
+}
+
+.arrow {
+    // background-color: #fff;
+    position: absolute;
+    cursor: pointer;
+    z-index: 10;
+
+    .svg-container {
+        width: 30px;
+        svg {
+            opacity: 0.7;
+            transition: color 300ms;
+            &:hover {
+                opacity: 1;
+                color: #68edff;
+            }
+        }
+        @media @min1024 {
+            width: 50px;
+        }
+    }
+}
+
+.prev {
+    left: 0%;
+    top: 40%;
+}
+
+.next {
+    right: 0%;
+    top: 40%;
+}
+
+.gradient-g {
+    .gradient(linear; @orange-1, @yellow-1; 90deg);
+}
