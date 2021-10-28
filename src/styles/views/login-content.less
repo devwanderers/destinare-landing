@@ -1,0 +1,56 @@
+.login-content {
+    min-height: 625px;
+    position: relative;
+    flex: 1;
+    display: flex;
+    padding: 16px 0 40px;
+    overflow: hidden;
+    > div {
+        flex: 1 0 0;
+    }
+    .logo {
+        font: 0/0 a;
+    }
+    h2 {
+        font-size: 28px;
+        line-height: 36px;
+        font-weight: 400;
+        margin: 0 0 30px;
+    }
+    .col-inner {
+        width: 310px;
+    }
+    .login-links {
+        padding: 30px 0 23px;
+    }
+    @media @min640 {
+        .col-inner {
+            width: 344px;
+        }
+    }
+    @media @min768 {
+        background: linear-gradient(90deg, #00aff0 50%, transparent 50.01%);
+        padding: 80px 0;
+        h2 {
+            color: #fefefe;
+            font-size: 32px;
+            line-height: 40px;
+        }
+    }
+}
+
+.login-content:before {
+    @media @min768 {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 50%;
+        content: '';
+        // background: url('@{base-url}/images/brand/logo_icon_white.svg') 100% -6%
+        //     no-repeat;
+        background-size: auto 190%;
+        opacity: 0.12;
+        pointer-events: none;
+    }
+}

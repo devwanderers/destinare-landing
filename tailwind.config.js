@@ -1,4 +1,5 @@
 const colors = require('tailwindcss/colors')
+const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
     // important: true,
@@ -6,6 +7,16 @@ module.exports = {
     purge: [],
     darkMode: 'class', // or 'media' or 'class'
     theme: {
+        spacing: {
+            ...defaultTheme.spacing,
+            '50px': '50px',
+            37: '9.25rem',
+            4.5: '4.5rem',
+            3.5: '3.5rem',
+            1.875: '1.875rem',
+            2.25: '2.25rem',
+            '25px': '25px',
+        },
         backgroundSize: {
             auto: 'auto',
             cover: 'cover',
@@ -33,19 +44,22 @@ module.exports = {
         },
         maxWidth: {
             '1000px': '1000px',
+            full: '100%',
         },
         fontFamily: {
             'russo-one': ['Russo One', 'sans-serif'],
             'saira-condensed': ['Saira Condensed', 'sans-serif'],
             roboto: ['Roboto', 'sans-serif'],
+            'bebas-nue': ['Bebas Neue', 'cursive'],
+            montserrat: ['Montserrat', 'sans-serif'],
         },
         colors: {
             // ...colors,
             red: colors.red,
-            yellow: { ...colors.yellow },
+            yellow: { ...colors.yellow, 1: '#f9a24f ' },
             gray: colors.trueGray,
             white: '#ffffff',
-            primary: '#e0a756',
+            primary: '#ffce50',
             // secondary: '',
             info: '#00B5EB',
             transparent: 'transparent',
@@ -64,6 +78,8 @@ module.exports = {
             },
             black: {
                 1: '#1d1d1b',
+                2: '#5b5b5f',
+                3: '#444242',
             },
         },
         fontSize: {
@@ -79,6 +95,11 @@ module.exports = {
             '6xl': '4rem',
             '7xl': '5rem',
             '8xl': '6rem',
+            '9xl': '7rem',
+            '10xl': '8rem',
+            '11xl': '9rem',
+            '12xl': '10rem',
+            '14xl': '12rem',
             '2-75rem': '2.75rem',
             '2rem': '2rem',
             '89px': '89px',
@@ -87,11 +108,20 @@ module.exports = {
             '40px': '40px',
             '27px': '27px',
             '34px': '34px',
+            11.5: '11.5rem',
+            6.5: '6.5rem',
+            2.5: '2.5rem',
+            2.7: '2.7rem',
+            3.5: '3.5rem',
         },
         extend: {
             backgroundImage: {
                 travellerbg:
                     "url('/src/assets/images/backgrounds/traveller-with-backpack-2021-08-26-15-29-39-utc.jpg')",
+                sunset: "url('/src/assets/images/backgrounds/sunset-2021-08-27-21-13-52-utc.jpg')",
+                sunset2:
+                    "url('/src/assets/images/backgrounds/sunset-2021-08-31-11-19-12-utc.jpg')",
+                clouds: "url('/src/assets/images/backgrounds/fondo-nubes.jpg')",
             },
             margin: {
                 84: '21rem',
