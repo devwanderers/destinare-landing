@@ -2,7 +2,7 @@ import React from 'react'
 
 const LogoIconSVG = ({
     color = 'white',
-    height = 'auto',
+    height = '100%',
     width = '100%',
     style,
 }) => {

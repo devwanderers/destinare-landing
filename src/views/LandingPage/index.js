@@ -1,8 +1,5 @@
-import React from 'react'
-import { Layout, Button, Row, Col, Input } from 'antd'
-import { AnimatePresence, motion } from 'framer-motion'
-import { GiHamburgerMenu } from 'react-icons/gi'
-import { useInView } from 'react-intersection-observer'
+import React, { useState } from 'react'
+import { Layout, Button, Row, Col, Input, Drawer } from 'antd'
 
 import Paragraph from '../../components/DisplayText/Paragraph'
 import PromotionsSection from './Sections/PromotionSections'
@@ -18,9 +15,10 @@ import {
 import LogoText from '../../assets/svg/brand/LogoText'
 import useWindowSize from './../../hooks/useWindowSize'
 import { returnValueByScreenWidth } from '../../services/stylesServices'
-import withLayout from './../../HOCS/withLayout'
+import NextSection from './Sections/NextSection/index'
+import DefaultNavbar from '../../components/Navbar/DefaultNavbar'
 
-const { Header, Content } = Layout
+const { Content } = Layout
 
 const Card = ({ className, main }) => {
     const { width } = useWindowSize()
@@ -99,44 +97,28 @@ const Card = ({ className, main }) => {
     )
 }
 
-const LandingPage = () => {
+const LandingPage = (props) => {
+    const [isOpen, setOpenDrawer] = useState(false)
     const { width } = useWindowSize()
-
-    const collectionConfig = {
-        threshold: 0.9,
-    }
-
-    const [refText1, showText1] = useInView(collectionConfig)
-    // const [refText2, showText2] = useInView(collectionConfig)
-    // const { scrollY } = useViewportScroll()
-
-    // const y2 = useTransform(scrollY, [0, 200], [-500, 0])
 
     return (
         <Layout className="landing-page min-w-minMobileWidth bg-gray-50">
-            <Header className="bg-transparent h-16 md:h-20 z-10 px-0 py-2 md:py-4 m-0">
-                <div className="section flex justify-between px-2 md:px-8 h-full">
-                    <div className="h-full">
-                        <span className="flex items-center justify-center text-2xl h-full px-4 cursor-pointer text-white">
-                            <GiHamburgerMenu height="100%" />
-                        </span>
-                    </div>
-                    <div className="space-x-5 hidden md:flex h-full p-0 m-0">
-                        <Button
-                            type="link"
-                            className="h-full flex-1 btn tracking-wide text-xs lg:text-lg leading-none text-white font-light"
-                        >
-                            <span>ABOUT US</span>
-                        </Button>
-                        <Button
-                            type="primary"
-                            className="gradient-g text-lg lg:text-xl leading-none h-full px-8 lg:px-10 tracking-wide rounded-none border-none p-0 m-0"
-                        >
-                            LOGIN
-                        </Button>
-                    </div>
-                </div>
-            </Header>
+            <Drawer
+                title="Basic Drawer"
+                placement="left"
+                closable={false}
+                onClose={() => setOpenDrawer(!isOpen)}
+                visible={isOpen}
+                key="left"
+            >
+                <p>Some contents...</p>
+                <p>Some contents...</p>
+                <p>Some contents...</p>
+            </Drawer>
+            <DefaultNavbar
+                className="bg-transparent"
+                onClickBurguer={() => setOpenDrawer(!isOpen)}
+            />
             <Content>
                 <section className="bg-travellerbg relative bg-cover bg-center bg-no-repeat -mt-16 md:-mt-20 ">
                     <div
@@ -174,64 +156,14 @@ const LandingPage = () => {
                 <section className=" relative">
                     <div className="absolute bottom-0 right-0 top-0 md:w-5/12 lg:w-6/12 xl:w-4/12 2xl:w-3/12 pt-20 hidden md:flex justify-end items-end  overflow-hidden">
                         <div className="h-auto" style={{ width: '80%' }}>
-                            <LeftLogoSVG width="100%" height="auto" />
+                            <LeftLogoSVG />
                         </div>
                     </div>
                     <div className="section3 mx-auto relative">
                         <PromotionsSection />
                     </div>
                     <div className="flex w-full flex-col section py-20 md:pt-16 lg:pt-28 lg:pb-48 xl:pt-32 xl:pb-64 px-4 lg:px-8 xl:px-0 mx-auto relative">
-                        <div className="flex flex-col md:flex-row h-auto ">
-                            <div
-                                ref={refText1}
-                                className="flex-1 text-center md:text-left  h-4.5 md:h-24 lg:h-32 xl:h-37 overflow-hidden"
-                            >
-                                <AnimatePresence>
-                                    {showText1 && (
-                                        <motion.div
-                                            className="font-bebas-nue leading-none mb-6 md:mb-0 text-black-3 text-7xl h-full md:text-6.5 lg:text-11xl  xl:text-11.5"
-                                            initial={{ x: 600 }}
-                                            animate={{ x: 0 }}
-                                            exit={{}}
-                                            transition={{
-                                                duration: 0.5,
-                                                type: 'spring',
-                                                // bounce: 0.2,
-                                                // ease: 'circInOut',
-                                                // stiffness: 2,
-                                            }}
-                                        >
-                                            YOUR NEXT
-                                        </motion.div>
-                                    )}
-                                </AnimatePresence>
-                            </div>
-                            <div className="flex-1 flex items-end mb-2 xl:mb-4 ">
-                                <div className="flex flex-row flex-1 justify-between text-yellow-1 font-base font-bebas-nue text-3xl lg:text-2.5 xl:text-5xl leading-none ">
-                                    <div className="space-y-2">
-                                        <div className="">ADVENTURE</div>
-                                        <div className="">EXPERIENCE</div>
-                                    </div>
-                                    <div className=" space-y-2">
-                                        <div className="">DESTINATION</div>
-                                        <div className="">VACATION</div>
-                                    </div>
-                                    <div className="flex items-center justify-center">
-                                        <div className="">DESTINARE</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="flex md:justify-end flex-1">
-                            <div className="w-full md:w-6/12 bg-black-1">
-                                <div className="w-full bg-yellow-1 h-1  md:h-1.5 xl:h-2 "></div>
-                            </div>
-                        </div>
-                        <div className="flex-1 text-center mt-6 md:mt-8 md:mb-10 lg:mt-16 lg:mb-20 ">
-                            <div className="font-bebas-nue leading-none mb-2 md:mb-0 text-black-3 text-7xl h-4.5 md:h-24 md:text-6.5 lg:h-32 lg:text-11xl xl:h-37 xl:text-11.5 ">
-                                IS HERE
-                            </div>
-                        </div>
+                        <NextSection />
                     </div>
                 </section>
                 <section
@@ -259,7 +191,7 @@ const LandingPage = () => {
                                         <div className="mr-2 lg:mr-5 h-1.875 md:h-2.25 lg:h-3.5 pb-1">
                                             <LogoText
                                                 color="#f9a24f"
-                                                width="auto"
+                                                width="100%"
                                                 height="100%"
                                             />
                                         </div>
@@ -274,7 +206,7 @@ const LandingPage = () => {
                     </div>
                 </section>
                 <section>
-                    <Row clas>
+                    <Row>
                         <Col
                             xs={24}
                             sm={12}
@@ -390,7 +322,7 @@ const LandingPage = () => {
                                         <Logo
                                             color="black"
                                             height="100%"
-                                            width="auto"
+                                            width="100%"
                                         />
                                     </div>
                                 </Col>
@@ -525,4 +457,4 @@ const LandingPage = () => {
     )
 }
 
-export default withLayout(LandingPage)
+export default LandingPage

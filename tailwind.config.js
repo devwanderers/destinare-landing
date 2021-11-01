@@ -121,6 +121,8 @@ module.exports = {
                 sunset: "url('/src/assets/images/backgrounds/sunset-2021-08-27-21-13-52-utc.jpg')",
                 sunset2:
                     "url('/src/assets/images/backgrounds/sunset-2021-08-31-11-19-12-utc.jpg')",
+                sunset3:
+                    "url('/src/assets/images/backgrounds/sunset-2021-08-28-06-23-40-utc.jpg')",
                 clouds: "url('/src/assets/images/backgrounds/fondo-nubes.jpg')",
             },
             margin: {
@@ -148,7 +150,10 @@ module.exports = {
         },
     },
     variants: {
-        extend: {},
+        extend: {
+            scale: ['active', 'group-hover'],
+            textColor: ['active', 'hover'],
+        },
     },
     plugins: [],
 }

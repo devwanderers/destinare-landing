@@ -1,13 +1,31 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { PropTypes } from 'prop-types'
-import { Layout } from 'antd'
+import { Layout, Drawer } from 'antd'
 import DefaultFooter from '../Footers/DefaultFooter'
+import NoAuthNavbar from '../Navbar/NoAuthNavbar'
 
 const { Content } = Layout
 
 const SignInLayout = ({ children }) => {
+    const [isOpen, setOpenDrawer] = useState(false)
     return (
         <Layout className="overflow-scroll overflow-x-hidden flex flex-col min-h-screen">
+            <Drawer
+                title="Basic Drawer"
+                placement="left"
+                closable={false}
+                onClose={() => setOpenDrawer(!isOpen)}
+                visible={isOpen}
+                key="left"
+            >
+                <p>Some contents...</p>
+                <p>Some contents...</p>
+                <p>Some contents...</p>
+            </Drawer>
+            <NoAuthNavbar
+                className="bg-gray-100"
+                onClickBurguer={() => setOpenDrawer(!isOpen)}
+            />
             <Content className="bg-white flex flex-1 flex-shrink flex-grow">
                 {children}
             </Content>

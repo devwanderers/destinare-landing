@@ -7,7 +7,7 @@ const PublicRoute = ({ component, ...restProps }) => {
         <Route
             {...restProps}
             render={(props) => {
-                const _props = {}
+                const _props = { ...props }
                 const Component = component
                 // Add Logic here
                 return <Component {..._props} />

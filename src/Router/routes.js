@@ -1,7 +1,7 @@
 import { Route } from 'react-router-dom'
 // import PrivateRoute from "./CustomRoutes/PrivateRoute"
-import PublicRoute from './CustomRoutes/PublicRoute'
-import { HomePath, SignInPath } from '../constants/routerConstants'
+// import PublicRoute from './CustomRoutes/PublicRoute'
+import { HomePath, SignInPath, LoginInPath } from '../constants/routerConstants'
 import SignInLayout from './../components/Layouts/SignInLayout'
 
 const routes = [
@@ -17,16 +17,28 @@ const routes = [
     {
         name: 'LandingPage',
         path: HomePath,
-        route: PublicRoute,
-        exact: true,
+        route: Route,
         componentProps: { routes: [] },
+        exact: true,
     },
     {
-        name: 'SigninView',
+        name: 'AuthView',
+        path: LoginInPath,
+        route: Route,
+        componentProps: {
+            auth: 'login',
+            routes: [],
+        },
+        layout: SignInLayout,
+    },
+    {
+        name: 'AuthView',
         path: SignInPath,
-        route: PublicRoute,
-        // exact: true,
-        componentProps: { routes: [] },
+        route: Route,
+        componentProps: {
+            auth: 'signin',
+            routes: [],
+        },
         layout: SignInLayout,
     },
     {
