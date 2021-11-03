@@ -1,37 +1,25 @@
 import { createAction, createAsyncThunk } from '@reduxjs/toolkit'
-import axios from 'axios'
+import UUID from 'uuid-int'
+
 import { returnPromise } from '../../../services/promises'
 import * as types from './types'
+import axiosInstance from './../../services/axiosConfig'
 
 export const authenticateUser = createAction(types.USER_AUTH)
-
-const REGISTERED_DISCOUNTS_URL =
-    'http://www.registereddiscounts.com/gb0214/sor_germinate/rob213523sQ3246tw%27.freeze'
-const host = 'us-east-static-08.quotaguard.com'
-const port = '92930'
-const userName = '5bkvbocf5thl8c'
-const password = '1q5vmxsk4h5lkuj5o8c8jiflmpuz'
-const uniqueId = '8123481'
-const userId = uniqueId + '0001'
 
 export const sendUserData = createAsyncThunk(
     types.SENDUSER_DATA,
     async (user, { dispatch }) => {
-        const result = await axios.post(
-            REGISTERED_DISCOUNTS_URL,
-            {
-                ip_address: '54.161.96.109',
-                user_id: parseInt(userId),
-                email: user?.email,
-                first_name: user?.firstName,
-                last_name: user?.lastName,
-                city: 'City',
-                state: 'MI',
-                postal_code: '49801',
-                country_code: 'US',
-            },
-            { proxy: { host, port, auth: { userName, password } } }
-        )
+        const id = 0
+
+        const generator = UUID(id)
+        const uuid = generator.uuid()
+        const result = axiosInstance.post('user/send/data', {
+            userId: uuid,
+            firstName: user?.firstName ? user?.firstName : '',
+            lastName: user?.lastName ? user?.lastName : '',
+            email: user.email,
+        })
         return result
     }
 )

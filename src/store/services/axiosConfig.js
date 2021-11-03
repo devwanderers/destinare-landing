@@ -1,8 +1,13 @@
 import axios from 'axios'
 
-const axiosClient = axios.create({})
+const axiosInstance = axios.create({
+    baseURL:
+        process.env.NODE_ENV === 'production'
+            ? 'http://localhost:3000/'
+            : 'http://localhost:3000/',
+})
 
-axiosClient.interceptors.response.use(
+axiosInstance.interceptors.response.use(
     (response) =>
         new Promise((resolve, reject) => {
             resolve(response)
@@ -22,4 +27,4 @@ axiosClient.interceptors.response.use(
         }
     }
 )
-export default axiosClient
+export default axiosInstance
