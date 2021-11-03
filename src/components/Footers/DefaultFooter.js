@@ -1,145 +1,131 @@
 import React from 'react'
-import { Layout } from 'antd'
-
-const { Footer } = Layout
+import { Col, Row } from 'antd'
+import { FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa'
 
 const DefaultFooter = (props) => {
     return (
-        <Footer className=" bg-white text-gray-1 footer-l">
-            <div className="lg:wrapper mx-auto px-4">
-                <div className="flex flex-col">
-                    <div className="row-1">
-                        <div className="flex flex-row flex-wrap justify-around">
-                            <div className="columns">
-                                <ul className="list-none footer-links">
-                                    <li className=" mb-18px">
-                                        <a
-                                            className=" hover:text-gray-400"
-                                            href="https://whitepaper.swapp.ee/"
-                                        >
-                                            Whitepaper
-                                        </a>
-                                    </li>
-                                    <li className=" mb-18px">
-                                        <a
-                                            className=" hover:text-gray-400"
-                                            href="https://app.uniswap.org/#/swap?"
-                                        >
-                                            Get token
-                                        </a>
-                                    </li>
-                                    <li className=" mb-18px">
-                                        <a
-                                            className=" hover:text-gray-400"
-                                            href="https://dapp.swapp.ee"
-                                            target="_self"
-                                        >
-                                            Staking
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div className="columns">
-                                <ul className="list-none footer-links">
-                                    <li className=" mb-18px">
-                                        <a
-                                            className=" hover:text-gray-400"
-                                            href="https://forum.swapp.ee"
-                                        >
-                                            Forum
-                                        </a>
-                                    </li>
-                                    <li className=" mb-18px">
-                                        <a
-                                            className=" hover:text-gray-400"
-                                            href="https://blog.swapp.ee"
-                                        >
-                                            Blog
-                                        </a>
-                                    </li>
-                                    <li className=" mb-18px">
-                                        <a
-                                            className=" hover:text-gray-400"
-                                            href="/team"
-                                        >
-                                            Team
-                                        </a>
-                                    </li>
-                                    <li className=" mb-18px">
-                                        <a
-                                            className=" hover:text-gray-400"
-                                            href="/privacy-policy"
-                                        >
-                                            Privacy &amp; Terms
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div className="columns">
-                                <ul className="list-none footer-links">
-                                    <li className=" mb-18px">
-                                        <a
-                                            className=" hover:text-gray-400"
-                                            href="https://swapp.ee"
-                                        >
-                                            swapp.ee
-                                        </a>
-                                    </li>
-                                    <li className=" mb-18px">
-                                        <a
-                                            className=" hover:text-gray-400"
-                                            href="mailto:support@swapp.ee"
-                                        >
-                                            support@swapp.ee
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div className="columns">
-                                <ul className="list-none footer-links">
-                                    <li className=" mb-18px">
-                                        <a
-                                            className=" hover:text-gray-400"
-                                            href="https://swapp.ee"
-                                        >
-                                            swapp.ee
-                                        </a>
-                                    </li>
-                                    <li className=" mb-18px">
-                                        <a
-                                            className=" hover:text-gray-400"
-                                            href="mailto:support@swapp.ee"
-                                        >
-                                            support@swapp.ee
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div className="columns">
-                                <ul className="list-none footer-links">
-                                    <li className=" mb-18px">
-                                        <a
-                                            className=" hover:text-gray-400"
-                                            href="https://swapp.ee"
-                                        >
-                                            swapp.ee
-                                        </a>
-                                    </li>
-                                    <li className=" mb-18px">
-                                        <a
-                                            className=" hover:text-gray-400"
-                                            href="mailto:support@swapp.ee"
-                                        >
-                                            support@swapp.ee
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
+        <footer className="py-12 ">
+            <div className="section ">
+                <div className="flex flex-row justify-between border-b border-gray-300 pb-8">
+                    <div className="flex flex-row justify-between max-h-full w-full lg:w-6/12  items-center">
+                        <div className="flex-1">
+                            <h5 className="text-capitalize text-xl  tracking-wide font-bold mb-5">
+                                Home
+                            </h5>
+                            <ul className="list-none font-saira-condensed font-semibold">
+                                <li className="mb-2">
+                                    <a
+                                        className=" hover:text-gray-400"
+                                        href="https://whitepaper.swapp.ee/"
+                                    >
+                                        Terms of service
+                                    </a>
+                                </li>
+                                <li className=" mb-2">
+                                    <a
+                                        className=" hover:text-gray-400"
+                                        href="https://app.uniswap.org/#/swap?"
+                                    >
+                                        Smart Contract
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div className="flex-1">
+                            <h5 className="text-capitalize text-xl  tracking-wide font-bold mb-5">
+                                Home
+                            </h5>
+                            <ul className="list-none font-saira-condensed font-semibold">
+                                <li className="mb-2">
+                                    <a
+                                        className=" hover:text-gray-400"
+                                        href="https://whitepaper.swapp.ee/"
+                                    >
+                                        Terms of service
+                                    </a>
+                                </li>
+                                <li className=" mb-2">
+                                    <a
+                                        className=" hover:text-gray-400"
+                                        href="https://app.uniswap.org/#/swap?"
+                                    >
+                                        Smart Contract
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div className="flex-1">
+                            <h5 className="text-capitalize text-xl  tracking-wide font-bold mb-5">
+                                Home
+                            </h5>
+                            <ul className="list-none font-saira-condensed font-semibold">
+                                <li className="mb-2">
+                                    <a
+                                        className=" hover:text-gray-400"
+                                        href="https://whitepaper.swapp.ee/"
+                                    >
+                                        Terms of service
+                                    </a>
+                                </li>
+                                <li className=" mb-2">
+                                    <a
+                                        className=" hover:text-gray-400"
+                                        href="https://app.uniswap.org/#/swap?"
+                                    >
+                                        Smart Contract
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
+                <div className="flex justify-end my-8">
+                    <div className="space-x-4 flex flex-row text-2xl">
+                        <a>
+                            <span>
+                                <FaFacebook />
+                            </span>
+                        </a>
+                        <a>
+                            <span>
+                                <FaTwitter />
+                            </span>
+                        </a>
+                        <a>
+                            <span>
+                                <FaInstagram />
+                            </span>
+                        </a>
+                    </div>
+                </div>
+                <Row>
+                    <Col xs={12}>
+                        <div></div>
+                        <div>
+                            We are a business located in different parts of the
+                            world. Our team is working remotely
+                        </div>
+                    </Col>
+                    <Col xs={12} className="flex justify-end">
+                        <div></div>
+                        <div className="space-x-2">
+                            <a>
+                                <span>Offices</span>
+                            </a>
+                            <a>
+                                <span>About Us</span>
+                            </a>
+                            <a>
+                                <span>Marketing & Campaigns </span>
+                            </a>
+                            <a>
+                                <span>Help Center</span>
+                            </a>
+                        </div>
+                    </Col>
+                </Row>
             </div>
-        </Footer>
+        </footer>
     )
 }
 

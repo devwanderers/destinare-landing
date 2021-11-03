@@ -49,7 +49,8 @@ export const validations = {
         .test(
             'alpha',
             'Must contain only letters.',
-            (value) => !value || (value && validator.isAlpha(value))
+            (value) =>
+                !value || (value && validator.isAlpha(value.replace(' ', '')))
         ),
     // .required('Required'),
     birthDate: Yup.date().required('Required'),

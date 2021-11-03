@@ -1,14 +1,16 @@
 import React from 'react'
 import { Row, Col } from 'antd'
 
-import { OnlyFansLogoSVG } from '../../assets/svg/brand/index'
+import { DestinareLogoColorSVG } from '../../assets/svg/brand/index'
 
 import LoginContainer from './../../container/Auth/LoginContainer'
 import SigninContainer from './../../container/Auth/SigninContainer'
+import { useHistory } from 'react-router'
+import { HomePath } from '../../constants/routerConstants'
 
 const AuthView = ({ auth }) => {
     const FormAuth = auth === 'login' ? LoginContainer : SigninContainer
-
+    const history = useHistory()
     return (
         <section className="login-content">
             <div className="absolute left-0 bottom-0 top-0 right-0 md:right-2/4 bg-sunset3 bg-cover bg-right md:bg-right hidden md:flex"></div>
@@ -32,8 +34,17 @@ const AuthView = ({ auth }) => {
                     <Col sm={12} className="flex  justify-center">
                         <div className="col-inner">
                             <h1 className="mb-2 flex justify-center ">
-                                <a>
-                                    <OnlyFansLogoSVG width={245} height={64} />
+                                <a
+                                    href="#"
+                                    onClick={(e) => {
+                                        e.preventDefault()
+                                        history.push(HomePath)
+                                    }}
+                                >
+                                    <DestinareLogoColorSVG
+                                        width={245}
+                                        height={64}
+                                    />
                                 </a>
                             </h1>
                             <FormAuth />

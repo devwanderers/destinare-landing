@@ -1,6 +1,6 @@
 import authReducer from './authReducer'
 import * as actions from './actions'
-import types from './types'
+import * as types from './types'
 import * as selectors from './selectors'
 
 export const actionsAuth = actions

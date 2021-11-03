@@ -31,7 +31,7 @@ const initialValues = {
 
 const Sigin = ({ onSubmit }) => {
     const history = useHistory()
-    console.log({ onSubmit })
+
     return (
         <React.Fragment>
             <div className="font-medium mb-2">Sign up</div>
