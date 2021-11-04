@@ -9,6 +9,7 @@ module.exports = {
     theme: {
         spacing: {
             ...defaultTheme.spacing,
+            '40px': '40px',
             '50px': '50px',
             37: '9.25rem',
             4.5: '4.5rem',

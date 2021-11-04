@@ -4,9 +4,9 @@ const returnPromise = (callback) => {
 
 const timeout = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
-const sleep = async (fn, ...args) => {
-    await timeout(3000)
-    return fn(...args)
+const sleep = async (fn, delay = 300) => {
+    await timeout(delay)
+    return fn()
 }
 
 export { returnPromise, timeout, sleep }

@@ -113,7 +113,7 @@ const DefaultFooter = (props) => {
                                 <span>Offices</span>
                             </a>
                             <a>
-                                <span>About Us</span>
+                                <span>WHITE PAPER</span>
                             </a>
                             <a>
                                 <span>Marketing & Campaigns </span>

@@ -1,23 +1,32 @@
 import React from 'react'
-import { Route } from 'react-router-dom'
+import { Route, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { authenticatedSelector } from '../../store/reducers/auth/selectors'
+import { HomePath } from '../../constants/routerConstants'
 
-const PublicRoute = ({ component, ...restProps }) => {
+const PublicRoute = ({ component, authenticated, ...restProps }) => {
     return (
         <Route
             {...restProps}
             render={(props) => {
-                const _props = { ...props }
-                const Component = component
-                // Add Logic here
+                let _props = {}
+                let Component = component
+
+                if (authenticated) {
+                    Component = Redirect
+                    _props.to = HomePath
+                } else {
+                    _props = { ...props }
+                }
                 return <Component {..._props} />
             }}
         />
     )
 }
 
-const mapStateToProps = (state) => ({})
-
-const mapDispatchToProps = (dispatch) => ({})
-
-export default connect(mapStateToProps, mapDispatchToProps)(PublicRoute)
+export default connect(
+    (state) => ({
+        authenticated: authenticatedSelector(state),
+    }),
+    null
+)(PublicRoute)

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Formik, Form, Field } from 'formik'
-import { Button, Form as FormAnt } from 'antd'
+import { Button, Form as FormAnt, Alert } from 'antd'
 import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons'
 import * as Yup from 'yup'
 import { useHistory } from 'react-router'
@@ -21,7 +21,7 @@ const initialValues = {
     password: '',
 }
 
-const Login = ({ onSubmit }) => {
+const Login = ({ onSubmit, showError, errorMessage }) => {
     const history = useHistory()
 
     return (
@@ -59,6 +59,14 @@ const Login = ({ onSubmit }) => {
                             }
                             value={values?.password}
                         />
+                        {showError && (
+                            <Alert
+                                className="mb-5"
+                                message={errorMessage}
+                                type="error"
+                                showIcon
+                            />
+                        )}
                         <FormAnt.Item className="mb-0">
                             <Button
                                 block
@@ -103,6 +111,7 @@ const Login = ({ onSubmit }) => {
                     </Form>
                 )}
             </Formik>
+            {!showError && <div className="h-40px mb-5"></div>}
         </React.Fragment>
     )
 }

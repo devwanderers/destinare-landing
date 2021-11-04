@@ -4,12 +4,12 @@ import { Row, Col } from 'antd'
 import { DestinareLogoColorSVG } from '../../assets/svg/brand/index'
 
 import LoginContainer from './../../container/Auth/LoginContainer'
-import SigninContainer from './../../container/Auth/SigninContainer'
+import SignUpContainer from './../../container/Auth/SignUpContainer'
 import { useHistory } from 'react-router'
 import { HomePath } from '../../constants/routerConstants'
 
 const AuthView = ({ auth }) => {
-    const FormAuth = auth === 'login' ? LoginContainer : SigninContainer
+    const FormAuth = auth === 'login' ? LoginContainer : SignUpContainer
     const history = useHistory()
     return (
         <section className="login-content">

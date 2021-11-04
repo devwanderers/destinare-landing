@@ -1,16 +1,16 @@
 import React, { useState } from 'react'
 import { PropTypes } from 'prop-types'
-import { Layout, Drawer } from 'antd'
+import { Layout } from 'antd'
 import DefaultFooter from '../Footers/DefaultFooter'
 import NoAuthNavbar from '../Navbar/NoAuthNavbar'
 
 const { Content } = Layout
 
-const SignInLayout = ({ children }) => {
+const SignInLayout = ({ children, ...rest }) => {
     const [isOpen, setOpenDrawer] = useState(false)
     return (
-        <Layout className="overflow-scroll overflow-x-hidden flex flex-col min-h-screen">
-            <Drawer
+        <Layout className="overflow-x-hidden flex flex-col min-h-screen">
+            {/* <Drawer
                 title="Basic Drawer"
                 placement="left"
                 closable={false}
@@ -21,8 +21,9 @@ const SignInLayout = ({ children }) => {
                 <p>Some contents...</p>
                 <p>Some contents...</p>
                 <p>Some contents...</p>
-            </Drawer>
+            </Drawer> */}
             <NoAuthNavbar
+                {...rest}
                 className="bg-gray-100"
                 onClickBurguer={() => setOpenDrawer(!isOpen)}
             />

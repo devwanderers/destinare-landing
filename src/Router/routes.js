@@ -1,7 +1,7 @@
 import { Route } from 'react-router-dom'
 // import PrivateRoute from "./CustomRoutes/PrivateRoute"
-// import PublicRoute from './CustomRoutes/PublicRoute'
-import { HomePath, SignInPath, LoginInPath } from '../constants/routerConstants'
+import PublicRoute from './CustomRoutes/PublicRoute'
+import * as paths from '../constants/routerConstants'
 import SignInLayout from './../components/Layouts/SignInLayout'
 
 const routes = [
@@ -16,15 +16,15 @@ const routes = [
     // },
     {
         name: 'LandingPage',
-        path: HomePath,
+        path: paths.HomePath,
         route: Route,
         componentProps: { routes: [] },
         exact: true,
     },
     {
         name: 'AuthView',
-        path: LoginInPath,
-        route: Route,
+        path: paths.LoginInPath,
+        route: PublicRoute,
         componentProps: {
             auth: 'login',
             routes: [],
@@ -33,14 +33,20 @@ const routes = [
     },
     {
         name: 'AuthView',
-        path: SignInPath,
-        route: Route,
+        path: paths.SignInPath,
+        route: PublicRoute,
         componentProps: {
             auth: 'signin',
             routes: [],
         },
         layout: SignInLayout,
     },
+    // {
+    //     name: 'TripvixiaIFrame',
+    //     path: paths.TravelPath,
+    //     layout: SignInLayout,
+    //     route: Route,
+    // },
     {
         name: 'Error404View',
         route: Route,

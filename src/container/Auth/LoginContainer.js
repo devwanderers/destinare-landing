@@ -1,24 +1,58 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
+import { sleep } from '../../services/promises'
+import { signIn } from '../../store/reducers/auth/actions'
 import Login from '../../views/AuthView/Forms/Login'
-import { actionsAuth } from './../../store/reducers/auth/index'
+import { tripvixiaURL } from './../../constants/routerConstants'
+import windowOpen from '../../services/windowOpen'
 
-const LoginContainer = ({ authenticateUser, ...restProps }) => {
-    const handleSubmitForm = (values, { setSubmitting }) => {
-        setTimeout(() => {
-            authenticateUser(values)
-            setSubmitting(false)
-        }, 400)
+// import { actionsAuth } from './../../store/reducers/auth/index'
+
+const LoginContainer = ({ signIn, ...restProps }) => {
+    const [showError, setShowError] = useState(false)
+    const [errorMessage, setErrorMessage] = useState('')
+
+    const handleSetError = (errorMessage) => {
+        setShowError(true)
+        setErrorMessage(errorMessage)
+    }
+    const handleSubmitForm = (
+        { emailOrUsername, password },
+        { setSubmitting }
+    ) => {
+        setShowError(false)
+        signIn({ email: emailOrUsername, password }).then((resSignIn) => {
+            if (resSignIn?.error) {
+                if (resSignIn.payload?.message === 'InvalidCredentials') {
+                    handleSetError(
+                        'There was a problem logging in. Please check your email and password'
+                    )
+                } else {
+                    handleSetError(resSignIn.payload?.message)
+                }
+            } else {
+                windowOpen(tripvixiaURL)
+                sleep(() => {
+                    setSubmitting(false)
+                })
+            }
+        })
     }
 
-    return <Login onSubmit={handleSubmitForm} {...restProps} />
+    return (
+        <Login
+            showError={showError}
+            errorMessage={errorMessage}
+            onSubmit={handleSubmitForm}
+            {...restProps}
+        />
+    )
 }
 
 const mapStateToProps = (state) => ({})
 
 const mapDispatchToProps = (dispatch) => ({
-    authenticateUser: (authData) =>
-        dispatch(actionsAuth.authenticateUser(authData)),
+    signIn: (userData) => dispatch(signIn(userData)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginContainer)

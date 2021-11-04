@@ -1,30 +1,32 @@
 import React from 'react'
 import { Layout } from 'antd'
-import { GiHamburgerMenu } from 'react-icons/gi'
+import { DestinareLogoColorSVG } from '../../assets/svg/brand/index'
+// import { GiHamburgerMenu } from 'react-icons/gi'
+import { useHistory } from 'react-router'
+import { HomePath } from '../../constants/routerConstants'
 
 const { Header } = Layout
 
-const GenericNavBar = ({
-    className = '',
-    middleSection,
-    rightSection,
-    onClickBurguer,
-}) => {
+const GenericNavBar = ({ className = '', middleSection, rightSection }) => {
+    const history = useHistory()
     return (
         <Header
-            className={` h-16 md:h-20 z-10 px-0 py-2 md:py-4 m-0 ${className}`}
+            className={` h-16 md:h-20 z-10 px-2 lg:px-0 py-2 md:py-4 m-0 ${className}`}
         >
-            <div className="section flex justify-between px-2 md:px-8 h-full">
-                <a className="h-full">
+            <div className="section flex justify-end px-2 md:px-8 h-full">
+                <a
+                    className="h-full w-48"
+                    onClick={() => history.push(HomePath)}
+                >
                     <div
-                        onClick={onClickBurguer}
-                        className="flex items-center justify-center text-2xl h-full px-4 cursor-pointer text-black-1 transform  active:scale-125 "
+                        // onClick={onClickBurguer}
+                        className="flex h-full cursor-pointer text-black-1"
                     >
-                        <GiHamburgerMenu height="100%" />
+                        <DestinareLogoColorSVG />
                     </div>
                 </a>
                 <div className="flex-1">{middleSection}</div>
-                <div className="space-x-5 hidden md:flex h-full p-0 m-0">
+                <div className="space-x-5 flex h-full p-0 m-0">
                     {rightSection}
                 </div>
             </div>

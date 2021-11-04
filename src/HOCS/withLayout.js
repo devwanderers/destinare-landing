@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import * as authSelectors from '../store/reducers/auth/selectors'
+import { logout } from '../store/reducers/globalActions'
 
 const withLayout = (WrappedComponent) => {
     const HOC = class extends Component {
@@ -8,7 +10,13 @@ const withLayout = (WrappedComponent) => {
         }
     }
     HOC.displayName = 'WithLayout'
-    return connect((state) => ({}), null)(HOC)
+    return connect(
+        (state) => ({
+            authenticated: authSelectors.authenticatedSelector(state),
+            userData: authSelectors.userDataSelector(state),
+        }),
+        (dispatch) => ({ logout: () => dispatch(logout()) })
+    )(HOC)
 }
 
 export default withLayout

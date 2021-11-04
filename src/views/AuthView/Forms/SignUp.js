@@ -1,16 +1,16 @@
 import React from 'react'
 import { Formik, Form, Field } from 'formik'
-import { Button, Form as FormAnt } from 'antd'
+import { Button, Form as FormAnt, Alert } from 'antd'
 import * as Yup from 'yup'
 import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons'
-import { validations } from './../../../services/yupValidations'
+import { validations } from '../../../services/yupValidations'
 import { useHistory } from 'react-router'
 
-import { LoginInPath } from './../../../constants/routerConstants'
+import { LoginInPath } from '../../../constants/routerConstants'
 import {
     AntInput,
     AntInputPassword,
-} from './../../../components/CreateAntField/index'
+} from '../../../components/CreateAntField/index'
 
 const schema = Yup.object({
     firstName: validations.name,
@@ -27,9 +27,10 @@ const initialValues = {
     userName: '',
     email: '',
     password: '',
+    confirmPassword: '',
 }
 
-const Sigin = ({ onSubmit }) => {
+const SigUp = ({ onSubmit, showError, errorMessage }) => {
     const history = useHistory()
 
     return (
@@ -78,7 +79,7 @@ const Sigin = ({ onSubmit }) => {
                             placeholder="Username"
                             className="h-12 rounded-lg"
                             hasFeedback
-                            value={values?.user}
+                            value={values?.userName}
                         />
                         <Field
                             component={AntInputPassword}
@@ -112,6 +113,15 @@ const Sigin = ({ onSubmit }) => {
                             }
                             value={values?.confirmPassword}
                         />
+                        {showError && (
+                            <Alert
+                                className="mb-5"
+                                message={errorMessage}
+                                type="error"
+                                showIcon
+                            />
+                        )}
+
                         <FormAnt.Item className="mb-0">
                             <Button
                                 type="primary"
@@ -151,10 +161,11 @@ const Sigin = ({ onSubmit }) => {
                     </a>
                 </span>
             </div>
+            {!showError && <div className="h-40px mb-5"></div>}
         </React.Fragment>
     )
 }
 
-Sigin.propTypes = {}
+SigUp.propTypes = {}
 
-export default Sigin
+export default SigUp

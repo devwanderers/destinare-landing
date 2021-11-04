@@ -98,7 +98,7 @@ const Card = ({ className, main }) => {
     )
 }
 
-const LandingPage = (props) => {
+const LandingPage = ({ authenticated, logout }) => {
     const [isOpen, setOpenDrawer] = useState(false)
     const { width } = useWindowSize()
 
@@ -117,6 +117,8 @@ const LandingPage = (props) => {
                 <p>Some contents...</p>
             </Drawer>
             <DefaultNavbar
+                logout={logout}
+                authenticated={authenticated}
                 className="bg-transparent"
                 onClickBurguer={() => setOpenDrawer(!isOpen)}
             />
