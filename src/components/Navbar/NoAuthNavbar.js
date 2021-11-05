@@ -1,33 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
 import GenericNavBar from './GenericNavbar'
-import { Button, Menu, Dropdown, Avatar } from 'antd'
+import { Button, Dropdown, Avatar } from 'antd'
 // import { useHistory } from 'react-router'
+import useWindowSize from './../../hooks/useWindowSize'
 // import { TravelPath } from '../../constants/routerConstants'
-import windowOpen from './../../services/windowOpen'
+import MenuNavbar from './MenuNavbar'
+import GenericNavbarMobile from './GenericNavbarMobile'
 
 const NoAuthNavBar = ({ logout, authenticated, ...rest }) => {
+    const [showDrawer, setShowDrawer] = useState(false)
     // const history = useHistory()
+    const { width } = useWindowSize()
+    const handleShowDrawer = () => setShowDrawer(!showDrawer)
 
     const menu = (
-        <Menu>
-            <Menu.Item key="0">
-                <div
-                    onClick={() =>
-                        windowOpen(
-                            'https://members.tripvixia.com/membership/signup?invite=0e3cb515-2949-4e1a-bb83-fd7fe4a5b251&referraltype=3'
-                        )
-                    }
-                >
-                    Travel Platform
-                </div>
-            </Menu.Item>
-            <Menu.Divider />
-            <Menu.Item key="1" className="px-10">
-                <div onClick={() => logout()}>Log out</div>
-            </Menu.Item>
-        </Menu>
+        <MenuNavbar
+            isMobile={width < 768}
+            authenticated={authenticated}
+            logout={logout}
+        />
     )
-    return (
+
+    return width >= 768 ? (
         <GenericNavBar
             {...rest}
             rightSection={
@@ -46,16 +40,38 @@ const NoAuthNavBar = ({ logout, authenticated, ...rest }) => {
                                     onClick={(e) => e.preventDefault()}
                                 >
                                     <Avatar
-                                        // className="gradient-g"
                                         style={{ backgroundColor: '#f9a24f' }}
                                         size="large"
                                     >
-                                        A
+                                        U
                                     </Avatar>
                                 </a>
                             </Dropdown>
                         </div>
                     )}
+                </React.Fragment>
+            }
+        />
+    ) : (
+        <GenericNavbarMobile
+            {...rest}
+            showDrawer={showDrawer}
+            onClickBurguer={handleShowDrawer}
+            burgerColor="black"
+            hideLogo
+            contentDrawer={
+                <React.Fragment>
+                    <div className="flex flex-col">
+                        <Avatar
+                            className="mb-4"
+                            style={{ backgroundColor: '#f9a24f' }}
+                            size="large"
+                        >
+                            U
+                        </Avatar>
+                        <span className="font-medium mb-3">{name}</span>
+                    </div>
+                    {menu}
                 </React.Fragment>
             }
         />

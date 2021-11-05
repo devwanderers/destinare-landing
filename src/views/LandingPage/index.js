@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Layout, Button, Row, Col, Input, Drawer } from 'antd'
+import React from 'react'
+import { Layout, Button, Row, Col, Input } from 'antd'
 
 import Paragraph from '../../components/DisplayText/Paragraph'
 import PromotionsSection from './Sections/PromotionSections'
@@ -98,29 +98,16 @@ const Card = ({ className, main }) => {
     )
 }
 
-const LandingPage = ({ authenticated, logout }) => {
-    const [isOpen, setOpenDrawer] = useState(false)
+const LandingPage = ({ authenticated, userData, logout }) => {
     const { width } = useWindowSize()
 
     return (
         <Layout className="landing-page min-w-minMobileWidth bg-gray-50">
-            <Drawer
-                title="Basic Drawer"
-                placement="left"
-                closable={false}
-                onClose={() => setOpenDrawer(!isOpen)}
-                visible={isOpen}
-                key="left"
-            >
-                <p>Some contents...</p>
-                <p>Some contents...</p>
-                <p>Some contents...</p>
-            </Drawer>
             <DefaultNavbar
+                userData={userData}
                 logout={logout}
                 authenticated={authenticated}
                 className="bg-transparent"
-                onClickBurguer={() => setOpenDrawer(!isOpen)}
             />
             <Content>
                 <section className="bg-travellerbg relative bg-cover bg-center bg-no-repeat -mt-16 md:-mt-20 ">

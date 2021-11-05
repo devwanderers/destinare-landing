@@ -127,6 +127,7 @@ module.exports = {
                 clouds: "url('/src/assets/images/backgrounds/fondo-nubes.jpg')",
             },
             margin: {
+                '-24px': '-24px',
                 84: '21rem',
                 88: '22rem',
                 92: '23rem',

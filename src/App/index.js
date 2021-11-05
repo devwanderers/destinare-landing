@@ -1,6 +1,8 @@
 import React from 'react'
-import Router from './Router'
-import './styles/App.less'
+import Router from '../Router'
+import SessionManager from './SessionManager'
+
+import '../styles/App.less'
 
 const App = () => {
     // const [isDarkMode, setIsDarkMode] = React.useState()
@@ -14,7 +16,12 @@ const App = () => {
     // Avoid theme change flicker
     // const handleClick = () => {}
 
-    return <Router />
+    return (
+        <React.Fragment>
+            <SessionManager />
+            <Router />
+        </React.Fragment>
+    )
 }
 
 export default App

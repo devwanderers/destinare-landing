@@ -1,33 +1,35 @@
-import React from 'react'
-import { Button, Menu, Dropdown, Avatar } from 'antd'
+import React, { useState } from 'react'
+import { Button, Dropdown, Avatar } from 'antd'
 import { useHistory } from 'react-router'
 import GenericNavBar from './GenericNavbar'
 import { LoginInPath } from '../../constants/routerConstants'
-// import { SignInPath } from './../../constants/routerConstants'
-import windowOpen from './../../services/windowOpen'
+import useWindowSize from './../../hooks/useWindowSize'
+import GenericNavbarMobile from './GenericNavbarMobile'
+import MenuNavbar from './MenuNavbar'
 
-const DefaultNavbar = ({ authenticated, logout, ...rest }) => {
+const DefaultNavbar = ({ authenticated, userData, logout, ...rest }) => {
+    const [showDrawer, setShowDrawer] = useState(false)
     const history = useHistory()
+    const { width } = useWindowSize()
+    const handleShowDrawer = () => setShowDrawer(!showDrawer)
+
+    let avatarTitle = `${userData.firstName
+        .substring(0, 1)
+        .toUpperCase()}${userData.lastName.substring(0, 1).toUpperCase()}`
+    let name = `${userData.firstName} ${userData.lastName}`
+
+    if (name.length > 26) name = `${name.substring(0, 25)}...`
+    if (avatarTitle === '') avatarTitle = 'U'
+    console.log({ avatarTitle })
     const menu = (
-        <Menu>
-            <Menu.Item key="0">
-                <div
-                    onClick={() =>
-                        windowOpen(
-                            'https://members.tripvixia.com/membership/signup?invite=0e3cb515-2949-4e1a-bb83-fd7fe4a5b251&referraltype=3'
-                        )
-                    }
-                >
-                    Travel Platform
-                </div>
-            </Menu.Item>
-            <Menu.Divider />
-            <Menu.Item key="1" className="px-10">
-                <div onClick={() => logout()}>Log out</div>
-            </Menu.Item>
-        </Menu>
+        <MenuNavbar
+            isMobile={width < 768}
+            authenticated={authenticated}
+            logout={logout}
+        />
     )
-    return (
+
+    return width >= 768 ? (
         <GenericNavBar
             {...rest}
             rightSection={
@@ -49,7 +51,11 @@ const DefaultNavbar = ({ authenticated, logout, ...rest }) => {
                     )}
                     {authenticated && (
                         <div className="h-full flex justify-center items-center">
-                            <Dropdown overlay={menu} trigger={['click']}>
+                            <Dropdown
+                                overlay={menu}
+                                trigger={['click']}
+                                placement="bottomRight"
+                            >
                                 <a
                                     className="ant-dropdown-link"
                                     onClick={(e) => e.preventDefault()}
@@ -59,12 +65,33 @@ const DefaultNavbar = ({ authenticated, logout, ...rest }) => {
                                         style={{ backgroundColor: '#f9a24f' }}
                                         size="large"
                                     >
-                                        A
+                                        {avatarTitle}
                                     </Avatar>
                                 </a>
                             </Dropdown>
                         </div>
                     )}
+                </React.Fragment>
+            }
+        />
+    ) : (
+        <GenericNavbarMobile
+            {...rest}
+            showDrawer={showDrawer}
+            onClickBurguer={handleShowDrawer}
+            contentDrawer={
+                <React.Fragment>
+                    <div className="flex flex-col">
+                        <Avatar
+                            className="mb-4"
+                            style={{ backgroundColor: '#f9a24f' }}
+                            size="large"
+                        >
+                            {avatarTitle}
+                        </Avatar>
+                        <span className="font-medium mb-3">{name}</span>
+                    </div>
+                    {menu}
                 </React.Fragment>
             }
         />
