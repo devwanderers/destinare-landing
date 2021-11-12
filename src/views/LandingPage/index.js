@@ -11,7 +11,7 @@ import {
     LeftLogoSVG,
     MembersSVG,
 } from '../../assets/svg/utilities'
-// // import { LogoTextSVG } from '../../assets/svg/brand'
+
 import LogoText from '../../assets/svg/brand/LogoText'
 import useWindowSize from './../../hooks/useWindowSize'
 import { returnValueByScreenWidth } from '../../services/stylesServices'
