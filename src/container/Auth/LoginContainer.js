@@ -27,8 +27,10 @@ const LoginContainer = ({ signIn, ...restProps }) => {
                     handleSetError(
                         'There was a problem logging in. Please check your email and password'
                     )
-                } else {
+                } else if (resSignIn.payload?.message) {
                     handleSetError(resSignIn.payload?.message)
+                } else {
+                    handleSetError('Internar server error')
                 }
             } else {
                 windowOpen(tripvixiaURL)

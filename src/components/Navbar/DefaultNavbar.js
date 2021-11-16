@@ -13,14 +13,18 @@ const DefaultNavbar = ({ authenticated, userData, logout, ...rest }) => {
     const { width } = useWindowSize()
     const handleShowDrawer = () => setShowDrawer(!showDrawer)
 
-    let avatarTitle = `${userData.firstName
-        .substring(0, 1)
-        .toUpperCase()}${userData.lastName.substring(0, 1).toUpperCase()}`
-    let name = `${userData.firstName} ${userData.lastName}`
+    let avatarTitle = ''
+    if (userData?.firstName) {
+        avatarTitle = `${userData.firstName
+            .substring(0, 1)
+            .toUpperCase()}${userData.lastName.substring(0, 1).toUpperCase()}`
+    }
+
+    let name = `${userData?.firstName} ${userData?.lastName}`
 
     if (name.length > 26) name = `${name.substring(0, 25)}...`
     if (avatarTitle === '') avatarTitle = 'U'
-    console.log({ avatarTitle })
+
     const menu = (
         <MenuNavbar
             isMobile={width < 768}
@@ -81,16 +85,20 @@ const DefaultNavbar = ({ authenticated, userData, logout, ...rest }) => {
             onClickBurguer={handleShowDrawer}
             contentDrawer={
                 <React.Fragment>
-                    <div className="flex flex-col">
-                        <Avatar
-                            className="mb-4"
-                            style={{ backgroundColor: '#f9a24f' }}
-                            size="large"
-                        >
-                            {avatarTitle}
-                        </Avatar>
-                        <span className="font-medium mb-3">{name}</span>
-                    </div>
+                    {authenticated ? (
+                        <div className="flex flex-col">
+                            <Avatar
+                                className="mb-4"
+                                style={{ backgroundColor: '#f9a24f' }}
+                                size="large"
+                            >
+                                {avatarTitle}
+                            </Avatar>
+                            <span className="font-medium mb-3">{name}</span>
+                        </div>
+                    ) : (
+                        <div className="mb-10"></div>
+                    )}
                     {menu}
                 </React.Fragment>
             }

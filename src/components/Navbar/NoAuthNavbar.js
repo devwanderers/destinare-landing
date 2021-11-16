@@ -62,16 +62,7 @@ const NoAuthNavBar = ({ logout, authenticated, ...rest }) => {
             hideLogo
             contentDrawer={
                 <React.Fragment>
-                    <div className="flex flex-col">
-                        <Avatar
-                            className="mb-4"
-                            style={{ backgroundColor: '#f9a24f' }}
-                            size="large"
-                        >
-                            U
-                        </Avatar>
-                        <span className="font-medium mb-3">{name}</span>
-                    </div>
+                    <div className="mb-10"></div>
                     {menu}
                 </React.Fragment>
             }
