@@ -57,10 +57,10 @@ module.exports = {
         colors: {
             // ...colors,
             red: colors.red,
-            yellow: { ...colors.yellow, 1: '#f9a24f' },
+            yellow: { ...colors.yellow, 1: '#f9a24f', 2: '#ffce50' },
             gray: colors.trueGray,
             white: '#ffffff',
-            primary: '#ffce50',
+            primary: '#0085c8',
             // secondary: '',
             info: '#00B5EB',
             transparent: 'transparent',
@@ -114,6 +114,8 @@ module.exports = {
             2.5: '2.5rem',
             2.7: '2.7rem',
             3.5: '3.5rem',
+            4.5: '4.5rem',
+            4.725: '4.725rem',
         },
         extend: {
             backgroundImage: {
@@ -125,6 +127,7 @@ module.exports = {
                 sunset3:
                     "url('/src/assets/images/backgrounds/sunset-2021-08-28-06-23-40-utc.jpg')",
                 clouds: "url('/src/assets/images/backgrounds/fondo-nubes.jpg')",
+                lobby: "url('/src/assets/images/backgrounds/lobby.jpg')",
             },
             margin: {
                 '-24px': '-24px',

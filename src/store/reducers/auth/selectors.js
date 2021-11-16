@@ -9,6 +9,7 @@ export const authenticatedSelector = createSelector(
     authReducerSelector,
     (authReducer) => authReducer.auth
 )
+
 export const lastLogginSelector = createSelector(
     authReducerSelector,
     (authReducer) => authReducer.lastLoggin

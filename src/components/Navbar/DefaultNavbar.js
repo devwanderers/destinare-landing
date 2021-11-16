@@ -47,10 +47,11 @@ const DefaultNavbar = ({ authenticated, userData, logout, ...rest }) => {
                     {!authenticated && (
                         <Button
                             type="primary"
-                            className="gradient-g focus:bg-red-300 focus:ring-2 ring-red-300 text-lg lg:text-xl leading-none h-full px-8 lg:px-10 tracking-wide rounded-none border-none p-0 m-0"
+                            size="large"
+                            className="focus:bg-red-300 focus:ring-2 ring-red-300 text-base lg:text-lg leading-none px-6 lg:px-8 tracking-wide border-none rounded-sm"
                             onClick={() => history.push(LoginInPath)}
                         >
-                            Log In
+                            Login
                         </Button>
                     )}
                     {authenticated && (

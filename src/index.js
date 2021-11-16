@@ -9,18 +9,11 @@ import configureStore from './store/config/index'
 
 const store = configureStore()
 
-// const themes = {
-//     dark: `${process.env.PUBLIC_URL}/themes/dark-theme.css`,
-//     light: `${process.env.PUBLIC_URL}/themes/light-theme.css`,
-// }
-
 ReactDOM.render(
     <React.StrictMode>
         <Provider store={store.store}>
             <PersistGate loading={null} persistor={store.persistor}>
-                {/* <ThemeSwitcherProvider themeMap={themes} defaultTheme="light"> */}
                 <App />
-                {/* </ThemeSwitcherProvider> */}
             </PersistGate>
         </Provider>
     </React.StrictMode>,

@@ -6,8 +6,6 @@ import Login from '../../views/AuthView/Forms/Login'
 import { tripvixiaURL } from './../../constants/routerConstants'
 import windowOpen from '../../services/windowOpen'
 
-// import { actionsAuth } from './../../store/reducers/auth/index'
-
 const LoginContainer = ({ signIn, ...restProps }) => {
     const [showError, setShowError] = useState(false)
     const [errorMessage, setErrorMessage] = useState('')

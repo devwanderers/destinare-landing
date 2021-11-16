@@ -18,6 +18,7 @@ const PublicRoute = ({ component, authenticated, ...restProps }) => {
                 } else {
                     _props = { ...props }
                 }
+
                 return <Component {..._props} />
             }}
         />

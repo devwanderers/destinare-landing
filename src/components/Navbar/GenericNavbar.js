@@ -27,7 +27,7 @@ const GenericNavBar = ({ className = '', middleSection, rightSection }) => {
                         </div>
                     </a>
                     <div className="flex-1">{middleSection}</div>
-                    <div className="space-x-5 flex h-full p-0 m-0">
+                    <div className="space-x-5 flex h-full items-center p-0 m-0 ">
                         {rightSection}
                     </div>
                 </div>

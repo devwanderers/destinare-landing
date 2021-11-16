@@ -12,7 +12,7 @@ import {
     MembersSVG,
 } from '../../assets/svg/utilities'
 
-import LogoText from '../../assets/svg/brand/LogoText'
+// import LogoText from '../../assets/svg/brand/LogoText'
 import useWindowSize from './../../hooks/useWindowSize'
 import { returnValueByScreenWidth } from '../../services/stylesServices'
 import NextSection from './Sections/NextSection/index'
@@ -110,7 +110,7 @@ const LandingPage = ({ authenticated, userData, logout }) => {
                 className="bg-transparent"
             />
             <Content>
-                <section className="bg-travellerbg relative bg-cover bg-center bg-no-repeat -mt-16 md:-mt-20 ">
+                <section className="bg-lobby relative bg-cover bg-center bg-no-repeat -mt-16 md:-mt-20 ">
                     <div
                         className="absolute top-0 left-0 right-0 bottom-0 "
                         style={{ backgroundColor: '#211915', opacity: 0.15 }}
@@ -120,12 +120,12 @@ const LandingPage = ({ authenticated, userData, logout }) => {
                         style={{ minHeight: '640px' }}
                     >
                         <div className="flex flex-col w-full items-center">
-                            <div className="w-full lg:w-10/12 px-5 md:px-8 lg:px-10 mb-2 md:mb-1 lg:mb-0">
+                            <div className="w-full lg:w-10/12 px-5 md:px-8 lg:px-10 mb-2 md:mb-1 lg:mb-12">
                                 <Logo />
                             </div>
                             <div>
                                 <Paragraph
-                                    className="text-center text-white mb-4"
+                                    className="text-center text-white mb-6"
                                     base="base"
                                     md="xl"
                                     lg="2xl"
@@ -134,29 +134,32 @@ const LandingPage = ({ authenticated, userData, logout }) => {
                                     the deals we have for you
                                 </Paragraph>
                             </div>
-                            <Button
-                                type="primary"
-                                className="gradient-g text-xs h-10 w-32 leading-none px-4 tracking-wide rounded-none border-none"
+                            <button
+                                // type="link"
+                                className="border border-yellow-2 text-yellow-2 text-xs h-10 w-32 leading-none px-4 tracking-wide rounded-sm"
                             >
                                 SEE MORE
-                            </Button>
+                            </button>
                         </div>
                     </div>
                 </section>
-                <section className=" relative">
-                    <div className="absolute bottom-0 right-0 top-0 md:w-5/12 lg:w-6/12 xl:w-4/12 2xl:w-3/12 pt-20 hidden md:flex justify-end items-end  overflow-hidden">
+                <section className="relative">
+                    <div className="absolute bottom-0 right-0 top-0 md:w-5/12 lg:w-5/12 xl:w-4/12 2xl:w-3/12 lg:pt-2 xl:pt-10 hidden md:flex justify-end items-start  overflow-hidden">
                         <div className="h-auto" style={{ width: '80%' }}>
                             <LeftLogoSVG />
                         </div>
                     </div>
-                    <div className="section3 mx-auto relative">
+                    <div className="section3 mx-auto relative lg:px-8 xl:px-0 lg:pb-3.5 xl:pb-20 pt-2">
                         <PromotionsSection />
                     </div>
-                    <div className="flex w-full flex-col section py-20 md:pt-16 lg:pt-28 lg:pb-48 xl:pt-32 xl:pb-64 px-4 lg:px-8 xl:px-0 mx-auto relative">
-                        <NextSection />
+                    <div className="w-full flex flex-row section py-20 md:pt-16 px-4 lg:px-8 xl:px-0 mx-auto relative">
+                        <div className="flex-1 bg-red-100">ds</div>
+                        <div className="w-7/12">
+                            <NextSection />
+                        </div>
                     </div>
                 </section>
-                <section
+                {/* <section
                     className="bg-clouds bg-cover bg-center bg-red-50 md:-mt-20 lg:-mt-60 xl:-mt-72 relative"
                     style={{
                         clipPath: returnValueByScreenWidth(width, {
@@ -194,7 +197,7 @@ const LandingPage = ({ authenticated, userData, logout }) => {
                             </div>
                         </div>
                     </div>
-                </section>
+                </section> */}
                 <section>
                     <Row>
                         <Col
