@@ -1,10 +1,10 @@
 import React from 'react'
 import { Menu } from 'antd'
-import { useHistory } from 'react-router'
+// import { useHistory } from 'react-router'
 import { AiOutlineLogout, AiOutlineLogin } from 'react-icons/ai'
 import { IoMdAirplane } from 'react-icons/io'
 import { BsBook } from 'react-icons/bs'
-import { LoginInPath } from '../../constants/routerConstants'
+// import { LoginInPath } from '../../constants/routerConstants'
 // import { SignInPath } from './../../constants/routerConstants'
 import windowOpen from './../../services/windowOpen'
 
@@ -28,16 +28,21 @@ const menus = [menusOptions.travel]
 const menusMobile = [menusOptions.whitePaper, menusOptions.travel]
 
 const MenuNavbar = ({ authenticated, isMobile, logout }) => {
-    const history = useHistory()
+    // const history = useHistory()
     const _menu = !isMobile ? menus : menusMobile
     let logOutItem =
         !authenticated && isMobile ? (
             <Menu.Item className="">
                 <div
                     className="flex flex-row items-center"
-                    onClick={() => history.push(LoginInPath)}
+                    onClick={() =>
+                        windowOpen(
+                            'https://members.tripvixia.com/membership/signup?invite=0e3cb515-2949-4e1a-bb83-fd7fe4a5b251&referraltype=3'
+                        )
+                    }
                 >
-                    <AiOutlineLogin className="mr-2 relative -mt-1" /> Log in
+                    <AiOutlineLogin className="mr-2 relative -mt-1" /> Get
+                    Started
                 </div>
             </Menu.Item>
         ) : (

@@ -1,6 +1,6 @@
 import React from 'react'
-import { Layout, Button } from 'antd'
-import { useHistory } from 'react-router'
+import { Layout, Row, Col, Input } from 'antd'
+// import { useHistory } from 'react-router'
 
 import Paragraph from '../../components/DisplayText/Paragraph'
 import PromotionsSection from './Sections/PromotionSections'
@@ -18,7 +18,8 @@ import LogoText from '../../assets/svg/brand/LogoText'
 import NextSection from './Sections/NextSection/index'
 import DefaultNavbar from '../../components/Navbar/DefaultNavbar'
 import DefaultFooter from '../../components/Footers/DefaultFooter'
-import { LoginInPath } from './../../constants/routerConstants'
+import useResponsive from './../../hooks/useResponsive'
+import windowOpen from './../../services/windowOpen'
 
 const { Content } = Layout
 
@@ -101,7 +102,11 @@ const { Content } = Layout
 
 const LandingPage = ({ authenticated, userData, logout }) => {
     // const { width } = useWindowSize()
-    const history = useHistory()
+
+    const [inputSize] = useResponsive({
+        base: 'middle',
+        lg: 'large',
+    })
     return (
         <Layout className="landing-page min-w-minMobileWidth bg-gray-50">
             <DefaultNavbar
@@ -157,7 +162,7 @@ const LandingPage = ({ authenticated, userData, logout }) => {
                         <NextSection />
                     </div>
                 </section>
-                <section className="bg-white md:bg-dock md:bg-cover md:bg-center relative ">
+                <section className=" md:bg-dock md:bg-cover md:bg-center relative ">
                     <div
                         className="hidden md:flex absolute top-0 left-0 right-0 bottom-0"
                         style={{ backgroundColor: '#000', opacity: 0.3 }}
@@ -218,16 +223,70 @@ const LandingPage = ({ authenticated, userData, logout }) => {
                         </div>
                     </div>
                 </section>
-                <section className="bg-dock bg-cover bg-center relative">
-                    <div className="section flex justify-center py-32">
-                        <Button
-                            type="primary"
-                            size="large"
-                            className="focus:bg-red-300 focus:ring-2 ring-red-300 text-base lg:text-lg leading-none px-6 lg:px-8 tracking-wide border-none rounded-sm"
-                            onClick={() => history.push(LoginInPath)}
-                        >
-                            Get Started
-                        </Button>
+                <section className="relative bg-cliffBeach bg-cover bg-top">
+                    <div className="section flex flex-col items-center justify-center py-40 lg:py-72">
+                        <div className="relative flex-1 text-center text-3xl md:text-4xl lg:text-5xl">
+                            <div className="font-montserrat text-center break-words leading-none text-white font-medium flex flex-col  items-center tracking-wider shadow-c ">
+                                <div className="flex flex-row mb-16">
+                                    <span>
+                                        <strong>
+                                            Travel made simple <br /> Discover
+                                            the world with destinare
+                                        </strong>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <button
+                                className="bg-primary text-white py-3 text-lg lg:text-2xl leading-none px-6 lg:px-10 tracking-wide border-none rounded-sm"
+                                onClick={() =>
+                                    windowOpen(
+                                        'https://members.tripvixia.com/membership/signup?invite=0e3cb515-2949-4e1a-bb83-fd7fe4a5b251&referraltype=3'
+                                    )
+                                }
+                            >
+                                Get Started
+                            </button>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div className="section px-0 lg:px-25px flex mx-auto py-10 lg:pt-16 lg:pb-20">
+                        <div className="flex-1 bg-gray-200 py-10 px-6 md:px-12 lg:px-20 xl:px-24">
+                            <div className="font-bebas-nue text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-black-1">
+                                STAY WITH US, GET OUR NEWSLETTER
+                            </div>
+                            <div className="mb-10">
+                                <div className="w-full md:w-6/12 break-words text-xs lg:text-sm xl:text-base">
+                                    Become part of our traveling community, be
+                                    the first one to know about our launches or
+                                    promotions.
+                                </div>
+                            </div>
+                            <Row>
+                                <Col xs={14} className="">
+                                    <Input.Search
+                                        size={inputSize}
+                                        className="h-auto custom-button-addon-black font-roboto fotn"
+                                        placeholder="Email address"
+                                        enterButton="Sign up"
+                                    />
+                                </Col>
+                                <Col
+                                    xs={10}
+                                    className="flex justify-end md:justify-center "
+                                >
+                                    <div className="text-black-1 h-8 lg:h-50px pt-1">
+                                        <Logo
+                                            color="black"
+                                            height="100%"
+                                            width="100%"
+                                        />
+                                    </div>
+                                </Col>
+                            </Row>
+                        </div>
                     </div>
                 </section>
             </Content>

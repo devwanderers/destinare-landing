@@ -8,6 +8,8 @@ import bgPlaceHolder4 from './background-place-holder4.jpg'
 import dockBackground from './dock-background.jpg'
 import paradisebg from './paradise-brush.png'
 import womanBeach from './woman-beach.jpg'
+import cliffBeach from './cliff-beach.jpg'
+import mar1 from './mar1.png'
 
 const backgroundImages = {
     travellerbg,
@@ -20,6 +22,8 @@ const backgroundImages = {
     dockBackground,
     paradisebg,
     womanBeach,
+    cliffBeach,
+    mar1,
 }
 
 export default backgroundImages

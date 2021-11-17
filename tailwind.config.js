@@ -132,6 +132,7 @@ module.exports = {
                 dock: "url('/src/assets/images/backgrounds/dock-background.jpg')",
                 womanBeach:
                     "url('/src/assets/images/backgrounds/woman-beach.jpg')",
+                cliffBeach: "url('/src/assets/images/backgrounds/mar1.png')",
             },
             margin: {
                 '-24px': '-24px',
