@@ -26,6 +26,7 @@ const SignInLayout = ({ children, ...rest }) => {
                 {...rest}
                 className="bg-gray-100"
                 onClickBurguer={() => setOpenDrawer(!isOpen)}
+                logoColor="#F9A24F"
             />
             <Content className="bg-white flex flex-1 flex-shrink flex-grow">
                 {children}

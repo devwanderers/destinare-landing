@@ -76,6 +76,7 @@ module.exports = {
                 4: '#688CA5',
                 5: '#03152b',
                 6: '#041B37',
+                7: '#00aeff',
             },
             black: {
                 1: '#1d1d1b',
@@ -128,6 +129,9 @@ module.exports = {
                     "url('/src/assets/images/backgrounds/sunset-2021-08-28-06-23-40-utc.jpg')",
                 clouds: "url('/src/assets/images/backgrounds/fondo-nubes.jpg')",
                 lobby: "url('/src/assets/images/backgrounds/lobby.jpg')",
+                dock: "url('/src/assets/images/backgrounds/dock-background.jpg')",
+                womanBeach:
+                    "url('/src/assets/images/backgrounds/woman-beach.jpg')",
             },
             margin: {
                 '-24px': '-24px',

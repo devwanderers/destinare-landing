@@ -5,6 +5,9 @@ import bgPlaceHolder1 from './background-place-holder1.jpg'
 import bgPlaceHolder2 from './background-place-holder2.jpg'
 import bgPlaceHolder3 from './background-place-holder3.jpg'
 import bgPlaceHolder4 from './background-place-holder4.jpg'
+import dockBackground from './dock-background.jpg'
+import paradisebg from './paradise-brush.png'
+import womanBeach from './woman-beach.jpg'
 
 const backgroundImages = {
     travellerbg,
@@ -14,6 +17,9 @@ const backgroundImages = {
     bgPlaceHolder2,
     bgPlaceHolder3,
     bgPlaceHolder4,
+    dockBackground,
+    paradisebg,
+    womanBeach,
 }
 
 export default backgroundImages

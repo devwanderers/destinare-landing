@@ -13,7 +13,7 @@ const AuthView = ({ auth }) => {
     const history = useHistory()
     return (
         <section className="login-content">
-            <div className="absolute left-0 bottom-0 top-0 right-0 md:right-2/4 bg-sunset3 bg-cover bg-right md:bg-right hidden md:flex"></div>
+            <div className="absolute left-0 bottom-0 top-0 right-0 md:right-2/4 bg-womanBeach bg-cover bg-center md:bg-right md:flex hidden"></div>
             <div className="section relative lg:wrapper mx-auto lg:pl-4 lg:pr-4">
                 <Row className="justify-center " style={{ flex: '1' }}>
                     <Col sm={12} className=" flex justify-center ">
