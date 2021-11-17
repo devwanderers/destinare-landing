@@ -13,7 +13,6 @@ const GenericNavBar = ({
     rightSection,
     logoColor = '#fff',
 }) => {
-    // console.log({ logoColor })
     const history = useHistory()
     return (
         <React.Fragment>

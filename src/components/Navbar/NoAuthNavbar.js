@@ -23,6 +23,7 @@ const NoAuthNavBar = ({ logout, authenticated, ...rest }) => {
 
     return width >= 768 ? (
         <GenericNavBar
+            hideLogo
             {...rest}
             rightSection={
                 <React.Fragment>
