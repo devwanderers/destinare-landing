@@ -1,5 +1,6 @@
 import React from 'react'
-import { Layout } from 'antd'
+import { Layout, Button } from 'antd'
+import { useHistory } from 'react-router'
 
 import Paragraph from '../../components/DisplayText/Paragraph'
 import PromotionsSection from './Sections/PromotionSections'
@@ -17,6 +18,7 @@ import LogoText from '../../assets/svg/brand/LogoText'
 import NextSection from './Sections/NextSection/index'
 import DefaultNavbar from '../../components/Navbar/DefaultNavbar'
 import DefaultFooter from '../../components/Footers/DefaultFooter'
+import { LoginInPath } from './../../constants/routerConstants'
 
 const { Content } = Layout
 
@@ -99,7 +101,7 @@ const { Content } = Layout
 
 const LandingPage = ({ authenticated, userData, logout }) => {
     // const { width } = useWindowSize()
-
+    const history = useHistory()
     return (
         <Layout className="landing-page min-w-minMobileWidth bg-gray-50">
             <DefaultNavbar
@@ -214,6 +216,18 @@ const LandingPage = ({ authenticated, userData, logout }) => {
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </section>
+                <section className="bg-dock bg-cover bg-center relative">
+                    <div className="section flex justify-center py-32">
+                        <Button
+                            type="primary"
+                            size="large"
+                            className="focus:bg-red-300 focus:ring-2 ring-red-300 text-base lg:text-lg leading-none px-6 lg:px-8 tracking-wide border-none rounded-sm"
+                            onClick={() => history.push(LoginInPath)}
+                        >
+                            Get Started
+                        </Button>
                     </div>
                 </section>
             </Content>
