@@ -19,7 +19,7 @@ import NextSection from './Sections/NextSection/index'
 import DefaultNavbar from '../../components/Navbar/DefaultNavbar'
 import DefaultFooter from '../../components/Footers/DefaultFooter'
 import useResponsive from './../../hooks/useResponsive'
-import windowOpen from './../../services/windowOpen'
+// import windowOpen from './../../services/windowOpen'
 
 const { Content } = Layout
 
@@ -140,12 +140,21 @@ const LandingPage = ({ authenticated, userData, logout }) => {
                                     the deals we have for you
                                 </Paragraph>
                             </div>
-                            <button
+                            <div>
+                                <button
+                                    // type="link"
+                                    className="border border-yellow-2 text-yellow-2 text-2xl h-10 px-8 leading-none tracking-wide rounded-sm"
+                                >
+                                    Travel platform coming soon!
+                                </button>
+                            </div>
+
+                            {/* <button
                                 // type="link"
                                 className="border border-yellow-2 text-yellow-2 text-xs h-10 w-32 leading-none px-4 tracking-wide rounded-sm"
                             >
                                 SEE MORE
-                            </button>
+                            </button> */}
                         </div>
                     </div>
                 </section>
@@ -238,7 +247,7 @@ const LandingPage = ({ authenticated, userData, logout }) => {
                             </div>
                         </div>
                         <div>
-                            <button
+                            {/* <button
                                 className="bg-primary text-white py-3 text-lg lg:text-2xl leading-none px-6 lg:px-10 tracking-wide border-none rounded-sm"
                                 onClick={() =>
                                     windowOpen(
@@ -247,6 +256,9 @@ const LandingPage = ({ authenticated, userData, logout }) => {
                                 }
                             >
                                 Get Started
+                            </button> */}{' '}
+                            <button className="bg-primary text-white py-3 text-lg lg:text-2xl leading-none px-6 lg:px-10 tracking-wide border-none rounded-sm">
+                                Travel platform coming soon!
                             </button>
                         </div>
                     </div>

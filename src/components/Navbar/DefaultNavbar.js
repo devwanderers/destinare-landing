@@ -6,7 +6,7 @@ import GenericNavBar from './GenericNavbar'
 import useWindowSize from './../../hooks/useWindowSize'
 import GenericNavbarMobile from './GenericNavbarMobile'
 import MenuNavbar from './MenuNavbar'
-import windowOpen from './../../services/windowOpen'
+// import windowOpen from './../../services/windowOpen'
 
 const DefaultNavbar = ({ authenticated, userData, logout, ...rest }) => {
     const [showDrawer, setShowDrawer] = useState(false)
@@ -45,7 +45,7 @@ const DefaultNavbar = ({ authenticated, userData, logout, ...rest }) => {
                     >
                         <span>WHITE PAPER</span>
                     </Button>
-                    {!authenticated && (
+                    {/* {!authenticated && (
                         <Button
                             type="primary"
                             size="large"
@@ -56,9 +56,9 @@ const DefaultNavbar = ({ authenticated, userData, logout, ...rest }) => {
                                 )
                             }
                         >
-                            Get Started
+                            Almost available
                         </Button>
-                    )}
+                    )} */}
                     {authenticated && (
                         <div className="h-full flex justify-center items-center">
                             <Dropdown
