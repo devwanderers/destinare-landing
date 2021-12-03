@@ -1,6 +1,7 @@
 import React from 'react'
 import { Col, Row } from 'antd'
 import { FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa'
+import windowOpen from './../../services/windowOpen'
 
 const DefaultFooter = (props) => {
     return (
@@ -81,17 +82,39 @@ const DefaultFooter = (props) => {
                 </div>
                 <div className="flex justify-end my-8">
                     <div className="space-x-4 flex flex-row text-2xl">
-                        <a>
+                        <a
+                            href="#"
+                            onClick={(e) => {
+                                e.preventDefault()
+                                windowOpen(
+                                    'https://www.facebook.com/Destinareio-104317588754693'
+                                )
+                            }}
+                        >
                             <span>
                                 <FaFacebook />
                             </span>
                         </a>
-                        <a>
+                        <a
+                            href="#"
+                            onClick={(e) => {
+                                e.preventDefault()
+                                windowOpen('https://twitter.com/Destinare_io')
+                            }}
+                        >
                             <span>
                                 <FaTwitter />
                             </span>
                         </a>
-                        <a>
+                        <a
+                            href="#"
+                            onClick={(e) => {
+                                e.preventDefault()
+                                windowOpen(
+                                    'https://www.instagram.com/destinare.io/'
+                                )
+                            }}
+                        >
                             <span>
                                 <FaInstagram />
                             </span>
