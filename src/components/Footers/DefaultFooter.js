@@ -135,7 +135,13 @@ const DefaultFooter = (props) => {
                             <a>
                                 <span>Offices</span>
                             </a>
-                            <a>
+                            <a
+                                onClick={() =>
+                                    windowOpen(
+                                        'https://destinare-app.s3.us-west-2.amazonaws.com/WHITEPAPER-DESTINARE.pdf'
+                                    )
+                                }
+                            >
                                 <span>WHITE PAPER</span>
                             </a>
                             <a>
