@@ -7,6 +7,7 @@ import useWindowSize from './../../hooks/useWindowSize'
 import GenericNavbarMobile from './GenericNavbarMobile'
 import MenuNavbar from './MenuNavbar'
 import windowOpen from './../../services/windowOpen'
+import { whitePaperLink } from './../../constants/linksConstranst'
 
 const DefaultNavbar = ({ authenticated, userData, logout, ...rest }) => {
     const [showDrawer, setShowDrawer] = useState(false)
@@ -41,11 +42,7 @@ const DefaultNavbar = ({ authenticated, userData, logout, ...rest }) => {
                 <React.Fragment>
                     <Button
                         type="link"
-                        onClick={() =>
-                            windowOpen(
-                                'https://destinare-app.s3.us-west-2.amazonaws.com/WHITEPAPER-DESTINARE.pdf'
-                            )
-                        }
+                        onClick={() => windowOpen(whitePaperLink)}
                         className="h-full flex-1 btn tracking-wide text-xs lg:text-lg leading-none text-white font-light hover:text-white active:text-white focus:text-white"
                     >
                         <span>WHITE PAPER</span>

@@ -2,6 +2,7 @@ import React from 'react'
 import { Col, Row } from 'antd'
 import { FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa'
 import windowOpen from './../../services/windowOpen'
+import { whitePaperLink } from './../../constants/linksConstranst'
 
 const DefaultFooter = (props) => {
     return (
@@ -9,7 +10,7 @@ const DefaultFooter = (props) => {
             <div className="section ">
                 <div className="flex flex-row justify-between border-b border-gray-300 pb-8">
                     <div className="flex flex-row justify-between max-h-full w-full lg:w-6/12  items-center">
-                        <div className="flex-1">
+                        {/* <div className="flex-1">
                             <h5 className="text-capitalize text-xl  tracking-wide font-bold mb-5">
                                 Home
                             </h5>
@@ -77,7 +78,7 @@ const DefaultFooter = (props) => {
                                     </a>
                                 </li>
                             </ul>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
                 <div className="flex justify-end my-8">
@@ -135,13 +136,7 @@ const DefaultFooter = (props) => {
                             <a>
                                 <span>Offices</span>
                             </a>
-                            <a
-                                onClick={() =>
-                                    windowOpen(
-                                        'https://destinare-app.s3.us-west-2.amazonaws.com/WHITEPAPER-DESTINARE.pdf'
-                                    )
-                                }
-                            >
+                            <a onClick={() => windowOpen(whitePaperLink)}>
                                 <span>WHITE PAPER</span>
                             </a>
                             <a>
