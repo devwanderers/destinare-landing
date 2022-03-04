@@ -35,6 +35,15 @@ export const validations = {
             (value) => value && validator.isAlphanumeric(value)
         )
         .required('Required'),
+    walletAddress: Yup.string()
+        .min(3, 'Too Short!')
+        .max(64, 'Too Long!')
+        .test(
+            'alphaNumeric',
+            'Must be a valid wallet address.',
+            (value) => value && validator.isEthereumAddress(value)
+        )
+        .required('Required'),
     mail: Yup.string()
         .max(64, 'Too Long!')
         .email('Must be a valid email format. example@email.com')

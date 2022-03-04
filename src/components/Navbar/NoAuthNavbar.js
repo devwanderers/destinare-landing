@@ -6,6 +6,8 @@ import useWindowSize from './../../hooks/useWindowSize'
 // import { TravelPath } from '../../constants/routerConstants'
 import MenuNavbar from './MenuNavbar'
 import GenericNavbarMobile from './GenericNavbarMobile'
+import { whitePaperLink } from './../../constants/linksConstranst'
+import windowOpen from './../../services/windowOpen'
 
 const NoAuthNavBar = ({ logout, authenticated, ...rest }) => {
     const [showDrawer, setShowDrawer] = useState(false)
@@ -28,6 +30,7 @@ const NoAuthNavBar = ({ logout, authenticated, ...rest }) => {
                 <React.Fragment>
                     <Button
                         type="link"
+                        onClick={() => windowOpen(whitePaperLink)}
                         className="h-full flex-1 btn tracking-wide text-xs lg:text-lg leading-none text-black-1 font-light hover:text-black-1 active:text-black-1 focus:text-black-1"
                     >
                         <span>WHITE PAPER</span>

@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { Button, Dropdown, Avatar } from 'antd'
-// import { useHistory } from 'react-router'
+import { useHistory } from 'react-router'
 import GenericNavBar from './GenericNavbar'
-// import { LoginInPath } from '../../constants/routerConstants'
+import { LoginInPath } from '../../constants/routerConstants'
 import useWindowSize from './../../hooks/useWindowSize'
 import GenericNavbarMobile from './GenericNavbarMobile'
 import MenuNavbar from './MenuNavbar'
@@ -11,7 +11,7 @@ import { whitePaperLink } from './../../constants/linksConstranst'
 
 const DefaultNavbar = ({ authenticated, userData, logout, ...rest }) => {
     const [showDrawer, setShowDrawer] = useState(false)
-    // const history = useHistory()
+    const history = useHistory()
     const { width } = useWindowSize()
     const handleShowDrawer = () => setShowDrawer(!showDrawer)
 
@@ -61,6 +61,16 @@ const DefaultNavbar = ({ authenticated, userData, logout, ...rest }) => {
                             Almost available
                         </Button>
                     )} */}
+                    {!authenticated && (
+                        <Button
+                            type="primary"
+                            size="large"
+                            className="focus:bg-red-300 focus:ring-2 ring-red-300 text-base lg:text-lg leading-none px-6 lg:px-8 tracking-wide border-none rounded-sm"
+                            onClick={() => history.push(LoginInPath)}
+                        >
+                            Login
+                        </Button>
+                    )}
                     {authenticated && (
                         <div className="h-full flex justify-center items-center">
                             <Dropdown

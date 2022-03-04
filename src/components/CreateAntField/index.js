@@ -12,6 +12,7 @@ const CreateAntField =
         form,
         hasFeedback,
         label,
+        defaultSelected,
         selectOptions,
         submitCount,
         type,
@@ -26,6 +27,7 @@ const CreateAntField =
             form.setFieldValue(field.name, value)
         const onChange = (value) => form.setFieldValue(field.name, value)
         const onBlur = () => form.setFieldTouched(field.name, true)
+
         return (
             <FormItem
                 label={label}

@@ -10,6 +10,9 @@ const initialState = {
         lastName: '',
         email: '',
         verified: '',
+        country: '',
+        language: '',
+        walletAddress: '',
     },
     lastLoggin: null,
 }

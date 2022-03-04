@@ -19,6 +19,25 @@ import axiosInstance from './../../services/axiosConfig'
 //     }
 // )
 
+export const sendMail = createAsyncThunk(
+    types.SEND_MAIL,
+    async (email, { rejectWithValue }) => {
+        try {
+            const response = await axiosInstance.post('auth/sendMail', {
+                email,
+            })
+
+            return response.data
+        } catch (error) {
+            if (!error.response) {
+                throw error
+            }
+
+            return rejectWithValue(error.response.data)
+        }
+    }
+)
+
 export const signIn = createAsyncThunk(
     types.SIGN_IN,
     async (user, { rejectWithValue }) => {
@@ -48,7 +67,8 @@ export const signUp = createAsyncThunk(
                 firstName: user?.firstName ?? '',
                 lastName: user?.lastName ?? '',
                 email: user.email,
-                username: user.username,
+                country: user.country,
+                language: user.language,
                 password: user.password,
             })
 

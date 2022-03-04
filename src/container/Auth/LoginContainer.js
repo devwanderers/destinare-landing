@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
-import { sleep } from '../../services/promises'
+// import { sleep } from '../../services/promises'
 import { signIn } from '../../store/reducers/auth/actions'
 import Login from '../../views/AuthView/Forms/Login'
-import { tripvixiaURL } from './../../constants/routerConstants'
-import windowOpen from '../../services/windowOpen'
+// import { tripvixiaURL } from './../../constants/s
 
 const LoginContainer = ({ signIn, ...restProps }) => {
     const [showError, setShowError] = useState(false)
@@ -30,12 +29,13 @@ const LoginContainer = ({ signIn, ...restProps }) => {
                 } else {
                     handleSetError('Internar server error')
                 }
-            } else {
-                windowOpen(tripvixiaURL)
-                sleep(() => {
-                    setSubmitting(false)
-                })
             }
+            // else {
+            //     windowOpen(tripvixiaURL)
+            //     sleep(() => {
+            //         setSubmitting(false)
+            //     })
+            // }
         })
     }
 

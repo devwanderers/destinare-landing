@@ -7,16 +7,22 @@ import { validations } from '../../../services/yupValidations'
 import { useHistory } from 'react-router'
 
 import { LoginInPath } from '../../../constants/routerConstants'
+import { countrys } from './../../../constants/countrys'
+import { availableLangues } from './../../../constants/language'
 import {
     AntInput,
     AntInputPassword,
+    AntSelect,
 } from '../../../components/CreateAntField/index'
 
 const schema = Yup.object({
     firstName: validations.name,
     lastName: validations.name,
     email: validations.mail,
-    userName: validations.userName,
+    country: validations.generic,
+    language: validations.generic,
+    // userName: validations.userName,
+    // walletAddress: validations.walletAddress,
     password: validations.password,
     confirmPassword: validations.passwordConfirmation,
 })
@@ -26,6 +32,7 @@ const initialValues = {
     lastName: '',
     userName: '',
     email: '',
+    // country: null,
     password: '',
     confirmPassword: '',
 }
@@ -73,6 +80,28 @@ const SigUp = ({ onSubmit, showError, errorMessage }) => {
                             value={values?.email}
                         />
                         <Field
+                            component={AntSelect}
+                            name="country"
+                            showSearch
+                            // type="email"
+                            placeholder="Country of Residence"
+                            className="h-12 rounded-lg custom-ant-select"
+                            selectOptions={countrys}
+                            // hasFeedback
+                            value={values?.country}
+                        />
+                        <Field
+                            component={AntSelect}
+                            name="language"
+                            showSearch
+                            // type="email"
+                            placeholder="Preferred Language"
+                            className="h-12 rounded-lg custom-ant-select"
+                            selectOptions={availableLangues}
+                            // hasFeedback
+                            value={values?.language}
+                        />
+                        {/* <Field
                             component={AntInput}
                             type="text"
                             name="userName"
@@ -81,6 +110,15 @@ const SigUp = ({ onSubmit, showError, errorMessage }) => {
                             hasFeedback
                             value={values?.userName}
                         />
+                        <Field
+                            component={AntInput}
+                            type="text"
+                            name="walletAddress"
+                            placeholder="Wallet Address"
+                            className="h-12 rounded-lg"
+                            hasFeedback
+                            value={values?.walletAddress}
+                        /> */}
                         <Field
                             component={AntInputPassword}
                             name="password"
