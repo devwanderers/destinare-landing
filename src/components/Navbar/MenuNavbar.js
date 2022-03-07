@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react'
 import { Menu } from 'antd'
 import { useHistory } from 'react-router'
@@ -7,15 +8,15 @@ import { IoMdAirplane } from 'react-icons/io'
 import { LoginInPath, tripvixiaURL } from '../../constants/routerConstants'
 import windowOpen from './../../services/windowOpen'
 
-const menusOptions = {
-    travel: {
-        icon: IoMdAirplane,
-        onClick: () => windowOpen(tripvixiaURL),
-        name: 'Travel Platform',
-    },
-}
+// const menusOptions = {
+//     travel: {
+//         icon: IoMdAirplane,
+//         onClick: () => windowOpen(tripvixiaURL),
+//         name: 'Travel Platform',
+//     },
+// }
 
-const menus = [menusOptions.travel]
+const menus = []
 
 const MenuNavbar = ({ authenticated, isMobile, logout }) => {
     const history = useHistory()
