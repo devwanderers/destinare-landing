@@ -1,4 +1,4 @@
-import { createAsyncThunk } from '@reduxjs/toolkit'
+import { createAction, createAsyncThunk } from '@reduxjs/toolkit'
 import * as types from './types'
 import axiosInstance from './../../services/axiosConfig'
 
@@ -18,6 +18,7 @@ import axiosInstance from './../../services/axiosConfig'
 //         return result
 //     }
 // )
+export const setModalShowed = createAction(types.MODAL_SHOWED)
 
 export const sendMail = createAsyncThunk(
     types.SEND_MAIL,

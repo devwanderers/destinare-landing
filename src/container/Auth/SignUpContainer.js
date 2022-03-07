@@ -29,12 +29,16 @@ const SignUpContainer = ({ signUp, signIn, sendMail, ...rest }) => {
                 })
             } else {
                 const { email, password } = restValues
-                sendMail(email).then(() => {
-                    signIn({ email, password }).then((resSignIn) => {
-                        if (resSignIn?.error) {
-                            handleSetError(resSignIn.payload?.message)
+                signIn({ email, password }).then((resSignIn) => {
+                    if (resSignIn?.error) {
+                        handleSetError(resSignIn.payload?.message)
+                    } else {
+                        const { user } = resSignIn.payload
+                        console.log({ user })
+                        if (!user?.mailSent) {
+                            sendMail(email)
                         }
-                    })
+                    }
                 })
             }
         })

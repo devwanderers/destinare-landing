@@ -1,5 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit'
-import { signIn } from './actions'
+import { sendMail, signIn, setModalShowed } from './actions'
 
 const initialState = {
     auth: false,
@@ -13,21 +13,37 @@ const initialState = {
         country: '',
         language: '',
         walletAddress: '',
+        mailSent: false,
+    },
+    modals: {
+        contact: false,
     },
     lastLoggin: null,
 }
 
 const authReducer = createReducer(initialState, (builder) => {
-    builder.addCase(
-        signIn.fulfilled,
-        (state, { payload: { accessToken, user } }) => ({
+    builder
+        .addCase(setModalShowed, (state, { payload }) => ({
             ...state,
-            auth: true,
-            accessToken: accessToken,
-            userData: user,
-            lastLoggin: new Date(),
-        })
-    )
+            modals: { ...state.modals, [payload]: true },
+        }))
+        .addCase(
+            signIn.fulfilled,
+            (state, { payload: { accessToken, user } }) => ({
+                ...state,
+                auth: true,
+                accessToken: accessToken,
+                userData: user,
+                lastLoggin: new Date(),
+            })
+        )
+        .addCase(sendMail.fulfilled, (state) => ({
+            ...state,
+            userData: {
+                ...state.userData,
+                mailSent: true,
+            },
+        }))
 })
 
 export default authReducer
