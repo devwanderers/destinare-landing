@@ -14,6 +14,10 @@ export const lastLogginSelector = createSelector(
     authReducerSelector,
     (authReducer) => authReducer.lastLoggin
 )
+export const tokenSelector = createSelector(
+    authReducerSelector,
+    (authReducer) => authReducer.accessToken
+)
 
 export const userDataSelector = createSelector(
     authReducerSelector,

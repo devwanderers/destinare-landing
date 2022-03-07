@@ -1,6 +1,7 @@
 import { createAction, createAsyncThunk } from '@reduxjs/toolkit'
 import * as types from './types'
 import axiosInstance from './../../services/axiosConfig'
+import { tokenSelector } from './selectors'
 
 // export const sendUserData = createAsyncThunk(
 //     types.SENDUSER_DATA,
@@ -22,13 +23,17 @@ export const setModalShowed = createAction(types.MODAL_SHOWED)
 
 export const sendMail = createAsyncThunk(
     types.SEND_MAIL,
-    async (email, { rejectWithValue }) => {
+    async (email, { rejectWithValue, getState }) => {
         try {
+            const state = getState()
+            const clientToken = tokenSelector(state)
+
+            console.log({ clientToken })
             const response = await axiosInstance.post('auth/sendMail', {
                 email,
             })
-
-            return response.data
+            console.log({ response })
+            return response?.data
         } catch (error) {
             if (!error.response) {
                 throw error

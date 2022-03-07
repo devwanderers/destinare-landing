@@ -1,9 +1,9 @@
 import { useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { lastLogginSelector } from './../store/reducers/auth/selectors'
-import * as actions from './../store/reducers/globalActions'
-import useEffectOnce from './useEffectOnce'
-import useInterval from './useInterval'
+import { lastLogginSelector } from '../../store/reducers/auth/selectors'
+import * as actions from '../../store/reducers/globalActions'
+import useEffectOnce from '../useEffectOnce'
+import useInterval from '../useInterval'
 
 const useSession = (props) => {
     const lastLoggin = useSelector(lastLogginSelector)

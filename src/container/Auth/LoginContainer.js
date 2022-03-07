@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
-// import { sleep } from '../../services/promises'
+import { sleep } from '../../services/promises'
 import * as actionsAuth from '../../store/reducers/auth/actions'
 import Login from '../../views/AuthView/Forms/Login'
 // import { tripvixiaURL } from './../../constants/s
@@ -29,6 +29,9 @@ const LoginContainer = ({ signIn, sendMail, ...restProps }) => {
                 } else {
                     handleSetError('Internar server error')
                 }
+                sleep(() => {
+                    setSubmitting(false)
+                })
             } else {
                 const { user } = resSignIn.payload
                 if (!user?.mailSent) {

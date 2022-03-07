@@ -15,11 +15,14 @@ const appReducer = combineReducers({
 })
 
 const rootReducer = (state, action) => {
-    if (action.type === globalTypes.LOG_OUT) {
+    if (
+        action.type === globalTypes.LOG_OUT ||
+        (action.type.includes('rejected') &&
+            action?.payload?.message === 'TokenExpired')
+    ) {
         storage.removeItem('persist:root')
         return appReducer(undefined, action)
     }
-
     return appReducer(state, action)
 }
 

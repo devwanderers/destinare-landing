@@ -17,7 +17,7 @@ const AuthView = ({ auth }) => {
             <div className="section relative lg:wrapper mx-auto lg:pl-4 lg:pr-4">
                 <Row className="justify-center " style={{ flex: '1' }}>
                     <Col sm={12} className=" flex justify-center ">
-                        <div className="col-inner">
+                        {/* <div className="col-inner">
                             {auth === 'login' ? (
                                 <h2 className="">
                                     Regístrate para apoyar a tus creadores
@@ -29,7 +29,7 @@ const AuthView = ({ auth }) => {
                                     favoritos 2
                                 </h2>
                             )}
-                        </div>
+                        </div> */}
                     </Col>
                     <Col sm={12} className="flex  justify-center">
                         <div className="col-inner">

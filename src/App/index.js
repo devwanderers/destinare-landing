@@ -3,7 +3,8 @@ import Router from '../Router'
 
 import '../styles/App.less'
 import WaitingContactModal from '../components/Modals/WaitingContactModal'
-import useSession from './../hooks/useSession'
+import useSession from './../hooks/session/useSession'
+import useAccessToken from './../hooks/session/useAccessToken'
 
 const App = () => {
     // const [isDarkMode, setIsDarkMode] = React.useState()
@@ -17,6 +18,7 @@ const App = () => {
     // Avoid theme change flicker
     // const handleClick = () => {}
     useSession()
+    useAccessToken()
 
     return (
         <React.Fragment>
