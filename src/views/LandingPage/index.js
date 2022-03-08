@@ -143,7 +143,7 @@ const LandingPage = ({ authenticated, userData, logout }) => {
                             <div>
                                 <button
                                     // type="link"
-                                    className="border border-yellow-2 text-yellow-2 text-2xl h-10 px-8 leading-none tracking-wide rounded-sm"
+                                    className="border border-yellow-2 text-yellow-2 text-2xl py-2 px-8 leading-none tracking-wide rounded-sm"
                                 >
                                     Travel platform coming soon!
                                 </button>
@@ -213,7 +213,7 @@ const LandingPage = ({ authenticated, userData, logout }) => {
                                         <AdventureSVG />
                                     </div>
                                     <div className="text-white text-2xl md:text-xl lg:text-3xl xl:text-3xl font-normal text-center md:text-left">
-                                        Here is where aventure and technology
+                                        Here is where adventure and technology
                                         take place.
                                     </div>
                                 </div>
