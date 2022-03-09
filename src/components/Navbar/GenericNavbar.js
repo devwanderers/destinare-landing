@@ -1,11 +1,11 @@
 import React from 'react'
-import { Layout } from 'antd'
+// import { Layout } from 'antd'
 // import { GiHamburgerMenu } from 'react-icons/gi'
 import { useHistory } from 'react-router'
 import { HomePath } from '../../constants/routerConstants'
 import LogoIconSVG from './../../assets/svg/brand/LogoIconSVG'
 
-const { Header } = Layout
+// const { Header } = Layout
 
 const GenericNavBar = ({
     className = '',
@@ -16,12 +16,12 @@ const GenericNavBar = ({
     const history = useHistory()
     return (
         <React.Fragment>
-            <Header
-                className={` h-16 md:h-20 z-10 px-2 lg:px-0 py-2 md:py-4 m-0 ${className}`}
+            <header
+                className={`h-16 md:h-20 z-10 px-2 lg:px-3 xl:px-6 2xl:px-0  m-0 shadow-2xl py-2 ${className}`}
             >
-                <div className="section flex justify-end px-1 md:px-8 h-full py-2">
+                <div className="max-w-1800px mx-auto flex px-1 h-full">
                     <a
-                        className="h-full "
+                        className="h-10 my-auto"
                         onClick={() => history.push(HomePath)}
                     >
                         <div
@@ -31,12 +31,11 @@ const GenericNavBar = ({
                             <LogoIconSVG color={logoColor} />
                         </div>
                     </a>
-                    <div className="flex-1">{middleSection}</div>
-                    <div className="space-x-5 flex h-full items-center p-0 m-0 ">
+                    <div className="flex-1 flex h-full items-center p-0 m-0">
                         {rightSection}
                     </div>
                 </div>
-            </Header>
+            </header>
         </React.Fragment>
     )
 }

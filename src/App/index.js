@@ -21,10 +21,10 @@ const App = () => {
     useAccessToken()
 
     return (
-        <React.Fragment>
+        <div className="h-screen">
             <WaitingContactModal />
             <Router />
-        </React.Fragment>
+        </div>
     )
 }
 

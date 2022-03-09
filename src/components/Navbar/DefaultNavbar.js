@@ -1,13 +1,82 @@
 import React, { useState } from 'react'
-import { Button, Dropdown, Avatar } from 'antd'
+import { Dropdown, Avatar, Menu } from 'antd'
 import { useHistory } from 'react-router'
 import GenericNavBar from './GenericNavbar'
 import { LoginInPath } from '../../constants/routerConstants'
 import useWindowSize from './../../hooks/useWindowSize'
 import GenericNavbarMobile from './GenericNavbarMobile'
 import MenuNavbar from './MenuNavbar'
-import windowOpen from './../../services/windowOpen'
-import { whitePaperLink } from './../../constants/linksConstranst'
+import { windowLocationPush, windowOpen } from '../../services/windowServices'
+import {
+    nomadzLink,
+    whitePaperLink,
+    destinareDappLink,
+} from './../../constants/linksConstranst'
+import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa'
+import { cls } from './../../services/helpers'
+
+const menuLinks = [
+    {
+        id: 'tokenomic',
+        label: 'DESTINARE DIFFERENCE',
+        onClick: () => windowLocationPush(destinareDappLink),
+    },
+    {
+        id: 'whitepaper',
+        label: 'WHITEPAPER',
+        onClick: () => windowOpen(whitePaperLink),
+    },
+    {
+        id: 'nomadz',
+        label: 'NOMADZLAND NFT',
+        onClick: () => windowLocationPush(nomadzLink),
+    },
+]
+
+const SocialMedia = () => {
+    return (
+        <div className="flex flex-row space-x-4 2xl:space-x-8 text-xl">
+            <a
+                className="border-4 border-yellow-1 text-yellow-1 hover:text-yellow-2 hover:border-yellow-2 h-10 w-10 flex justify-center items-center rounded-full"
+                href="#"
+                onClick={(e) => {
+                    e.preventDefault()
+                    windowOpen(
+                        'https://www.facebook.com/Destinareio-104317588754693'
+                    )
+                }}
+            >
+                <span>
+                    <FaFacebook />
+                </span>
+            </a>
+            <a
+                className="border-4 border-yellow-1 text-yellow-1 hover:text-yellow-2 hover:border-yellow-2 h-10 w-10 flex justify-center items-center rounded-full"
+                href="#"
+                onClick={(e) => {
+                    e.preventDefault()
+                    windowOpen('https://twitter.com/Destinare_io')
+                }}
+            >
+                <span>
+                    <FaTwitter />
+                </span>
+            </a>
+            <a
+                className="border-4 border-yellow-1 text-yellow-1 hover:text-yellow-2 hover:border-yellow-2 h-10 w-10 flex justify-center items-center rounded-full"
+                href="#"
+                onClick={(e) => {
+                    e.preventDefault()
+                    windowOpen('https://www.instagram.com/destinare.io/')
+                }}
+            >
+                <span>
+                    <FaInstagram />
+                </span>
+            </a>
+        </div>
+    )
+}
 
 const DefaultNavbar = ({ authenticated, userData, logout, ...rest }) => {
     const [showDrawer, setShowDrawer] = useState(false)
@@ -29,71 +98,65 @@ const DefaultNavbar = ({ authenticated, userData, logout, ...rest }) => {
 
     const menu = (
         <MenuNavbar
-            isMobile={width < 768}
+            isMobile={width < 1024}
             authenticated={authenticated}
             logout={logout}
         />
     )
 
-    return width >= 768 ? (
+    return width > 768 ? (
         <GenericNavBar
             {...rest}
             rightSection={
-                <React.Fragment>
-                    <Button
-                        type="link"
-                        onClick={() => windowOpen(whitePaperLink)}
-                        className="h-full flex-1 btn tracking-wide text-xs lg:text-lg leading-none text-white font-light hover:text-white active:text-white focus:text-white"
-                    >
-                        <span>WHITE PAPER</span>
-                    </Button>
-                    {/* {!authenticated && (
-                        <Button
-                            type="primary"
-                            size="large"
-                            className="focus:bg-red-300 focus:ring-2 ring-red-300 text-base lg:text-lg leading-none px-6 lg:px-8 tracking-wide border-none rounded-sm"
-                            onClick={() =>
-                                windowOpen(
-                                    'https://members.tripvixia.com/membership/signup?invite=0e3cb515-2949-4e1a-bb83-fd7fe4a5b251&referraltype=3'
-                                )
-                            }
-                        >
-                            Almost available
-                        </Button>
-                    )} */}
-                    {!authenticated && (
-                        <Button
-                            type="primary"
-                            size="large"
-                            className="focus:bg-red-300 focus:ring-2 ring-red-300 text-base lg:text-lg leading-none px-6 lg:px-8 tracking-wide border-none rounded-sm"
-                            onClick={() => history.push(LoginInPath)}
-                        >
-                            Login
-                        </Button>
-                    )}
-                    {authenticated && (
-                        <div className="h-full flex justify-center items-center">
-                            <Dropdown
-                                overlay={menu}
-                                trigger={['click']}
-                                placement="bottomRight"
+                <div className="flex flex-1 items-center ml-6 lg:ml-12 xl:ml-64">
+                    <div className="flex-1 flex flex-row justify-between xl:mr-24">
+                        {menuLinks.map((m) => (
+                            <button
+                                key={`buttonlink-${m.id}`}
+                                onClick={() => m.onClick()}
+                                className={cls(`
+                                tracking-wide text-xs lg:text-base h-10 border-black-1 text-black-1 font-light px-6 hover:border-b
+                            `)}
                             >
-                                <a
-                                    className="ant-dropdown-link"
-                                    onClick={(e) => e.preventDefault()}
+                                {m.label}
+                            </button>
+                        ))}
+                    </div>
+                    <SocialMedia />
+                    <div className="ml-auto flex flex-row items-center">
+                        {!authenticated ? (
+                            <button
+                                className="h-10 bg-primary focus:bg-blue-8 text-white text-base lg:text-lg ml-6 2xl:ml-24 px-8 lg:px-16 tracking-wide border-none rounded-sm"
+                                onClick={() => history.push(LoginInPath)}
+                            >
+                                Login
+                            </button>
+                        ) : (
+                            <div className="h-full flex justify-center items-center">
+                                <Dropdown
+                                    overlay={menu}
+                                    trigger={['click']}
+                                    placement="bottomRight"
                                 >
-                                    <Avatar
-                                        // className="gradient-g"
-                                        style={{ backgroundColor: '#f9a24f' }}
-                                        size="large"
+                                    <a
+                                        className="ant-dropdown-link"
+                                        onClick={(e) => e.preventDefault()}
                                     >
-                                        {avatarTitle}
-                                    </Avatar>
-                                </a>
-                            </Dropdown>
-                        </div>
-                    )}
-                </React.Fragment>
+                                        <Avatar
+                                            // className="gradient-g"
+                                            style={{
+                                                backgroundColor: '#f9a24f',
+                                            }}
+                                            size="large"
+                                        >
+                                            {avatarTitle}
+                                        </Avatar>
+                                    </a>
+                                </Dropdown>
+                            </div>
+                        )}
+                    </div>
+                </div>
             }
         />
     ) : (
@@ -101,6 +164,7 @@ const DefaultNavbar = ({ authenticated, userData, logout, ...rest }) => {
             {...rest}
             showDrawer={showDrawer}
             onClickBurguer={handleShowDrawer}
+            burgerColor="#000"
             contentDrawer={
                 <React.Fragment>
                     {authenticated ? (
@@ -117,6 +181,20 @@ const DefaultNavbar = ({ authenticated, userData, logout, ...rest }) => {
                     ) : (
                         <div className="mb-10"></div>
                     )}
+                    <Menu className="border-r-0 -mx-24px">
+                        <Menu.Divider className="flex md:hidden" />
+                        {menuLinks.map((m) => (
+                            <Menu.Item
+                                key={`menulink-${m.id}`}
+                                onClick={() => m.onClick()}
+                            >
+                                {m.label}
+                            </Menu.Item>
+                        ))}
+                    </Menu>
+                    <div className="mb-8 mt-6 flex justify-center">
+                        <SocialMedia />
+                    </div>
                     {menu}
                 </React.Fragment>
             }

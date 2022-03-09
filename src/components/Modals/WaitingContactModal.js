@@ -7,11 +7,10 @@ import * as actions from '../../store/reducers/auth/actions'
 
 const WaitingContactModal = () => {
     const [visible, setVisible] = useState(false)
-    const {
-        auth,
-        userData: { mailSent },
-        modals: { contact },
-    } = useSelector(authReducerSelector)
+    const { auth, userData, modals } = useSelector(authReducerSelector)
+    const mailSent = userData?.mailSent
+    const contact = modals?.contact
+
     const dispatch = useDispatch()
 
     const setModalShowed = useCallback(

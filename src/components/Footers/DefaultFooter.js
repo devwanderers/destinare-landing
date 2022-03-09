@@ -1,13 +1,13 @@
 import React from 'react'
 import { Col, Row } from 'antd'
 import { FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa'
-import windowOpen from './../../services/windowOpen'
+import { windowOpen } from '../../services/windowServices'
 import { whitePaperLink } from './../../constants/linksConstranst'
 
 const DefaultFooter = (props) => {
     return (
         <footer className="py-12 ">
-            <div className="section ">
+            <div className="max-w-1280px px-6 mx-auto">
                 <div className="flex flex-row justify-between border-b border-gray-300 pb-8">
                     <div className="flex flex-row justify-between max-h-full w-full lg:w-6/12  items-center">
                         {/* <div className="flex-1">

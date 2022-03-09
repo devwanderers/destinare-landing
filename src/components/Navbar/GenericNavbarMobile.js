@@ -28,9 +28,9 @@ const GenericNavbarMobile = ({
                 {contentDrawer}
             </Drawer>
             <Header
-                className={`h-16 md:h-20 z-10 px-2 lg:px-0 py-2 md:py-4 m-0 ${className}`}
+                className={`h-16 md:h-16 z-10 px-2 lg:px-0 py-2 md:py-4 m-0 ${className}`}
             >
-                <div className="section relative flex justify-center px-2 md:px-8 h-full">
+                <div className="max-w-1280px relative flex justify-center px-2 md:px-8 h-full">
                     <a className="h-full absolute left-0 top-0 bottom-0">
                         <div
                             onClick={onClickBurguer}

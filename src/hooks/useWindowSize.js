@@ -12,8 +12,6 @@ export default function useWindowSize() {
         const { innerWidth, innerHeight } = window
 
         setWindowSize({
-            innerWidth,
-            innerHeight,
             width: innerWidth,
             height: innerHeight,
         })

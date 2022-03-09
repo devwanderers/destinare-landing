@@ -1,10 +1,18 @@
-import React from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
+/* eslint-disable no-unused-vars */
+import React, { useState, useEffect } from 'react'
+import { AnimatePresence, motion, useViewportScroll } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import backgroundImages from './../../../../assets/images/backgrounds/index'
 import useResponsive from './../../../../hooks/useResponsive'
+import useWindowSize from '../../../../hooks/useWindowSize'
+import { useRefScrollProgress } from '../../../../hooks/useRefScrollProgress'
+import OverlayGallery from './../../../../components/Modals/OverlayGallery'
+import { GoPlay } from 'react-icons/go'
+import useTimeout from './../../../../hooks/useTimeout'
 
 const NextSection = (props) => {
+    const [openModal, setOpenModal] = useState(false)
+
     const [hideBg] = useResponsive({ base: true, md: false })
     const collectionConfig = {
         threshold: 0.4,
@@ -12,38 +20,62 @@ const NextSection = (props) => {
     }
 
     const [refBg, showBg] = useInView(collectionConfig)
+    const [refVideo, showVideo] = useInView({
+        ...collectionConfig,
+        threshold: 1,
+    })
     const [refText1, showText1] = useInView(collectionConfig)
     const [refText2, showText2] = useInView(collectionConfig)
     const [refText3, showText3] = useInView(collectionConfig)
 
     const transitionConfig = {
-        // duration: 0.5,
-        // type: 'spring',
-        // bounce: 0.2,
-        // ease: 'circInOut',
-        // stiffness: 50,
         ease: [0.455, 0.03, 0.515, 0.955],
         duration: 0.5,
     }
-    // console.log(hideBg)
+
+    useEffect(() => {
+        if (showVideo)
+            setTimeout(() => {
+                setOpenModal(true)
+            }, 300)
+    }, [showVideo])
+
     return (
-        <React.Fragment>
+        <div
+            ref={refVideo}
+            className="section3 w-full flex flex-row py-16 md:py-20 md:pt-16 px-4 lg:px-8 xl:px-0 mx-auto relative"
+        >
+            <OverlayGallery
+                visible={openModal}
+                onClose={() => setOpenModal(false)}
+            />
             <div hidden={hideBg} className="flex-1 ">
-                <div ref={refBg} className="w-full h-full">
+                <div ref={refBg} className="relative w-full h-full">
+                    <div></div>
                     <AnimatePresence>
                         {showBg && (
-                            <motion.img
+                            <motion.div
                                 initial={{ opacity: 0, x: -250 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 exit={{
                                     opacity: 0,
                                     x: -250,
                                 }}
-                                className="w-full h-auto"
                                 transition={transitionConfig}
-                                src={backgroundImages.paradisebg}
-                                alt={backgroundImages.paradisebg}
-                            />
+                                className="w-full h-full relative"
+                            >
+                                <div
+                                    onClick={() => setOpenModal(true)}
+                                    className="absolute top-0 left-0 w-full h-full flex justify-center items-center cursor-pointer transform hover:scale-95 opacity-60 text-white hover:text-gray-200"
+                                >
+                                    <GoPlay size={'30%'} />
+                                </div>
+                                <img
+                                    className="w-full h-auto"
+                                    src={backgroundImages.paradisebg}
+                                    alt={backgroundImages.paradisebg}
+                                />
+                            </motion.div>
                         )}
                     </AnimatePresence>
                 </div>
@@ -114,35 +146,8 @@ const NextSection = (props) => {
                         )}
                     </AnimatePresence>
                 </div>
-                {/* <div className="flex flex-col md:flex-row h-auto ">
-                <div className="flex-1 text-center md:text-left h-4.5 md:h-24 lg:h-32 xl:h-37 mb-6 md:mb-0 overflow-hidden ">
-                    <div className="font-bebas-nue leading-none  text-black-3 text-7xl lg:text-11xl xl:text-11.5 h-full md:text-6.5 ">
-                        YOUR NEXT
-                    </div>
-                </div>
-                <div className="flex-1 flex items-end mb-2 xl:mb-4 overflow-hidden">
-                    <div className="flex-1">
-                        <div className="flex flex-row flex-1 justify-between text-primary font-base font-bebas-nue text-7xl lg:text-11xl xl:text-11.5 leading-none">
-                            ADVENTURE
-                        </div>
-                    </div>
-                </div>
             </div>
-            <div className="flex md:justify-end flex-1">
-                <div className="w-full md:w-6/12 bg-black-1">
-                    <div className="w-full bg-primary h-1  md:h-1.5 xl:h-2 "></div>
-                </div>
-            </div>
-
-            <div className="flex flex-col md:flex-row h-auto ">
-                <div className="flex-1 w-full text-center mt-6 md:mt-8 mb-2 md:mb-10 lg:mt-16 lg:mb-20 h-4.5 md:h-24 lg:h-32 xl:h-37 overflow-hidden">
-                    <div className="font-bebas-nue leading-none text-black-3 text-7xl  md:text-6.5 lg:text-11xl h-full  xl:text-11.5">
-                        IS HERE
-                    </div>
-                </div>
-            </div> */}
-            </div>
-        </React.Fragment>
+        </div>
     )
 }
 

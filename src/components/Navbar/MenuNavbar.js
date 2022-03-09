@@ -6,17 +6,17 @@ import { AiOutlineLogout, AiOutlineLogin } from 'react-icons/ai'
 import { IoMdAirplane } from 'react-icons/io'
 // import { BsBook } from 'react-icons/bs'
 import { LoginInPath, tripvixiaURL } from '../../constants/routerConstants'
-import windowOpen from './../../services/windowOpen'
+import { windowOpen } from '../../services/windowServices'
 
-// const menusOptions = {
-//     travel: {
-//         icon: IoMdAirplane,
-//         onClick: () => windowOpen(tripvixiaURL),
-//         name: 'Travel Platform',
-//     },
-// }
+const menusOptions = {
+    travel: {
+        icon: IoMdAirplane,
+        onClick: () => windowOpen(tripvixiaURL),
+        name: 'Travel Platform',
+    },
+}
 
-const menus = []
+const menus = [menusOptions.travel]
 
 const MenuNavbar = ({ authenticated, isMobile, logout }) => {
     const history = useHistory()
@@ -48,7 +48,7 @@ const MenuNavbar = ({ authenticated, isMobile, logout }) => {
 
     return (
         <Menu className="border-r-0 -mx-24px">
-            <Menu.Divider className="flex md:hidden" />
+            {/* <Menu.Divider className="flex md:hidden" />
             {_menu.map((menu) => {
                 if (!authenticated && menu.name === 'Travel Platform')
                     return null
@@ -63,7 +63,7 @@ const MenuNavbar = ({ authenticated, isMobile, logout }) => {
                         </div>
                     </Menu.Item>
                 )
-            })}
+            })} */}
             <Menu.Divider className="flex" />
             {logOutItem}
         </Menu>

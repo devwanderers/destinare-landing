@@ -7,7 +7,7 @@ import useWindowSize from './../../hooks/useWindowSize'
 import MenuNavbar from './MenuNavbar'
 import GenericNavbarMobile from './GenericNavbarMobile'
 import { whitePaperLink } from './../../constants/linksConstranst'
-import windowOpen from './../../services/windowOpen'
+import { windowOpen } from '../../services/windowServices'
 
 const NoAuthNavBar = ({ logout, authenticated, ...rest }) => {
     const [showDrawer, setShowDrawer] = useState(false)

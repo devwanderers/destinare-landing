@@ -3,7 +3,7 @@ import { Spin } from 'antd'
 
 const PageLoading = (props) => {
     return (
-        <div className="flex-1 flex justify-center items-center">
+        <div className="flex-1 flex h-full w-full justify-center  items-center">
             <Spin />
         </div>
     )

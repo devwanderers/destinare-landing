@@ -19,7 +19,6 @@ import NextSection from './Sections/NextSection/index'
 import DefaultNavbar from '../../components/Navbar/DefaultNavbar'
 import DefaultFooter from '../../components/Footers/DefaultFooter'
 import useResponsive from './../../hooks/useResponsive'
-// import windowOpen from './../../services/windowOpen'
 
 const { Content } = Layout
 
@@ -107,13 +106,15 @@ const LandingPage = ({ authenticated, userData, logout }) => {
         base: 'middle',
         lg: 'large',
     })
+
     return (
         <Layout className="landing-page min-w-minMobileWidth bg-gray-50">
             <DefaultNavbar
                 userData={userData}
                 logout={logout}
                 authenticated={authenticated}
-                className="bg-transparent"
+                className="bg-white"
+                logoColor="#f9a24f"
             />
             <Content>
                 <section className="bg-lobby relative bg-cover bg-center bg-no-repeat -mt-16 md:-mt-20 ">
@@ -122,7 +123,7 @@ const LandingPage = ({ authenticated, userData, logout }) => {
                         style={{ backgroundColor: '#211915', opacity: 0.15 }}
                     ></div>
                     <div
-                        className="flex flex-col h-screen section px-0 justify-center mx-auto relative "
+                        className="flex flex-col h-screen max-w-1280px px-0 justify-center mx-auto relative "
                         style={{ minHeight: '640px' }}
                     >
                         <div className="flex flex-col w-full items-center">
@@ -136,16 +137,17 @@ const LandingPage = ({ authenticated, userData, logout }) => {
                                     md="xl"
                                     lg="2xl"
                                 >
-                                    Find your next destination. <br /> Explore
-                                    the deals we have for you
+                                    Bridging crypto and real world utility on
+                                    one platform. <br /> Buy, stake, earn and
+                                    travel the world with us.
                                 </Paragraph>
                             </div>
                             <div>
                                 <button
                                     // type="link"
-                                    className="border border-yellow-2 text-yellow-2 text-2xl py-2 px-8 leading-none tracking-wide rounded-sm"
+                                    className="border border-yellow-2 text-yellow-2 text-2xl py-2 px-3 md:px-8 leading-none tracking-wide rounded-sm"
                                 >
-                                    Travel platform coming soon!
+                                    ICO and platform launching soon!
                                 </button>
                             </div>
 
@@ -164,19 +166,17 @@ const LandingPage = ({ authenticated, userData, logout }) => {
                             <LeftLogoSVG />
                         </div>
                     </div>
-                    <div className="section mx-auto relative px-3 xl:px-0 lg:pb-3.5 xl:pb-20 pt-4 lg:pt-2">
+                    <div className="max-w-1280px mx-auto relative px-3 xl:px-0 lg:pb-3.5 xl:pb-20 pt-4 lg:pt-2">
                         <PromotionsSection />
                     </div>
-                    <div className="section3 w-full flex flex-row py-16 md:py-20 md:pt-16 px-4 lg:px-8 xl:px-0 mx-auto relative">
-                        <NextSection />
-                    </div>
+                    <NextSection />
                 </section>
                 <section className=" md:bg-dock md:bg-cover md:bg-center relative ">
                     <div
                         className="hidden md:flex absolute top-0 left-0 right-0 bottom-0"
                         style={{ backgroundColor: '#000', opacity: 0.3 }}
                     ></div>
-                    <div className="section md:20 lg:pt-36 pb-12 relative  px-0 lg:px-8 xl:px-0">
+                    <div className="max-w-1280px mx-auto md:20 lg:pt-36 pb-12 relative  px-0 lg:px-8 xl:px-0">
                         <div className="relative bg-dock bg-cover bg-center md:bg-none flex w-full flex-col section px-4 lg:px-8 xl:px-0 mx-auto pt-36  pb-32 lg:pt-0 md:pb-20">
                             <div
                                 className="md:hidden absolute top-0 left-0 right-0 bottom-0"
@@ -232,8 +232,71 @@ const LandingPage = ({ authenticated, userData, logout }) => {
                         </div>
                     </div>
                 </section>
+                {/* <Element name="tokenomics" className="bg-primary">
+                    <div className="max-w-1280px mx-auto relative px-0 lg:px-8 xl:px-0 pt-8 pb-12">
+                        <div className="font-montserrat tracking-wider text-white font-bold shadow-c text-3xl md:text-4xl lg:text-3.5 text-center">
+                            Tokenomics
+                        </div>
+                        <div className="flex flex-col lg:flex-row space-x-4">
+                            <div className="flex-1">
+                                <div className="text-white text-lg md:text-xl lg:text-3xl xl:text-3xl font-normal text-center md:text-left">
+                                    The Destinare Difference
+                                </div>
+                                <div className="text-white text-base md:text-xl lg:text-3xl xl:text-lg font-normal text-justify mt-4">
+                                    At Destinare, we connect travelers with one
+                                    of the world’s largest selections of
+                                    incredible places to stay, including
+                                    everything from hotels, apartments, villas,
+                                    and hostels to 5-star luxury resorts. The
+                                    Destinare platform currently offers over
+                                    3,100,000 travel products from Hotels to
+                                    Homes, Flights, and Activities covering
+                                    90,124 destinations in 230 countries and
+                                    territories, with prices up to 40% cheaper
+                                    than mainstream travel booking platforms.
+                                    <br />
+                                    <br />
+                                    At Destinare, we connect travelers with one
+                                    of the world’s largest selections of
+                                    incredible places to stay, including
+                                    everything from hotels, apartments, villas,
+                                    and hostels to 5-star luxury resorts. The
+                                    Destinare platform currently offers over
+                                    3,100,000 travel products from Hotels to
+                                    Homes, Flights, and Activities covering
+                                    90,124 destinations in 230 countries and
+                                    territories, with prices up to 40% cheaper
+                                    than mainstream travel booking platforms.
+                                </div>
+                            </div>
+                            <div className="flex-1"></div>
+                        </div>
+                        <div className="flex flex-col lg:flex-row mt-12 space-x-4">
+                            <div className="flex-1"></div>
+                            <div className="flex-1">
+                                <div className="text-white text-lg md:text-xl lg:text-3xl xl:text-3xl font-normal text-center md:text-left">
+                                    Tokenomics
+                                </div>
+                                <div className="text-white text-base md:text-xl lg:text-3xl xl:text-lg font-normal text-justify mt-4">
+                                    Through our partnership with Nomadzland NFT
+                                    we have developed a unique token called DDOT
+                                    which can be staked on the blockchain and
+                                    will allow our holders to have access to VIP
+                                    travel discounts without memberships. Our
+                                    token be obtained through our exclusive ICO
+                                    presale to receive the maximum travel
+                                    discounts our platform has to offer. In
+                                    addition, any holder of our partner NFT,
+                                    Nomadzland, will qualify to earn residual
+                                    income for life. For more information on how
+                                    our token works please visit our whitepaper.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </Element> */}
                 <section className="relative bg-cliffBeach bg-cover bg-top">
-                    <div className="section flex flex-col items-center justify-center py-40 lg:py-72">
+                    <div className="max-w-1280px px-6 mx-auto flex flex-col items-center justify-center py-40 lg:py-72">
                         <div className="relative flex-1 text-center text-3xl md:text-4xl lg:text-5xl">
                             <div className="font-montserrat text-center break-words leading-none text-white font-medium flex flex-col  items-center tracking-wider shadow-c ">
                                 <div className="flex flex-row mb-16">
@@ -247,16 +310,6 @@ const LandingPage = ({ authenticated, userData, logout }) => {
                             </div>
                         </div>
                         <div>
-                            {/* <button
-                                className="bg-primary text-white py-3 text-lg lg:text-2xl leading-none px-6 lg:px-10 tracking-wide border-none rounded-sm"
-                                onClick={() =>
-                                    windowOpen(
-                                        'https://members.tripvixia.com/membership/signup?invite=0e3cb515-2949-4e1a-bb83-fd7fe4a5b251&referraltype=3'
-                                    )
-                                }
-                            >
-                                Get Started
-                            </button> */}{' '}
                             <button className="bg-primary text-white py-3 text-lg lg:text-2xl leading-none px-6 lg:px-10 tracking-wide border-none rounded-sm">
                                 Travel platform coming soon!
                             </button>
@@ -264,7 +317,7 @@ const LandingPage = ({ authenticated, userData, logout }) => {
                     </div>
                 </section>
                 <section>
-                    <div className="section px-0 lg:px-25px flex mx-auto py-10 lg:pt-16 lg:pb-20">
+                    <div className="max-w-1280px px-0 lg:px-25px flex mx-auto py-10 lg:pt-16 lg:pb-20">
                         <div className="flex-1 bg-gray-200 py-10 px-6 md:px-12 lg:px-20 xl:px-24">
                             <div className="font-bebas-nue text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-black-1">
                                 STAY WITH US, GET OUR NEWSLETTER

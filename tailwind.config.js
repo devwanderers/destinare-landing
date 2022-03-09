@@ -45,6 +45,8 @@ module.exports = {
         },
         maxWidth: {
             '1000px': '1000px',
+            '1280px': '1280px',
+            '1800px': '1800px',
             full: '100%',
         },
         fontFamily: {
@@ -77,8 +79,10 @@ module.exports = {
                 5: '#03152b',
                 6: '#041B37',
                 7: '#00aeff',
+                8: '#4ca9d8',
             },
             black: {
+                0: '#000',
                 1: '#1d1d1b',
                 2: '#5b5b5f',
                 3: '#444242',
@@ -121,6 +125,11 @@ module.exports = {
             4.725: '4.725rem',
         },
         extend: {
+            maxHeight: {
+                ...defaultTheme.maxHeight,
+                '560px': '560px',
+                '600px': '600px',
+            },
             backgroundImage: {
                 travellerbg:
                     "url('/src/assets/images/backgrounds/traveller-with-backpack-2021-08-26-15-29-39-utc.jpg')",
@@ -165,6 +174,7 @@ module.exports = {
         extend: {
             scale: ['active', 'group-hover'],
             textColor: ['active', 'hover'],
+            borderWidth: ['hover'],
         },
     },
     plugins: [],

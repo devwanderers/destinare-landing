@@ -3,9 +3,6 @@ import { connect } from 'react-redux'
 import { sleep } from '../../services/promises'
 import SignUp from '../../views/AuthView/Forms/SignUp'
 import { actionsAuth } from './../../store/reducers/auth/index'
-// import windowOpen from './../../services/windowOpen'
-// import { tripvixiaURL } from './../../constants/routerConstants'
-// import windowOpen from '../../services/windowOpen'
 
 const SignUpContainer = ({ signUp, signIn, sendMail, ...rest }) => {
     const [showError, setShowError] = useState(false)
