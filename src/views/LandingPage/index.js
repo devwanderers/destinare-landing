@@ -251,7 +251,7 @@ const LandingPage = ({ authenticated, userData, logout }) => {
                                 >
                                     <div className="mb-12">
                                         <p className="text-3xl lg:text-5xl text-white leading-none font-extrabold mb-4">
-                                            Travel made simple
+                                            The Destinare Difference
                                         </p>
                                         <p className="text-3xl lg:text-5xl text-black-3 leading-none font-extrabold">
                                             Discover the world and pay with
