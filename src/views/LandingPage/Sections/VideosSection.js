@@ -2,16 +2,25 @@ import React, { useState, useEffect } from 'react'
 import OverlayGallery from './../../../components/Modals/OverlayGallery'
 import { cls } from './../../../services/helpers'
 import { videosGallery } from './../../../assets/videos/gallery/index'
+import { thumbGallery } from './../../../assets/videos/thumbnails/index'
 import { GoPlay } from 'react-icons/go'
 
 const videos = [
-    { id: 'video3', url: videosGallery.video3 },
+    {   id: 'video1', 
+        url: videosGallery.video1, 
+        thumb: thumbGallery.thumb1 
+    },
     {
         id: 'video2',
         url: videosGallery.video2,
+        thumb: thumbGallery.thumb2
     },
-    { id: 'video1', url: videosGallery.video1 },
+    {   id: 'video3', 
+        url: videosGallery.video3,
+        thumb: thumbGallery.thumb3
+    },
 ]
+
 
 const GalleryElement = ({ className, selected, onClick, children }) => {
     return (
@@ -58,7 +67,7 @@ const Gallery = ({ className, onSelect }) => {
                         <div className="absolute top-0 left-0 w-full h-full flex items-center text-white">
                             <GoPlay className="mx-auto" size="40%" />
                         </div>
-                        <img src="" className="w-full h-auto" />
+                        <img src={v.thumb}  className="w-full h-auto h-full" />
                     </div>
                 </GalleryElement>
             ))}
