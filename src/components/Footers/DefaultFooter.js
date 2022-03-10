@@ -1,6 +1,6 @@
 import React from 'react'
 import { Col, Row } from 'antd'
-import { FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa'
+import { FaDiscord, FaInstagram, FaTwitter } from 'react-icons/fa'
 import { windowOpen } from '../../services/windowServices'
 import { whitePaperLink } from './../../constants/linksConstranst'
 
@@ -87,13 +87,11 @@ const DefaultFooter = (props) => {
                             href="#"
                             onClick={(e) => {
                                 e.preventDefault()
-                                windowOpen(
-                                    'https://www.facebook.com/Destinareio-104317588754693'
-                                )
+                                windowOpen('https://discord.gg/JPx5v9Xv9g')
                             }}
                         >
                             <span>
-                                <FaFacebook />
+                                <FaDiscord />
                             </span>
                         </a>
                         <a
