@@ -8,7 +8,7 @@ import GenericNavbarMobile from './GenericNavbarMobile'
 import MenuNavbar from './MenuNavbar'
 import { windowLocationPush, windowOpen } from '../../services/windowServices'
 import { nomadzLink, whitePaperLink } from './../../constants/linksConstranst'
-import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa'
+import { FaTwitter, FaInstagram, FaDiscord } from 'react-icons/fa'
 import { cls } from './../../services/helpers'
 import { scrollTo } from './../../services/react-scroll-utils'
 
@@ -39,12 +39,12 @@ const SocialMedia = () => {
                 onClick={(e) => {
                     e.preventDefault()
                     windowOpen(
-                        'https://www.facebook.com/Destinareio-104317588754693'
+                        'https://discord.gg/JPx5v9Xv9g'
                     )
                 }}
             >
                 <span>
-                    <FaFacebook />
+                    <FaDiscord />
                 </span>
             </a>
             <a
