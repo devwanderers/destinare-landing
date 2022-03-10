@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Layout, Menu, Button } from 'antd'
-import useWindowDimensions from '../../../customHooks/useWindowDimensions'
+import useWindowSize from './../../../hooks/useWindowSize'
 
 const siderWidthByWindowsWidth = (windowWidth) => {
     if (windowWidth > 600) {
@@ -17,7 +17,7 @@ const { SubMenu } = Menu
 
 export const SiderFilter = () => {
     const [collapsed, setcollapse] = useState(false)
-    const { width } = useWindowDimensions()
+    const { width } = useWindowSize()
     const siderWidth = siderWidthByWindowsWidth(width)
     const handleCollapse = () => {
         setcollapse(!collapsed)

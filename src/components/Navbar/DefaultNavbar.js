@@ -7,19 +7,16 @@ import useWindowSize from './../../hooks/useWindowSize'
 import GenericNavbarMobile from './GenericNavbarMobile'
 import MenuNavbar from './MenuNavbar'
 import { windowLocationPush, windowOpen } from '../../services/windowServices'
-import {
-    nomadzLink,
-    whitePaperLink,
-    destinareDappLink,
-} from './../../constants/linksConstranst'
+import { nomadzLink, whitePaperLink } from './../../constants/linksConstranst'
 import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa'
 import { cls } from './../../services/helpers'
+import { scrollTo } from './../../services/react-scroll-utils'
 
 const menuLinks = [
     {
         id: 'tokenomic',
         label: 'DESTINARE DIFFERENCE',
-        onClick: () => windowLocationPush(destinareDappLink),
+        onClick: () => scrollTo('tokenomics'),
     },
     {
         id: 'whitepaper',
@@ -186,7 +183,10 @@ const DefaultNavbar = ({ authenticated, userData, logout, ...rest }) => {
                         {menuLinks.map((m) => (
                             <Menu.Item
                                 key={`menulink-${m.id}`}
-                                onClick={() => m.onClick()}
+                                onClick={() => {
+                                    handleShowDrawer()
+                                    m.onClick()
+                                }}
                             >
                                 {m.label}
                             </Menu.Item>

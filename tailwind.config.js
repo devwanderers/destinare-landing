@@ -127,6 +127,7 @@ module.exports = {
         extend: {
             maxHeight: {
                 ...defaultTheme.maxHeight,
+                '460px': '460px',
                 '560px': '560px',
                 '600px': '600px',
             },

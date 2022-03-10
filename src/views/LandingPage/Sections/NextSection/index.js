@@ -11,8 +11,6 @@ import { GoPlay } from 'react-icons/go'
 import useTimeout from './../../../../hooks/useTimeout'
 
 const NextSection = (props) => {
-    const [openModal, setOpenModal] = useState(false)
-
     const [hideBg] = useResponsive({ base: true, md: false })
     const collectionConfig = {
         threshold: 0.4,
@@ -20,10 +18,6 @@ const NextSection = (props) => {
     }
 
     const [refBg, showBg] = useInView(collectionConfig)
-    const [refVideo, showVideo] = useInView({
-        ...collectionConfig,
-        threshold: 1,
-    })
     const [refText1, showText1] = useInView(collectionConfig)
     const [refText2, showText2] = useInView(collectionConfig)
     const [refText3, showText3] = useInView(collectionConfig)
@@ -33,22 +27,8 @@ const NextSection = (props) => {
         duration: 0.5,
     }
 
-    useEffect(() => {
-        if (showVideo)
-            setTimeout(() => {
-                setOpenModal(true)
-            }, 300)
-    }, [showVideo])
-
     return (
-        <div
-            ref={refVideo}
-            className="section3 w-full flex flex-row py-16 md:py-20 md:pt-16 px-4 lg:px-8 xl:px-0 mx-auto relative"
-        >
-            <OverlayGallery
-                visible={openModal}
-                onClose={() => setOpenModal(false)}
-            />
+        <div className="section3 w-full flex flex-row py-16 md:py-20 md:pt-16 px-4 lg:px-8 xl:px-0 mx-auto relative">
             <div hidden={hideBg} className="flex-1 ">
                 <div ref={refBg} className="relative w-full h-full">
                     <div></div>
@@ -64,12 +44,6 @@ const NextSection = (props) => {
                                 transition={transitionConfig}
                                 className="w-full h-full relative"
                             >
-                                <div
-                                    onClick={() => setOpenModal(true)}
-                                    className="absolute top-0 left-0 w-full h-full flex justify-center items-center cursor-pointer transform hover:scale-95 opacity-60 text-white hover:text-gray-200"
-                                >
-                                    <GoPlay size={'30%'} />
-                                </div>
                                 <img
                                     className="w-full h-auto"
                                     src={backgroundImages.paradisebg}

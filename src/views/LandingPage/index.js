@@ -19,6 +19,9 @@ import NextSection from './Sections/NextSection/index'
 import DefaultNavbar from '../../components/Navbar/DefaultNavbar'
 import DefaultFooter from '../../components/Footers/DefaultFooter'
 import useResponsive from './../../hooks/useResponsive'
+import { Element } from 'react-scroll'
+import utilitiesImages from '../../assets/images/utilities'
+import VideosSection from './Sections/VideosSection'
 
 const { Content } = Layout
 
@@ -170,13 +173,14 @@ const LandingPage = ({ authenticated, userData, logout }) => {
                         <PromotionsSection />
                     </div>
                     <NextSection />
+                    <VideosSection />
                 </section>
                 <section className=" md:bg-dock md:bg-cover md:bg-center relative ">
                     <div
                         className="hidden md:flex absolute top-0 left-0 right-0 bottom-0"
                         style={{ backgroundColor: '#000', opacity: 0.3 }}
                     ></div>
-                    <div className="max-w-1280px mx-auto md:20 lg:pt-36 pb-12 relative  px-0 lg:px-8 xl:px-0">
+                    <div className="max-w-1280px mx-auto md:20 lg:pt-36 lg:pb-12 relative  px-0 lg:px-8 xl:px-0">
                         <div className="relative bg-dock bg-cover bg-center md:bg-none flex w-full flex-col section px-4 lg:px-8 xl:px-0 mx-auto pt-36  pb-32 lg:pt-0 md:pb-20">
                             <div
                                 className="md:hidden absolute top-0 left-0 right-0 bottom-0"
@@ -232,69 +236,57 @@ const LandingPage = ({ authenticated, userData, logout }) => {
                         </div>
                     </div>
                 </section>
-                {/* <Element name="tokenomics" className="bg-primary">
+                <Element name="tokenomics" className="bg-primary">
                     <div className="max-w-1280px mx-auto relative px-0 lg:px-8 xl:px-0 pt-8 pb-12">
-                        <div className="font-montserrat tracking-wider text-white font-bold shadow-c text-3xl md:text-4xl lg:text-3.5 text-center">
-                            Tokenomics
-                        </div>
-                        <div className="flex flex-col lg:flex-row space-x-4">
-                            <div className="flex-1">
-                                <div className="text-white text-lg md:text-xl lg:text-3xl xl:text-3xl font-normal text-center md:text-left">
-                                    The Destinare Difference
-                                </div>
-                                <div className="text-white text-base md:text-xl lg:text-3xl xl:text-lg font-normal text-justify mt-4">
-                                    At Destinare, we connect travelers with one
-                                    of the world’s largest selections of
-                                    incredible places to stay, including
-                                    everything from hotels, apartments, villas,
-                                    and hostels to 5-star luxury resorts. The
-                                    Destinare platform currently offers over
-                                    3,100,000 travel products from Hotels to
-                                    Homes, Flights, and Activities covering
-                                    90,124 destinations in 230 countries and
-                                    territories, with prices up to 40% cheaper
-                                    than mainstream travel booking platforms.
-                                    <br />
-                                    <br />
-                                    At Destinare, we connect travelers with one
-                                    of the world’s largest selections of
-                                    incredible places to stay, including
-                                    everything from hotels, apartments, villas,
-                                    and hostels to 5-star luxury resorts. The
-                                    Destinare platform currently offers over
-                                    3,100,000 travel products from Hotels to
-                                    Homes, Flights, and Activities covering
-                                    90,124 destinations in 230 countries and
-                                    territories, with prices up to 40% cheaper
-                                    than mainstream travel booking platforms.
-                                </div>
-                            </div>
-                            <div className="flex-1"></div>
-                        </div>
-                        <div className="flex flex-col lg:flex-row mt-12 space-x-4">
-                            <div className="flex-1"></div>
-                            <div className="flex-1">
-                                <div className="text-white text-lg md:text-xl lg:text-3xl xl:text-3xl font-normal text-center md:text-left">
-                                    Tokenomics
-                                </div>
-                                <div className="text-white text-base md:text-xl lg:text-3xl xl:text-lg font-normal text-justify mt-4">
-                                    Through our partnership with Nomadzland NFT
-                                    we have developed a unique token called DDOT
-                                    which can be staked on the blockchain and
-                                    will allow our holders to have access to VIP
-                                    travel discounts without memberships. Our
-                                    token be obtained through our exclusive ICO
-                                    presale to receive the maximum travel
-                                    discounts our platform has to offer. In
-                                    addition, any holder of our partner NFT,
-                                    Nomadzland, will qualify to earn residual
-                                    income for life. For more information on how
-                                    our token works please visit our whitepaper.
-                                </div>
-                            </div>
-                        </div>
+                        <section id="about" className="bg-gray-12">
+                            <Row
+                                className="section my-16 lg:my-24"
+                                justify="center"
+                                align="middle"
+                            >
+                                <Col
+                                    xs={24}
+                                    sm={12}
+                                    className="mb-10 md:mb-0 px-0 lg:px-5 xl:pr-16 xl:px-0"
+                                >
+                                    <div className="mb-12">
+                                        <p className="text-3xl lg:text-5xl text-white leading-none font-extrabold mb-4">
+                                            Travel made simple
+                                        </p>
+                                        <p className="text-3xl lg:text-5xl text-black-3 leading-none font-extrabold">
+                                            Discover the world and pay with
+                                            crypto
+                                        </p>
+                                    </div>
+                                    <p className="text-xl text-white mb-10">
+                                        We have successfully created a
+                                        frictionless travel booking experience
+                                        that incorporates next-generation
+                                        blockchain technology and tokenized
+                                        incentives.
+                                    </p>
+                                    <p className="text-xl text-white">
+                                        By introducing a cutting edge user
+                                        experience and multiple cryptocurrencies
+                                        and traditional payment options
+                                        alongside benefits tied to our
+                                        proprietary cryptocurrency DDOT.
+                                    </p>
+                                </Col>
+                                <Col
+                                    xs={24}
+                                    sm={12}
+                                    className="px-0 lg:px-5 xl:px-0"
+                                >
+                                    <img
+                                        className="m-auto w-full"
+                                        src={utilitiesImages.wallet}
+                                    />
+                                </Col>
+                            </Row>
+                        </section>
                     </div>
-                </Element> */}
+                </Element>
                 <section className="relative bg-cliffBeach bg-cover bg-top">
                     <div className="max-w-1280px px-6 mx-auto flex flex-col items-center justify-center py-40 lg:py-72">
                         <div className="relative flex-1 text-center text-3xl md:text-4xl lg:text-5xl">
