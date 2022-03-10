@@ -58,7 +58,7 @@ const Gallery = ({ className, onSelect }) => {
                         <div className="absolute top-0 left-0 w-full h-full flex items-center text-white">
                             <GoPlay className="mx-auto" size="40%" />
                         </div>
-                        <img />
+                        <img src="" className="w-full h-auto" />
                     </div>
                 </GalleryElement>
             ))}
