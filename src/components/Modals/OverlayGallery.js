@@ -75,7 +75,7 @@ const OverlayGallery = ({ visible = true, onClose, videoUrl }) => {
         <Modal isOpen={showModal} style={customStyles}>
             <div className="absolute top-0 left-0 w-full h-full bg-black-0 bg-opacity-80">
                 <motion.div
-                    className="w-full h-full"
+                    className="absolute top-0 left-0 w-full h-full"
                     initial="hidden"
                     animate={visible ? 'show' : 'hidden'}
                     variants={container}
@@ -87,26 +87,22 @@ const OverlayGallery = ({ visible = true, onClose, videoUrl }) => {
                         className="absolute top-0 left-0 w-full h-full"
                         onClick={() => onClose()}
                     ></div>
-                    <div className="relative max-w-1280px h-full mx-auto pt-12 pb-10 px-8 flex flex-col">
+                    <div className="relative max-w-1800px   h-full mx-auto flex flex-col">
                         <div
                             className="absolute top-0 left-0 w-full h-full"
                             onClick={() => onClose()}
                         ></div>
-                        <div className="flex-1  w-full pb-8">
-                            <div className="w-full h-full text-7xl flex justify-center items-center ">
-                                {/* {selectedVideo} */}
-                                <div className="w-full h-full flex justify-center items-center max-h-64 md:max-h-460px xl:max-h-600px bg-white p-1">
-                                    {videoUrl && (
-                                        <ReactPlayer
-                                            className=" bg-black-0"
-                                            url={videoUrl}
-                                            width="100%"
-                                            height="100%"
-                                            controls
-                                        />
-                                    )}
-                                </div>
-                            </div>
+                        <div className="absolute top-0 left-0 w-full h-full lg:py-16 lg:px-8 xl:px-20">
+                            {' '}
+                            {videoUrl && (
+                                <ReactPlayer
+                                    className=" bg-black-0 border-2 border-white"
+                                    url={videoUrl}
+                                    width="100%"
+                                    height="100%"
+                                    controls
+                                />
+                            )}
                         </div>
                     </div>
                 </motion.div>
