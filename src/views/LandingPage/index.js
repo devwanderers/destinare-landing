@@ -224,8 +224,8 @@ const LandingPage = ({ authenticated, userData, logout }) => {
                                         <MembersSVG />
                                     </div>
                                     <div className="text-white text-2xl md:text-xl lg:text-3xl xl:text-3xl font-normal text-center md:text-left">
-                                        A membership with the opportunity to
-                                        travel around the world.
+                                        The opportunity to travel the world. We
+                                        do not have membership fees.
                                     </div>
                                 </div>
                             </div>

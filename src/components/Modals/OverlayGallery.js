@@ -82,12 +82,12 @@ const GalleryElement = ({ className, selected, onClick, children }) => {
 }
 
 const videos = [
-    { id: 'video1', url: videosGallery.video1 },
+    { id: 'video3', url: videosGallery.video3 },
     {
         id: 'video2',
         url: videosGallery.video2,
     },
-    { id: 'video3', url: videosGallery.video3 },
+    { id: 'video1', url: videosGallery.video1 },
 ]
 
 const Gallery = ({ className, onSelect }) => {
