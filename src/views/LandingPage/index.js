@@ -22,6 +22,7 @@ import useResponsive from './../../hooks/useResponsive'
 import { Element } from 'react-scroll'
 import utilitiesImages from '../../assets/images/utilities'
 import VideosSection from './Sections/VideosSection'
+import useScrollTop from './../../hooks/useScrollTop'
 
 const { Content } = Layout
 
@@ -104,7 +105,7 @@ const { Content } = Layout
 
 const LandingPage = ({ authenticated, userData, logout }) => {
     // const { width } = useWindowSize()
-
+    useScrollTop()
     const [inputSize] = useResponsive({
         base: 'middle',
         lg: 'large',
@@ -236,7 +237,7 @@ const LandingPage = ({ authenticated, userData, logout }) => {
                         </div>
                     </div>
                 </section>
-                <Element name="tokenomics" className="bg-primary">
+                <Element name="tokenomics" className="bg-white">
                     <div className="max-w-1280px mx-auto relative px-0 lg:px-8 xl:px-0 pt-8 pb-12">
                         <section id="about" className="bg-gray-12">
                             <Row
@@ -250,27 +251,31 @@ const LandingPage = ({ authenticated, userData, logout }) => {
                                     className="mb-10 md:mb-0 px-0 lg:px-5 xl:pr-16 xl:px-0"
                                 >
                                     <div className="mb-12">
-                                        <p className="text-3xl lg:text-5xl text-white leading-none font-extrabold mb-4">
-                                            The Destinare Difference
+                                        <p className="text-3xl lg:text-5xl blue-gradient leading-none font-extrabold mb-4">
+                                            Travel made simple
                                         </p>
-                                        <p className="text-3xl lg:text-5xl text-black-3 leading-none font-extrabold">
+                                        <p className="text-3xl lg:text-5xl text-black-6 leading-none font-extrabold">
                                             Discover the world and pay with
                                             crypto
                                         </p>
                                     </div>
-                                    <p className="text-xl text-white mb-10">
+                                    <p className="text-xl text-black-6 mb-10">
                                         We have successfully created a
                                         frictionless travel booking experience
                                         that incorporates next-generation
                                         blockchain technology and tokenized
                                         incentives.
                                     </p>
-                                    <p className="text-xl text-white">
+                                    <p className="text-xl text-black-6">
                                         By introducing a cutting edge user
                                         experience and multiple cryptocurrencies
                                         and traditional payment options
                                         alongside benefits tied to our
-                                        proprietary cryptocurrency DDOT.
+                                        proprietary cryptocurrency DDOT, , our
+                                        customers know they are booking with a
+                                        platform of the future with transparent
+                                        pricing and backed up by our Best Price
+                                        Guarantee.
                                     </p>
                                 </Col>
                                 <Col

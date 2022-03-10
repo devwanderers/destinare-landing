@@ -1,6 +1,6 @@
 import React from 'react'
 import { Col, Row } from 'antd'
-import { FaDiscord, FaInstagram, FaTwitter } from 'react-icons/fa'
+import { FaDiscord, FaTwitter } from 'react-icons/fa'
 import { windowOpen } from '../../services/windowServices'
 import { whitePaperLink } from './../../constants/linksConstranst'
 
@@ -105,19 +105,6 @@ const DefaultFooter = (props) => {
                                 <FaTwitter />
                             </span>
                         </a>
-                        <a
-                            href="#"
-                            onClick={(e) => {
-                                e.preventDefault()
-                                windowOpen(
-                                    'https://www.instagram.com/destinare.io/'
-                                )
-                            }}
-                        >
-                            <span>
-                                <FaInstagram />
-                            </span>
-                        </a>
                     </div>
                 </div>
                 <Row>
@@ -140,7 +127,13 @@ const DefaultFooter = (props) => {
                             <a>
                                 <span>Marketing & Campaigns </span>
                             </a>
-                            <a>
+                            <a
+                                href="#"
+                                onClick={(e) => {
+                                    e.preventDefault()
+                                    windowOpen('https://discord.gg/JPx5v9Xv9g')
+                                }}
+                            >
                                 <span>Help Center</span>
                             </a>
                         </div>

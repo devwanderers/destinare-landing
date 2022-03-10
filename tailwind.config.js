@@ -88,6 +88,7 @@ module.exports = {
                 3: '#444242',
                 4: '#4d4d4d',
                 5: '#dedede',
+                6: '#595959',
             },
         },
         fontSize: {

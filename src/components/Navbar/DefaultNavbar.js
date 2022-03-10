@@ -8,7 +8,7 @@ import GenericNavbarMobile from './GenericNavbarMobile'
 import MenuNavbar from './MenuNavbar'
 import { windowLocationPush, windowOpen } from '../../services/windowServices'
 import { nomadzLink, whitePaperLink } from './../../constants/linksConstranst'
-import { FaTwitter, FaInstagram, FaDiscord } from 'react-icons/fa'
+import { FaTwitter, FaDiscord } from 'react-icons/fa'
 import { cls } from './../../services/helpers'
 import { scrollTo } from './../../services/react-scroll-utils'
 
@@ -38,9 +38,7 @@ const SocialMedia = () => {
                 href="#"
                 onClick={(e) => {
                     e.preventDefault()
-                    windowOpen(
-                        'https://discord.gg/JPx5v9Xv9g'
-                    )
+                    windowOpen('https://discord.gg/JPx5v9Xv9g')
                 }}
             >
                 <span>
@@ -57,18 +55,6 @@ const SocialMedia = () => {
             >
                 <span>
                     <FaTwitter />
-                </span>
-            </a>
-            <a
-                className="border-4 border-yellow-1 text-yellow-1 hover:text-yellow-2 hover:border-yellow-2 h-10 w-10 flex justify-center items-center rounded-full"
-                href="#"
-                onClick={(e) => {
-                    e.preventDefault()
-                    windowOpen('https://www.instagram.com/destinare.io/')
-                }}
-            >
-                <span>
-                    <FaInstagram />
                 </span>
             </a>
         </div>
