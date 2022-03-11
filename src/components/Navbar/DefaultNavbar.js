@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react'
 import { Dropdown, Avatar, Menu } from 'antd'
 import { useHistory } from 'react-router'
@@ -106,7 +107,7 @@ const DefaultNavbar = ({ authenticated, userData, logout, ...rest }) => {
                         ))}
                     </div>
                     <SocialMedia />
-                    <div className="ml-auto flex flex-row items-center">
+                    {/* <div className="ml-auto flex flex-row items-center">
                         {!authenticated ? (
                             <button
                                 className="h-10 bg-primary focus:bg-blue-8 text-white text-base lg:text-lg ml-6 2xl:ml-24 px-8 lg:px-16 tracking-wide border-none rounded-sm"
@@ -138,7 +139,7 @@ const DefaultNavbar = ({ authenticated, userData, logout, ...rest }) => {
                                 </Dropdown>
                             </div>
                         )}
-                    </div>
+                    </div> */}
                 </div>
             }
         />
@@ -150,7 +151,7 @@ const DefaultNavbar = ({ authenticated, userData, logout, ...rest }) => {
             burgerColor="#000"
             contentDrawer={
                 <React.Fragment>
-                    {authenticated ? (
+                    {/* {authenticated ? (
                         <div className="flex flex-col">
                             <Avatar
                                 className="mb-4"
@@ -163,8 +164,8 @@ const DefaultNavbar = ({ authenticated, userData, logout, ...rest }) => {
                         </div>
                     ) : (
                         <div className="mb-10"></div>
-                    )}
-                    <Menu className="border-r-0 -mx-24px">
+                    )} */}
+                    <Menu className="border-r-0 -mx-24px mt-10">
                         <Menu.Divider className="flex md:hidden" />
                         {menuLinks.map((m) => (
                             <Menu.Item
@@ -181,7 +182,7 @@ const DefaultNavbar = ({ authenticated, userData, logout, ...rest }) => {
                     <div className="mb-8 mt-6 flex justify-center">
                         <SocialMedia />
                     </div>
-                    {menu}
+                    {/* {menu} */}
                 </React.Fragment>
             }
         />
