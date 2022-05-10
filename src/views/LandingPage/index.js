@@ -23,6 +23,9 @@ import { Element } from 'react-scroll'
 import utilitiesImages from '../../assets/images/utilities'
 import VideosSection from './Sections/VideosSection'
 import useScrollTop from './../../hooks/useScrollTop'
+import { Link } from 'react-router-dom'
+import { SignInPath, tripvixiaURL } from '../../constants/routerConstants'
+import { windowOpen } from './../../services/windowServices'
 
 const { Content } = Layout
 
@@ -147,12 +150,23 @@ const LandingPage = ({ authenticated, userData, logout }) => {
                                 </Paragraph>
                             </div>
                             <div>
-                                <button
-                                    // type="link"
-                                    className="border border-yellow-2 text-yellow-2 text-2xl py-2 px-3 md:px-8 leading-none tracking-wide rounded-sm"
-                                >
-                                    ICO and platform launching soon!
-                                </button>
+                                {!authenticated ? (
+                                    <Link
+                                        to={SignInPath}
+                                        type="link"
+                                        className="border border-yellow-2 text-yellow-2 text-2xl py-2 px-3 md:px-8 leading-none tracking-wide rounded-sm"
+                                    >
+                                        Travel Platform
+                                    </Link>
+                                ) : (
+                                    <button
+                                        onClick={() => windowOpen(tripvixiaURL)}
+                                        type="link"
+                                        className="border border-yellow-2 text-yellow-2 text-2xl py-2 px-3 md:px-8 leading-none tracking-wide rounded-sm"
+                                    >
+                                        Travel Platform
+                                    </button>
+                                )}
                             </div>
 
                             {/* <button

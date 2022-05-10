@@ -48,7 +48,7 @@ const MenuNavbar = ({ authenticated, isMobile, logout }) => {
 
     return (
         <Menu className="border-r-0 -mx-24px">
-            {/* <Menu.Divider className="flex md:hidden" />
+            <Menu.Divider className="flex md:hidden" />
             {_menu.map((menu) => {
                 if (!authenticated && menu.name === 'Travel Platform')
                     return null
@@ -63,7 +63,7 @@ const MenuNavbar = ({ authenticated, isMobile, logout }) => {
                         </div>
                     </Menu.Item>
                 )
-            })} */}
+            })}
             <Menu.Divider className="flex" />
             {logOutItem}
         </Menu>

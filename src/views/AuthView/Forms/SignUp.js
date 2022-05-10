@@ -22,7 +22,7 @@ const schema = Yup.object({
     country: validations.generic,
     language: validations.generic,
     // userName: validations.userName,
-    // walletAddress: validations.walletAddress,
+    discordId: validations.generic,
     password: validations.password,
     confirmPassword: validations.passwordConfirmation,
 })
@@ -33,6 +33,7 @@ const initialValues = {
     userName: '',
     email: '',
     // country: null,
+    discordId: '',
     password: '',
     confirmPassword: '',
 }
@@ -109,16 +110,16 @@ const SigUp = ({ onSubmit, showError, errorMessage }) => {
                             className="h-12 rounded-lg"
                             hasFeedback
                             value={values?.userName}
-                        />
+                        /> */}
                         <Field
                             component={AntInput}
                             type="text"
-                            name="walletAddress"
-                            placeholder="Wallet Address"
+                            name="discordId"
+                            placeholder="Discord ID"
                             className="h-12 rounded-lg"
                             hasFeedback
-                            value={values?.walletAddress}
-                        /> */}
+                            value={values?.discordId}
+                        />
                         <Field
                             component={AntInputPassword}
                             name="password"

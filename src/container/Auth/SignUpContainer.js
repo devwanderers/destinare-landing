@@ -18,6 +18,7 @@ const SignUpContainer = ({ signUp, signIn, sendMail, ...rest }) => {
         { setSubmitting }
     ) => {
         setShowError(false)
+        console.log({ restValues })
         signUp(restValues).then((resSignUp) => {
             if (resSignUp?.error) {
                 handleSetError(resSignUp.payload?.message)
@@ -31,7 +32,6 @@ const SignUpContainer = ({ signUp, signIn, sendMail, ...rest }) => {
                         handleSetError(resSignIn.payload?.message)
                     } else {
                         const { user } = resSignIn.payload
-                        console.log({ user })
                         if (!user?.mailSent) {
                             sendMail(email)
                         }

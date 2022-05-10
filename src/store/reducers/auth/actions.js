@@ -76,6 +76,7 @@ export const signUp = createAsyncThunk(
                 country: user.country,
                 language: user.language,
                 password: user.password,
+                discordId: user.discordId,
             })
 
             return result.data
