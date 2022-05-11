@@ -8,7 +8,7 @@ import * as actions from '../../store/reducers/auth/actions'
 const WaitingContactModal = () => {
     const [visible, setVisible] = useState(false)
     const { auth, userData, modals } = useSelector(authReducerSelector)
-    const mailSent = userData?.mailSent
+    const { mailSent, verified } = userData?.mailSent
     const contact = modals?.contact
 
     const dispatch = useDispatch()
@@ -24,7 +24,7 @@ const WaitingContactModal = () => {
     }, [contact, visible])
 
     useEffect(() => {
-        if (auth && mailSent && !contact) {
+        if (auth && mailSent && !verified && !contact) {
             handleModalVisibility()
         }
     }, [auth, mailSent, contact])
