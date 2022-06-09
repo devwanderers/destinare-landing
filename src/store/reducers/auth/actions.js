@@ -69,6 +69,7 @@ export const signUp = createAsyncThunk(
     types.SIGN_UP,
     async (user, { rejectWithValue }) => {
         try {
+            console.log({ user })
             const result = await axiosInstance.post('auth/signup', {
                 firstName: user?.firstName ?? '',
                 lastName: user?.lastName ?? '',
@@ -77,6 +78,7 @@ export const signUp = createAsyncThunk(
                 language: user.language,
                 password: user.password,
                 discordId: user.discordId,
+                walletAddress: user.walletAddress,
             })
 
             return result.data
