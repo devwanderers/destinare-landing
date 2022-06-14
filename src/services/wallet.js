@@ -3,27 +3,7 @@ export const setupNetwork = async () => {
 
     if (ethereum) {
         const chainId = parseInt(process.env.REACT_APP_CHAIN_ID_NETWORK, 10)
-        console.log({ chainId })
         try {
-            // await ethereum.request({
-            //     method: 'wallet_addEthereumChain',
-            //     params: [
-            //         {
-            //             chainId: `0x${chainId.toString(16)}`,
-            //             chainName: 'Rinkeby Test Network',
-            //             // chainName: 'Polygon Network',
-            //             nativeCurrency: {
-            //                 name: 'ETH',
-            //                 symbol: 'ETH',
-            //                 decimals: 18,
-            //             },
-            //             // rpcUrls: ['https://polygon-rpc.com/'],
-            //             // blockExplorerUrls: ['https://polygonscan.com/'],
-            //             rpcUrls: ['https://rinkeby.infura.io/v3/'],
-            //             blockExplorerUrls: ['https://rinkeby.etherscan.io'],
-            //         },
-            //     ],
-            // })
             await ethereum.request({
                 method: 'wallet_addEthereumChain',
                 params: [
@@ -54,21 +34,4 @@ export const setupNetwork = async () => {
         )
         return false
     }
-}
-
-export const registerToken = async () => {
-    const tokenAdded = await window.ethereum.request({
-        method: 'wallet_watchAsset',
-        params: {
-            type: 'ERC20',
-            options: {
-                address: process.env.REACT_APP_LAND_DESTINARE_CONTRACT_ADDRESS,
-                symbol: 'NLD',
-                decimals: 0,
-                // image: `${BASE_URL}/images/tokens/${tokenAddress}.png`,
-            },
-        },
-    })
-
-    return tokenAdded
 }
