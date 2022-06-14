@@ -1,16 +1,14 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 
 import { useWeb3React } from '@web3-react/core'
 
 const useConnect = () => {
-    const [init, setInit] = useState(false)
     const { account, library } = useWeb3React()
 
     useEffect(() => {
-        if (account && library && !init) {
+        if (account && library) {
             const { provider } = library
 
-            setInit(true)
             const reload = () => {
                 window.location.reload()
             }
@@ -23,7 +21,7 @@ const useConnect = () => {
             }
         }
         return undefined
-    }, [account, init, library])
+    }, [account, library])
 }
 
 export default useConnect
