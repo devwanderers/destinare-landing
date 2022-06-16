@@ -12,7 +12,7 @@ import {
 import { SignInPath } from '../../../constants/routerConstants'
 
 const schema = Yup.object({
-    emailOrUsername: validations.generic,
+    emailOrUsername: validations.mail,
     password: validations.generic,
 })
 
