@@ -18,33 +18,35 @@ const SignUpContainer = ({ signUp, signIn, sendMail, ...rest }) => {
     }
 
     const handleSubmitForm = (
-        { confirmPassword, ...restValues },
+        { confirmPassword, email, ...restValues },
         { setSubmitting }
     ) => {
         setShowError(false)
-        console.log({ restValues })
-        signUp({ walletAddress: account, account, ...restValues }).then(
-            (resSignUp) => {
-                if (resSignUp?.error) {
-                    handleSetError(resSignUp.payload?.message)
-                    sleep(() => {
-                        setSubmitting(false)
-                    })
-                } else {
-                    const { email, password } = restValues
-                    signIn({ email, password }).then((resSignIn) => {
-                        if (resSignIn?.error) {
-                            handleSetError(resSignIn.payload?.message)
-                        } else {
-                            const { user } = resSignIn.payload
-                            if (!user?.mailSent) {
-                                sendMail(email)
-                            }
+        signUp({
+            walletAddress: account,
+            account,
+            email: email.toLowerCase(),
+            ...restValues,
+        }).then((resSignUp) => {
+            if (resSignUp?.error) {
+                handleSetError(resSignUp.payload?.message)
+                sleep(() => {
+                    setSubmitting(false)
+                })
+            } else {
+                const { email, password } = restValues
+                signIn({ email, password }).then((resSignIn) => {
+                    if (resSignIn?.error) {
+                        handleSetError(resSignIn.payload?.message)
+                    } else {
+                        const { user } = resSignIn.payload
+                        if (!user?.mailSent) {
+                            sendMail(email)
                         }
-                    })
-                }
+                    }
+                })
             }
-        )
+        })
     }
 
     const disableSignUp = useMemo(() => {

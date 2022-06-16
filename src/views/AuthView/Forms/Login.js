@@ -41,7 +41,7 @@ const Login = ({ onSubmit, showError, errorMessage }) => {
                             placeholder="Email"
                             className="h-12 rounded-lg"
                             hasFeedback
-                            value={values?.emailOrUsername}
+                            value={values?.emailOrUsername.toLowerCase()}
                         />
                         <Field
                             component={AntInputPassword}

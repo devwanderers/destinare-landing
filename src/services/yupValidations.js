@@ -46,8 +46,8 @@ export const validations = {
         .required('Required'),
     mail: Yup.string()
         .max(64, 'Too Long!')
-        .email('Must be a valid email format. example@email.com')
         .lowercase('Must contain only lower case')
+        .email('Must be a valid email format. example@email.com')
         .required('Required'),
     phone: Yup.string()
         .matches(regex.phoneNumber, 'Must be a valid phone number.')

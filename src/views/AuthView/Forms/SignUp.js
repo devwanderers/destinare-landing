@@ -87,7 +87,7 @@ const SigUp = ({
                             placeholder="Email"
                             className="h-12 rounded-lg"
                             hasFeedback
-                            value={values?.email}
+                            value={values?.email.toLowerCase()}
                         />
                         <Field
                             component={AntSelect}
