@@ -87,7 +87,7 @@ const DefaultFooter = (props) => {
                             href="#"
                             onClick={(e) => {
                                 e.preventDefault()
-                                windowOpen('https://discord.gg/JPx5v9Xv9g')
+                                windowOpen('https://discord.gg/nomadzlandnft')
                             }}
                         >
                             <span>
@@ -131,7 +131,9 @@ const DefaultFooter = (props) => {
                                 href="#"
                                 onClick={(e) => {
                                     e.preventDefault()
-                                    windowOpen('https://discord.gg/JPx5v9Xv9g')
+                                    windowOpen(
+                                        'https://discord.gg/nomadzlandnft'
+                                    )
                                 }}
                             >
                                 <span>Help Center</span>

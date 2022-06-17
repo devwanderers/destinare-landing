@@ -48,7 +48,6 @@ const SignUpContainer = ({ signUp, signIn, sendMail, ...rest }) => {
             }
         })
     }
-
     const disableSignUp = useMemo(() => {
         return !userBalance || userBalance === 0
     }, [userBalance])
