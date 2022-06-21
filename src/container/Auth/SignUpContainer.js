@@ -22,10 +22,11 @@ const SignUpContainer = ({ signUp, signIn, sendMail, ...rest }) => {
         { setSubmitting }
     ) => {
         setShowError(false)
+        const _email = email.toLowerCase()
         signUp({
             walletAddress: account,
             account,
-            email: email.toLowerCase(),
+            email: _email,
             ...restValues,
         }).then((resSignUp) => {
             if (resSignUp?.error) {
@@ -34,10 +35,14 @@ const SignUpContainer = ({ signUp, signIn, sendMail, ...rest }) => {
                     setSubmitting(false)
                 })
             } else {
-                const { email, password } = restValues
-                signIn({ email, password }).then((resSignIn) => {
+                const { password } = restValues
+
+                signIn({ email: _email, password }).then((resSignIn) => {
                     if (resSignIn?.error) {
                         handleSetError(resSignIn.payload?.message)
+                        sleep(() => {
+                            setSubmitting(false)
+                        })
                     } else {
                         const { user } = resSignIn.payload
                         if (!user?.mailSent) {
