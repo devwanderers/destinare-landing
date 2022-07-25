@@ -1,6 +1,6 @@
 import React from 'react'
 import { Formik, Form, Field } from 'formik'
-import { Button, Form as FormAnt, Alert, Input } from 'antd'
+import { Button, Form as FormAnt, Alert } from 'antd'
 import * as Yup from 'yup'
 import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons'
 import { validations } from '../../../services/yupValidations'
@@ -9,7 +9,7 @@ import { useHistory } from 'react-router'
 import { LoginInPath } from '../../../constants/routerConstants'
 import { countrys } from './../../../constants/countrys'
 import { availableLangues } from './../../../constants/language'
-import useAuth from './../../../hooks/useAuth'
+
 import {
     AntInput,
     AntInputPassword,
@@ -22,9 +22,6 @@ const schema = Yup.object({
     email: validations.mail,
     country: validations.generic,
     language: validations.generic,
-    // userName: validations.userName,
-    discordId: validations.generic,
-    // walletAddress: validations.walletAddress,
     password: validations.password,
     confirmPassword: validations.passwordConfirmation,
 })
@@ -35,7 +32,6 @@ const initialValues = {
     userName: '',
     email: '',
     // country: null,
-    discordId: '',
     password: '',
     confirmPassword: '',
 }
@@ -48,7 +44,6 @@ const SigUp = ({
     walletAddress,
 }) => {
     const history = useHistory()
-    const { login } = useAuth()
 
     return (
         <React.Fragment>
@@ -121,23 +116,6 @@ const SigUp = ({
                             value={values?.userName}
                         /> */}
                         <Field
-                            component={AntInput}
-                            type="text"
-                            name="discordId"
-                            placeholder="Discord ID"
-                            className="h-12 rounded-lg"
-                            hasFeedback
-                            value={values?.discordId}
-                        />
-                        <Input
-                            type="text"
-                            name="walletAddress"
-                            placeholder="Wallet Address"
-                            className="h-12 rounded-lg mb-5"
-                            value={walletAddress ?? ''}
-                            disabled
-                        />
-                        <Field
                             component={AntInputPassword}
                             name="password"
                             type="password"
@@ -189,22 +167,8 @@ const SigUp = ({
                                     paddingTop: '9px',
                                     paddingBottom: '9px',
                                 }}
-                                disabled={disabled}
                             >
                                 Register
-                            </Button>
-                            <Button
-                                type="primary"
-                                block
-                                className="text-sm px-4 py-2 mt-4 py h-12 rounded-full font-medium"
-                                style={{
-                                    paddingTop: '9px',
-                                    paddingBottom: '9px',
-                                }}
-                                onPointerDown={login}
-                                disabled={walletAddress}
-                            >
-                                Connect Metamask
                             </Button>
                         </FormAnt.Item>
                     </Form>

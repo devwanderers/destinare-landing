@@ -1,14 +1,14 @@
-import React, { useState, useMemo } from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { sleep } from '../../services/promises'
 import SignUp from '../../views/AuthView/Forms/SignUp'
 import { actionsAuth } from './../../store/reducers/auth/index'
-import { useGetUserBalance } from './../../hooks/web3Hooks/useNFTs'
-import { useWeb3React } from '@web3-react/core'
+// import { useGetUserBalance } from './../../hooks/web3Hooks/useNFTs'
+// import { useWeb3React } from '@web3-react/core'
 
 const SignUpContainer = ({ signUp, signIn, sendMail, ...rest }) => {
-    const { account } = useWeb3React()
-    const { data: userBalance } = useGetUserBalance()
+    // const { account } = useWeb3React()
+    // const { data: userBalance } = useGetUserBalance()
     const [showError, setShowError] = useState(false)
     const [errorMessage, setErrorMessage] = useState('')
 
@@ -22,10 +22,10 @@ const SignUpContainer = ({ signUp, signIn, sendMail, ...rest }) => {
         { setSubmitting }
     ) => {
         setShowError(false)
+        const _email = email.toLowerCase()
         signUp({
-            walletAddress: account,
-            account,
-            email: email.toLowerCase(),
+            walletAddress: '',
+            email: _email,
             ...restValues,
         }).then((resSignUp) => {
             if (resSignUp?.error) {
@@ -34,8 +34,8 @@ const SignUpContainer = ({ signUp, signIn, sendMail, ...rest }) => {
                     setSubmitting(false)
                 })
             } else {
-                const { email, password } = restValues
-                signIn({ email, password }).then((resSignIn) => {
+                const { password } = restValues
+                signIn({ email: _email, password }).then((resSignIn) => {
                     if (resSignIn?.error) {
                         handleSetError(resSignIn.payload?.message)
                     } else {
@@ -49,17 +49,16 @@ const SignUpContainer = ({ signUp, signIn, sendMail, ...rest }) => {
         })
     }
 
-    const disableSignUp = useMemo(() => {
-        return !userBalance || userBalance === 0
-    }, [userBalance])
+    // const disableSignUp = useMemo(() => {
+    //     return !userBalance || userBalance === 0
+    // }, [userBalance])
 
     return (
         <SignUp
-            walletAddress={account}
             showError={showError}
             errorMessage={errorMessage}
             onSubmit={handleSubmitForm}
-            disabled={disableSignUp}
+            // disabled={disableSignUp}
             {...rest}
         />
     )
