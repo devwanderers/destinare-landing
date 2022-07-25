@@ -39,7 +39,7 @@ const SocialMedia = () => {
                 href="#"
                 onClick={(e) => {
                     e.preventDefault()
-                    windowOpen('https://discord.gg/JPx5v9Xv9g')
+                    windowOpen('https://discord.gg/nomadzlandnft')
                 }}
             >
                 <span>
