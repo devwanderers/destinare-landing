@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react'
 import { Layout, Row, Col, Input } from 'antd'
 // import { useHistory } from 'react-router'
@@ -11,6 +12,7 @@ import {
     LeftLogoSVG,
     MembersSVG,
 } from '../../assets/svg/utilities'
+import banner from '../../assets/images/banners/banner-nomadz.gif'
 
 import LogoText from '../../assets/svg/brand/LogoText'
 // import useWindowSize from './../../hooks/useWindowSize'
@@ -25,7 +27,8 @@ import VideosSection from './Sections/VideosSection'
 import useScrollTop from './../../hooks/useScrollTop'
 import { Link } from 'react-router-dom'
 import { SignInPath, tripvixiaURL } from '../../constants/routerConstants'
-import { windowOpen } from './../../services/windowServices'
+import { windowLocationPush, windowOpen } from './../../services/windowServices'
+import { nomadzLink } from '../../constants/linksConstranst'
 
 const { Content } = Layout
 
@@ -106,6 +109,17 @@ const { Content } = Layout
 //     )
 // }
 
+const BannerNFts = () => {
+    return (
+        <div
+            className="w-full cursor-pointer"
+            onClick={() => windowLocationPush(nomadzLink)}
+        >
+            <img className="w-full h-auto" src={banner} alt={banner} />
+        </div>
+    )
+}
+
 const LandingPage = ({ authenticated, userData, logout }) => {
     // const { width } = useWindowSize()
     useScrollTop()
@@ -154,9 +168,9 @@ const LandingPage = ({ authenticated, userData, logout }) => {
                                     <Link
                                         to={SignInPath}
                                         type="link"
-                                        className="border border-yellow-2 text-yellow-2 text-2xl py-2 px-3 md:px-8 leading-none tracking-wide rounded-sm"
+                                        className="border border-yellow-2 text-yellow-2 text-2xl py-2 px-3 md:px-8 leading-none tracking-wide rounded-sm hover:text-yellow-2 "
                                     >
-                                        Travel Platform
+                                        Sign up for Free
                                     </Link>
                                 ) : (
                                     <button
@@ -184,9 +198,14 @@ const LandingPage = ({ authenticated, userData, logout }) => {
                             <LeftLogoSVG />
                         </div>
                     </div>
-                    <div className="max-w-1280px mx-auto relative px-3 xl:px-0 lg:pb-3.5 xl:pb-20 pt-4 lg:pt-2">
+                </section>
+                <section className="relative border border-b py-12">
+                    <div className="max-w-1280px mx-auto relative px-3 xl:px-0">
                         <PromotionsSection />
+                        <BannerNFts />
                     </div>
+                </section>
+                <section className="relative">
                     <NextSection />
                     <VideosSection />
                 </section>

@@ -28,8 +28,7 @@ const MenuNavbar = ({ authenticated, isMobile, logout }) => {
                     className="flex flex-row items-center"
                     onClick={() => history.push(LoginInPath)}
                 >
-                    <AiOutlineLogin className="mr-2 relative -mt-1" /> Get
-                    Started
+                    <AiOutlineLogin className="mr-2 relative -mt-1" /> Log in
                 </div>
             </Menu.Item>
         ) : (
