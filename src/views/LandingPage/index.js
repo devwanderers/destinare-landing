@@ -304,7 +304,7 @@ const LandingPage = ({ authenticated, userData, logout }) => {
                                         experience and multiple cryptocurrencies
                                         and traditional payment options
                                         alongside benefits tied to our
-                                        proprietary cryptocurrency DDOT, , our
+                                        proprietary cryptocurrency DDOT, our
                                         customers know they are booking with a
                                         platform of the future with transparent
                                         pricing and backed up by our Best Price
