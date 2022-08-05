@@ -26,7 +26,7 @@ import utilitiesImages from '../../assets/images/utilities'
 import VideosSection from './Sections/VideosSection'
 import useScrollTop from './../../hooks/useScrollTop'
 import { Link } from 'react-router-dom'
-import { SignInPath, tripvixiaURL } from '../../constants/routerConstants'
+import { SignInPath, tripvixiaURL, dappURL } from '../../constants/routerConstants'
 import { windowLocationPush, windowOpen } from './../../services/windowServices'
 import { nomadzLink } from '../../constants/linksConstranst'
 
@@ -310,6 +310,13 @@ const LandingPage = ({ authenticated, userData, logout }) => {
                                         pricing and backed up by our Best Price
                                         Guarantee.
                                     </p>
+                                    <button
+                                        onClick={() => windowOpen(dappURL)}
+                                        type="link"
+                                        className="mt-5 bg-primary text-white py-3 text-lg lg:text-2xl leading-none px-6 lg:px-10 tracking-wide border-none rounded-sm"
+                                    >
+                                        Learn more
+                                    </button>
                                 </Col>
                                 <Col
                                     xs={24}
@@ -340,9 +347,26 @@ const LandingPage = ({ authenticated, userData, logout }) => {
                             </div>
                         </div>
                         <div>
-                            <button className="bg-primary text-white py-3 text-lg lg:text-2xl leading-none px-6 lg:px-10 tracking-wide border-none rounded-sm">
-                                Travel platform coming soon!
-                            </button>
+                            {!authenticated ? (
+                                    <Link
+                                        to={SignInPath}
+                                        type="link"
+                                        className="bg-primary text-white py-3 text-lg lg:text-2xl leading-none px-6 lg:px-10 tracking-wide border-none rounded-sm"
+                                    >
+                                        Travel Platform
+                                    </Link>
+                                ) : (
+                                    <button
+                                        onClick={() => windowOpen(tripvixiaURL)}
+                                        type="link"
+                                        className="bg-primary text-white py-3 text-lg lg:text-2xl leading-none px-6 lg:px-10 tracking-wide border-none rounded-sm"
+                                    >
+                                        Travel Platform
+                                    </button>
+                            )}
+                            {/* <button className="bg-primary text-white py-3 text-lg lg:text-2xl leading-none px-6 lg:px-10 tracking-wide border-none rounded-sm">
+                                Go to travel platfomr!
+                            </button> */}
                         </div>
                     </div>
                 </section>

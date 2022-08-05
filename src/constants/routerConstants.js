@@ -7,3 +7,4 @@ export const LogOutPath = `${RootPath}/logout`
 export const TravelPath = `${RootPath}/travel`
 
 export const tripvixiaURL = 'https://login.destinare.io/'
+export const dappURL = 'https://dapp.destinare.io/'
