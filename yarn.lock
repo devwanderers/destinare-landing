@@ -14235,6 +14235,11 @@ react-spring@^9.3.0:
     "@react-spring/web" "~9.3.0"
     "@react-spring/zdog" "~9.3.0"
 
+react-twitter-conversion-tracker@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-twitter-conversion-tracker/-/react-twitter-conversion-tracker-1.0.0.tgz#6c12ed124753ad6ae66e3d0b69ed32ffcdb375bd"
+  integrity sha512-jUTMiteWe5fPLjkYujZo0DC5IIEut1qSqpLOfDWZuaT8ibH3GggfVqVj0PgfZZUJ/qse3o+wxAAquuwhrJrEyQ==
+
 react@^17.0.2:
   version "17.0.2"
   resolved "https://registry.yarnpkg.com/react/-/react-17.0.2.tgz#d0b5cc516d29eb3eee383f75b62864cfb6800037"
