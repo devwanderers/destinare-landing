@@ -146,6 +146,8 @@ module.exports = {
                 womanBeach:
                     "url('/src/assets/images/backgrounds/woman-beach.jpg')",
                 cliffBeach: "url('/src/assets/images/backgrounds/mar1.png')",
+                womanSwingClaim:
+                    "url('/src/assets/images/backgrounds/claim-your-complimentary-trip.jpg')",
             },
             margin: {
                 '-24px': '-24px',

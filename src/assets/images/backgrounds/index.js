@@ -10,6 +10,7 @@ import paradisebg from './paradise-brush.png'
 import womanBeach from './woman-beach.jpg'
 import cliffBeach from './cliff-beach.jpg'
 import mar1 from './mar1.png'
+import womanSwingClaim from './claim-your-complimentary-trip.jpg'
 
 const backgroundImages = {
     travellerbg,
@@ -24,6 +25,7 @@ const backgroundImages = {
     womanBeach,
     cliffBeach,
     mar1,
+    womanSwingClaim,
 }
 
 export default backgroundImages

@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom'
 import PublicRoute from './CustomRoutes/PublicRoute'
 import * as paths from '../constants/routerConstants'
 import SignInLayout from './../components/Layouts/SignInLayout'
+import ClaimLayout from './../components/Layouts/ClaimLayout'
 
 const routes = [
     // {
@@ -40,6 +41,15 @@ const routes = [
             routes: [],
         },
         layout: SignInLayout,
+    },
+    {
+        name: 'ClaimView',
+        path: paths.ClaimPath,
+        route: PublicRoute,
+        componentProps: {
+            routes: [],
+        },
+        layout: ClaimLayout,
     },
     // {
     //     name: 'TripvixiaIFrame',
