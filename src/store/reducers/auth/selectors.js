@@ -23,3 +23,8 @@ export const userDataSelector = createSelector(
     authReducerSelector,
     (authReducer) => authReducer.userData
 )
+
+export const claimSelector = createSelector(
+    authReducerSelector,
+    (authReducer) => authReducer.claim
+)

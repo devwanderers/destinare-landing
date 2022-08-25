@@ -1,43 +1,91 @@
-import React from 'react'
+import React, { useCallback, useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { Formik, Form, Field } from 'formik'
-import { Button, Form as FormAnt, Alert } from 'antd'
+import { Button, Form as FormAnt, Alert, Checkbox } from 'antd'
 import * as Yup from 'yup'
 import { validations } from '../../../services/yupValidations'
 import { countrys } from '../../../constants/countrys'
 
 import { AntInput, AntSelect } from '../../../components/CreateAntField/index'
+import { actionsAuth } from './../../../store/reducers/auth/index'
+// import { HomePath } from '../../../constants/routerConstants'
 
 const schema = Yup.object({
-    firstName: validations.name,
-    lastName: validations.name,
-    email: validations.mail,
-    country: validations.generic,
-    language: validations.generic,
-    password: validations.password,
-    confirmPassword: validations.passwordConfirmation,
+    codeClaim: validations.generic,
+    destinationClaim: validations.generic,
+    termsClaim: validations.generic,
 })
 
 const initialValues = {
-    firstName: '',
+    codeClaim: '',
+    destinationClaim: '',
+    termsClaim: false,
     // country: null,
 }
 
-const Claim = ({ onSubmit, showError, errorMessage }) => {
+const Claim = () => {
+    // const [terms, setTerms] = useState(false)
+    const [showError, setError] = useState(false)
+    const [errorMessage, setErrorMessage] = useState('')
+
+    const dispatch = useDispatch()
+
+    const registerClaim = useCallback(
+        (data) => dispatch(actionsAuth.claimComplimentary(data)),
+        [dispatch]
+    )
+
+    const handleClaim = useCallback(
+        async ({ codeClaim, destinationClaim, termsClaim }) => {
+            try {
+                window.alert('entro al try')
+                if (termsClaim) {
+                    window.alert('entro al if')
+                    await registerClaim({
+                        codeClaim,
+                        destinationClaim,
+                    }).unwrap()
+                    window.alert('Register Claim')
+                    // history.push(HomePath)
+                    window.alert('fui a home')
+                } else {
+                    window.alert('accept terms and conditions')
+                }
+            } catch (error) {
+                window.alert('entro al catch')
+                console.log('Error: ', error)
+                if (error?.error) {
+                    setError(true)
+                    setErrorMessage(error.message)
+                }
+            } finally {
+                window.alert('finalyuyyy')
+            }
+        },
+        [registerClaim]
+    )
+
+    // const handleClaim2 = () => {
+    //     console.log('Testing!!!')
+    //     console.log('Testing!!!2222')
+    //     handleClaim()
+    // }
+
     return (
         <React.Fragment>
             <div className="font-medium mb-2">Claiming</div>
             <Formik
                 validationSchema={schema}
                 initialValues={initialValues}
-                onSubmit={onSubmit}
+                onSubmit={handleClaim}
             >
-                {({ values, isSubmitting }) => (
+                {({ values, isSubmitting, setValues, handleBlur }) => (
                     <Form className="mb-4">
                         <div className="flex flex-row space-x-2">
                             <Field
                                 component={AntInput}
                                 type="text"
-                                name="CodeClaim"
+                                name="codeClaim"
                                 placeholder="Code"
                                 className="h-12 rounded-lg"
                                 hasFeedback
@@ -46,7 +94,7 @@ const Claim = ({ onSubmit, showError, errorMessage }) => {
                         </div>
                         <Field
                             component={AntSelect}
-                            name="DestinationClaim"
+                            name="destinationClaim"
                             showSearch
                             // type="email"
                             placeholder="Destination"
@@ -63,6 +111,29 @@ const Claim = ({ onSubmit, showError, errorMessage }) => {
                                 showIcon
                             />
                         )}
+                        <Checkbox
+                            className="mb-5"
+                            name="termsClaim"
+                            // onChange={(v) => {
+                            //     setTerms(v.target.checked)
+                            // }}
+                            onChange={(v) => {
+                                setValues({
+                                    ...values,
+                                    termsClaim: v.target.checked
+                                        ? v.target.checked.toString()
+                                        : '',
+                                })
+                            }}
+                            defaultChecked={false}
+                            onBlur={handleBlur}
+                            //  {values?.termsClaim}
+                        >
+                            <div className="ml-4 font-semibold text-sm">
+                                I agree to the terms and conditions
+                            </div>
+                        </Checkbox>
+
                         <FormAnt.Item className="mb-0">
                             <Button
                                 type="primary"

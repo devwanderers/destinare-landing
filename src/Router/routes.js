@@ -1,5 +1,5 @@
 import { Route } from 'react-router-dom'
-// import PrivateRoute from "./CustomRoutes/PrivateRoute"
+import PrivateRoute from './CustomRoutes/PrivateRoute'
 import PublicRoute from './CustomRoutes/PublicRoute'
 import * as paths from '../constants/routerConstants'
 import SignInLayout from './../components/Layouts/SignInLayout'
@@ -45,7 +45,7 @@ const routes = [
     {
         name: 'ClaimView',
         path: paths.ClaimPath,
-        route: PublicRoute,
+        route: PrivateRoute,
         componentProps: {
             routes: [],
         },

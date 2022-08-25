@@ -1,5 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit'
-import { sendMail, signIn, setModalShowed } from './actions'
+import { sendMail, signIn, setModalShowed, claimComplimentary } from './actions'
 
 const initialState = {
     auth: false,
@@ -19,6 +19,9 @@ const initialState = {
         contact: false,
     },
     lastLoggin: null,
+    claim: {
+        msgError: '',
+    },
 }
 
 const authReducer = createReducer(initialState, (builder) => {
@@ -44,6 +47,23 @@ const authReducer = createReducer(initialState, (builder) => {
                 mailSent: true,
             },
         }))
+        .addCase(claimComplimentary.fulfilled, (state, { payload }) => ({
+            ...state,
+            claim: {
+                ...state.claim,
+                msgError: payload.msgError,
+            },
+        }))
+        .addCase(
+            signIn.rejected,
+            (state, { payload: { accessToken, user } }) => ({
+                ...state,
+                auth: true,
+                accessToken: accessToken,
+                userData: user,
+                lastLoggin: new Date(),
+            })
+        )
 })
 
 export default authReducer

@@ -1,7 +1,7 @@
 import { createAction, createAsyncThunk } from '@reduxjs/toolkit'
 import * as types from './types'
 import axiosInstance from './../../services/axiosConfig'
-import { tokenSelector } from './selectors'
+import { tokenSelector, userDataSelector } from './selectors'
 
 // export const sendUserData = createAsyncThunk(
 //     types.SENDUSER_DATA,
@@ -86,6 +86,49 @@ export const signUp = createAsyncThunk(
             if (!error.response) {
                 throw error
             }
+            console.log({ error })
+            return rejectWithValue(error.response.data)
+        }
+    }
+)
+
+export const claimComplimentary = createAsyncThunk(
+    types.CLAIM_COMPLIMENTARY,
+    async (payload, { rejectWithValue, getState }) => {
+        try {
+            const state = getState()
+            console.log(state)
+            console.log('PAAAASAAAAAAR')
+
+            const userDataSelect = userDataSelector(state)
+            console.log({ userDataSelect })
+            console.log(userDataSelect.firstName)
+            console.log(userDataSelect.email)
+            console.log(userDataSelect.country)
+
+            console.log('SIGUEEEEEEEE')
+            const userData = state.auth.userData
+
+            console.log(userData.firstName)
+            console.log(userData.email)
+            console.log(userData.country)
+
+            console.log(payload)
+
+            const response = await axiosInstance.post('auth/posttesting', {
+                code: payload.codeComplimentary,
+                destination: payload.destination,
+                username: userData.firstName,
+                email: userData.email,
+                countryCode: userData.country,
+            })
+
+            return response.data
+        } catch (error) {
+            if (!error.response) {
+                throw error
+            }
+
             console.log({ error })
             return rejectWithValue(error.response.data)
         }
