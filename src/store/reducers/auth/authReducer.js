@@ -19,9 +19,6 @@ const initialState = {
         contact: false,
     },
     lastLoggin: null,
-    claim: {
-        msgError: '',
-    },
 }
 
 const authReducer = createReducer(initialState, (builder) => {
@@ -47,23 +44,8 @@ const authReducer = createReducer(initialState, (builder) => {
                 mailSent: true,
             },
         }))
-        .addCase(claimComplimentary.fulfilled, (state, { payload }) => ({
-            ...state,
-            claim: {
-                ...state.claim,
-                msgError: payload.msgError,
-            },
-        }))
-        .addCase(
-            signIn.rejected,
-            (state, { payload: { accessToken, user } }) => ({
-                ...state,
-                auth: true,
-                accessToken: accessToken,
-                userData: user,
-                lastLoggin: new Date(),
-            })
-        )
+        .addCase(claimComplimentary.fulfilled, (state, { payload }) => {})
+        .addCase(claimComplimentary.rejected, (state, { payload }) => {})
 })
 
 export default authReducer
