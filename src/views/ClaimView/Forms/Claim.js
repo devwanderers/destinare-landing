@@ -37,17 +37,33 @@ const Claim = () => {
         [dispatch]
     )
 
+    const validateCodeOhana = useCallback(
+        (data) => dispatch(actionsAuth.validationCodeOhana(data)),
+        [dispatch]
+    )
+
     const handleClaim = useCallback(
         async ({ codeClaim, destinationClaimKey, termsClaim }) => {
             if (termsClaim) {
                 try {
-                    const resultClaim = await registerClaim({
+                    const destinationClaimValue =
+                        countries.find((x) => x.key === destinationClaimKey)
+                            ?.value ?? ''
+                    const resultValidateCode = await validateCodeOhana({
                         codeClaim,
-                        destinationClaimKey,
+                        destinationClaimValue,
                     }).unwrap()
-
-                    setStatusMsg(resultClaim.status)
-                    setMessage(resultClaim.message)
+                    if (resultValidateCode.status === '1') {
+                        const resultClaim = await registerClaim({
+                            codeClaim,
+                            destinationClaimKey,
+                        }).unwrap()
+                        setStatusMsg(resultClaim.status)
+                        setMessage(resultClaim.message)
+                    } else {
+                        setStatusMsg(false)
+                        setMessage(resultValidateCode.message)
+                    }
                 } catch (error) {
                     console.log('Error: ', error)
                     setStatusMsg(error.status)
@@ -57,14 +73,8 @@ const Claim = () => {
                 window.alert('accept terms and conditions')
             }
         },
-        [registerClaim]
+        [validateCodeOhana, registerClaim]
     )
-
-    // const handleClaim2 = () => {
-    //     console.log('Testing!!!')
-    //     console.log('Testing!!!2222')
-    //     handleClaim()
-    // }
 
     return (
         <React.Fragment>

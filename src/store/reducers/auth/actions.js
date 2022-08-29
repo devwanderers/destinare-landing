@@ -99,13 +99,42 @@ export const claimComplimentary = createAsyncThunk(
             const state = getState()
             const userData = state.auth.userData
 
-            const response = await axiosInstance.post('auth/posttesting', {
+            const response = await axiosInstance.post('claim/sendmail', {
                 codeClaim: payload.codeClaim,
                 destinationClaimKey: payload.destinationClaimKey,
                 firstName: userData.firstName ?? '',
                 lastName: userData.lastName ?? '',
                 email: userData.email ?? '',
                 countryCode: userData.country ?? '',
+            })
+
+            return response.data
+        } catch (error) {
+            if (!error.response) {
+                throw error
+            }
+
+            console.log({ error })
+            return rejectWithValue(error.response.data)
+        }
+    }
+)
+
+export const validationCodeOhana = createAsyncThunk(
+    types.VALID_CODE_OHANA,
+    async (payload, { rejectWithValue, getState }) => {
+        try {
+            const state = getState()
+            const userData = state.auth.userData
+
+            const response = await axiosInstance.post('claim/validationcode', {
+                firstName: userData.firstName ?? '',
+                lastName: userData.lastName ?? '',
+                email: userData.email ?? '',
+                codeOhana: payload.codeClaim,
+                country: userData.country ?? '',
+                phone: '',
+                destination: payload.destinationClaimValue,
             })
 
             return response.data
