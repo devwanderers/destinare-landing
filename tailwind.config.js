@@ -61,6 +61,10 @@ module.exports = {
             red: colors.red,
             yellow: { ...colors.yellow, 1: '#f9a24f', 2: '#ffce50' },
             gray: colors.trueGray,
+            green: {
+                1: '#50d71e',
+                2: '#1ec800',
+            },
             white: '#ffffff',
             primary: '#0085c8',
             // secondary: '',
@@ -147,7 +151,7 @@ module.exports = {
                     "url('/src/assets/images/backgrounds/woman-beach.jpg')",
                 cliffBeach: "url('/src/assets/images/backgrounds/mar1.png')",
                 womanSwingClaim:
-                    "url('/src/assets/images/backgrounds/claim-your-complimentary-trip.jpg')",
+                    "url('/src/assets/images/backgrounds/claim-complimentary-trip.jpg')",
             },
             margin: {
                 '-24px': '-24px',

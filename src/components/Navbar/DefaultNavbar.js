@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { Dropdown, Avatar, Menu } from 'antd'
 import { useHistory } from 'react-router'
 import GenericNavBar from './GenericNavbar'
-import { LoginInPath } from '../../constants/routerConstants'
+import { LoginInPath, ClaimPath } from '../../constants/routerConstants'
 import useWindowSize from './../../hooks/useWindowSize'
 import GenericNavbarMobile from './GenericNavbarMobile'
 import MenuNavbar from './MenuNavbar'
@@ -28,6 +28,11 @@ const menuLinks = [
         id: 'nomadz',
         label: 'NOMADZLAND NFT',
         onClick: () => windowLocationPush(nomadzLink),
+    },
+    {
+        id: 'claim',
+        label: 'CLAIM YOUR TRIP',
+        onClick: (history) => history.push(ClaimPath),
     },
 ]
 
@@ -97,7 +102,11 @@ const DefaultNavbar = ({ authenticated, userData, logout, ...rest }) => {
                         {menuLinks.map((m) => (
                             <button
                                 key={`buttonlink-${m.id}`}
-                                onClick={() => m.onClick()}
+                                onClick={() => {
+                                    if (m.id === 'claim') {
+                                        m.onClick(history)
+                                    } else m.onClick()
+                                }}
                                 className={cls(`
                                 tracking-wide text-xs lg:text-base h-10 border-black-1 text-black-1 font-light px-6 hover:border-b
                             `)}

@@ -1,10 +1,11 @@
 import React, { useCallback, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Formik, Form, Field } from 'formik'
-import { Button, Form as FormAnt, Alert, Checkbox } from 'antd'
+import { Button, Form as FormAnt, Checkbox } from 'antd'
 import * as Yup from 'yup'
 import { validations } from '../../../services/yupValidations'
-import { countrys } from '../../../constants/countrys'
+// import { countrys } from '../../../constants/countrys'
+import { countries } from '../../../constants/listCountries'
 
 import { AntInput, AntSelect } from '../../../components/CreateAntField/index'
 import { actionsAuth } from './../../../store/reducers/auth/index'
@@ -12,21 +13,22 @@ import { actionsAuth } from './../../../store/reducers/auth/index'
 
 const schema = Yup.object({
     codeClaim: validations.generic,
-    destinationClaim: validations.generic,
+    destinationClaimKey: validations.generic,
     termsClaim: validations.generic,
 })
 
 const initialValues = {
     codeClaim: '',
-    destinationClaim: '',
+    destinationClaimKey: '',
+    destinationClaimValue: '',
     termsClaim: false,
     // country: null,
 }
 
 const Claim = () => {
-    // const [terms, setTerms] = useState(false)
-    const [showError, setError] = useState(false)
-    const [errorMessage, setErrorMessage] = useState('')
+    const [terms, setTerms] = useState(false)
+    const [message, setMessage] = useState('')
+    const [statusMsg, setStatusMsg] = useState(false)
 
     const dispatch = useDispatch()
 
@@ -36,30 +38,23 @@ const Claim = () => {
     )
 
     const handleClaim = useCallback(
-        async ({ codeClaim, destinationClaim, termsClaim }) => {
-            try {
-                window.alert('entro al try')
-                if (termsClaim) {
-                    window.alert('entro al if')
-                    await registerClaim({
+        async ({ codeClaim, destinationClaimKey, termsClaim }) => {
+            if (termsClaim) {
+                try {
+                    const resultClaim = await registerClaim({
                         codeClaim,
-                        destinationClaim,
+                        destinationClaimKey,
                     }).unwrap()
-                    window.alert('Register Claim')
-                    // history.push(HomePath)
-                    window.alert('fui a home')
-                } else {
-                    window.alert('accept terms and conditions')
+
+                    setStatusMsg(resultClaim.status)
+                    setMessage(resultClaim.message)
+                } catch (error) {
+                    console.log('Error: ', error)
+                    setStatusMsg(error.status)
+                    setMessage(error.message)
                 }
-            } catch (error) {
-                window.alert('entro al catch')
-                console.log('Error: ', error)
-                if (error?.error) {
-                    setError(true)
-                    setErrorMessage(error.message)
-                }
-            } finally {
-                window.alert('finalyuyyy')
+            } else {
+                window.alert('accept terms and conditions')
             }
         },
         [registerClaim]
@@ -89,50 +84,63 @@ const Claim = () => {
                                 placeholder="Code"
                                 className="h-12 rounded-lg"
                                 hasFeedback
-                                value={values?.firstName}
+                                value={values?.codeClaim}
                             />
                         </div>
                         <Field
                             component={AntSelect}
-                            name="destinationClaim"
+                            name="destinationClaimKey"
                             showSearch
                             // type="email"
                             placeholder="Destination"
                             className="h-12 rounded-lg custom-ant-select"
-                            selectOptions={countrys}
+                            selectOptions={countries.sort((x, y) =>
+                                x.value > y.value ? 1 : -1
+                            )}
                             // hasFeedback
-                            value={values?.country}
+                            value={values?.destinationClaimKey}
                         />
-                        {showError && (
-                            <Alert
-                                className="mb-5"
-                                message={errorMessage}
-                                type="error"
-                                showIcon
-                            />
-                        )}
-                        <Checkbox
-                            className="mb-5"
-                            name="termsClaim"
-                            // onChange={(v) => {
-                            //     setTerms(v.target.checked)
-                            // }}
-                            onChange={(v) => {
-                                setValues({
-                                    ...values,
-                                    termsClaim: v.target.checked
-                                        ? v.target.checked.toString()
-                                        : '',
-                                })
-                            }}
-                            defaultChecked={false}
-                            onBlur={handleBlur}
-                            //  {values?.termsClaim}
+
+                        <FormAnt.Item
+                            className="mb-0"
+                            rules={[
+                                {
+                                    required: true,
+                                    message: 'Please input your username!',
+                                },
+                            ]}
                         >
-                            <div className="ml-4 font-semibold text-sm">
-                                I agree to the terms and conditions
-                            </div>
-                        </Checkbox>
+                            <Checkbox
+                                className="mb-5"
+                                name="termsClaim"
+                                // onChange={(v) => {
+                                //     setTerms(v.target.checked)
+                                // }}
+                                onChange={(v) => {
+                                    setValues({
+                                        ...values,
+                                        termsClaim: v.target.checked
+                                            ? v.target.checked.toString()
+                                            : '',
+                                    })
+                                    setTerms(v.target.checked)
+                                    console.log(v.target.checked)
+                                }}
+                                defaultChecked={false}
+                                onBlur={handleBlur}
+                                //  {values?.termsClaim}
+                            >
+                                <div
+                                    className={`ml-4 text-sm ${
+                                        terms
+                                            ? 'text-green-2 font-light'
+                                            : 'text-red-700 font-light'
+                                    }`}
+                                >
+                                    Agree to Terms and Conditions
+                                </div>
+                            </Checkbox>
+                        </FormAnt.Item>
 
                         <FormAnt.Item className="mb-0">
                             <Button
@@ -152,7 +160,15 @@ const Claim = () => {
                     </Form>
                 )}
             </Formik>
-            {!showError && <div className="h-40px mb-5"></div>}
+            {
+                <div
+                    className={`h-40px mb-5 ${
+                        statusMsg ? 'text-green-1' : 'text-red-700'
+                    }`}
+                >
+                    {message}
+                </div>
+            }
         </React.Fragment>
     )
 }
