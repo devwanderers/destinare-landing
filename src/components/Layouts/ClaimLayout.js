@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { PropTypes } from 'prop-types'
 import { Layout } from 'antd'
 import DefaultFooter from '../Footers/DefaultFooter'
-import NoAuthNavbar from '../Navbar/NoAuthNavbar'
+import DefaultNavbar from './../Navbar/DefaultNavbar'
 
 const { Content } = Layout
 
@@ -22,7 +22,7 @@ const ClaimLayout = ({ children, ...rest }) => {
                 <p>Some contents...</p>
                 <p>Some contents...</p>
             </Drawer> */}
-            <NoAuthNavbar
+            <DefaultNavbar
                 {...rest}
                 className="bg-gray-100"
                 onClickBurguer={() => setOpenDrawer(!isOpen)}

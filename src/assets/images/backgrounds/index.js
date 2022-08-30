@@ -10,7 +10,7 @@ import paradisebg from './paradise-brush.png'
 import womanBeach from './woman-beach.jpg'
 import cliffBeach from './cliff-beach.jpg'
 import mar1 from './mar1.png'
-import womanSwingClaim from './claim-complimentary-trip.jpg'
+import womanSwingClaim from './Claiming-Background.jpg'
 
 const backgroundImages = {
     travellerbg,

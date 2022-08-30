@@ -78,7 +78,7 @@ const Claim = () => {
 
     return (
         <React.Fragment>
-            <div className="font-medium mb-2">Claiming</div>
+            <div className="font-medium mb-2 hidden md:flex">Claiming</div>
             <Formik
                 validationSchema={schema}
                 initialValues={initialValues}

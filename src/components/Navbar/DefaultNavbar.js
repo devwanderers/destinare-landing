@@ -33,6 +33,7 @@ const menuLinks = [
         id: 'claim',
         label: 'CLAIM YOUR TRIP',
         onClick: (history) => history.push(ClaimPath),
+        authenticated: true,
     },
 ]
 
@@ -99,21 +100,28 @@ const DefaultNavbar = ({ authenticated, userData, logout, ...rest }) => {
             rightSection={
                 <div className="flex flex-1 items-center ml-6 lg:ml-12 xl:ml-64">
                     <div className="flex-1 flex flex-row justify-between xl:mr-24">
-                        {menuLinks.map((m) => (
-                            <button
-                                key={`buttonlink-${m.id}`}
-                                onClick={() => {
-                                    if (m.id === 'claim') {
-                                        m.onClick(history)
-                                    } else m.onClick()
-                                }}
-                                className={cls(`
+                        {menuLinks.map((m) => {
+                            if (
+                                m.authenticated &&
+                                m.authenticated !== authenticated
+                            )
+                                return null
+                            return (
+                                <button
+                                    key={`buttonlink-${m.id}`}
+                                    onClick={() => {
+                                        if (m.id === 'claim') {
+                                            m.onClick(history)
+                                        } else m.onClick()
+                                    }}
+                                    className={cls(`
                                 tracking-wide text-xs lg:text-base h-10 border-black-1 text-black-1 font-light px-6 hover:border-b
                             `)}
-                            >
-                                {m.label}
-                            </button>
-                        ))}
+                                >
+                                    {m.label}
+                                </button>
+                            )
+                        })}
                     </div>
                     <SocialMedia />
                     <div className="ml-auto flex flex-row items-center">
@@ -180,8 +188,9 @@ const DefaultNavbar = ({ authenticated, userData, logout, ...rest }) => {
                             <Menu.Item
                                 key={`menulink-${m.id}`}
                                 onClick={() => {
-                                    handleShowDrawer()
-                                    m.onClick()
+                                    if (m.id === 'claim') {
+                                        m.onClick(history)
+                                    } else m.onClick()
                                 }}
                             >
                                 {m.label}

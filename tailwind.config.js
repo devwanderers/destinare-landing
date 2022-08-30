@@ -84,6 +84,10 @@ module.exports = {
                 6: '#041B37',
                 7: '#00aeff',
                 8: '#4ca9d8',
+                9: '#4b7bb9',
+                10: '#bbecfb',
+                11: '#e6f2fe',
+                12: '#c1effe',
             },
             black: {
                 0: '#000',
@@ -151,7 +155,7 @@ module.exports = {
                     "url('/src/assets/images/backgrounds/woman-beach.jpg')",
                 cliffBeach: "url('/src/assets/images/backgrounds/mar1.png')",
                 womanSwingClaim:
-                    "url('/src/assets/images/backgrounds/claim-complimentary-trip.jpg')",
+                    "url('/src/assets/images/backgrounds/Claiming-Background.jpg')",
             },
             margin: {
                 '-24px': '-24px',
