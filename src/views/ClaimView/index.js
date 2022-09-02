@@ -15,7 +15,7 @@ const ClaimView = ({ auth }) => {
             <div className="absolute left-0 bottom-0 top-0 right-0  sm:right-2/4 md:right-2/4 md:bg-womanSwingClaim md:bg-cover md:bg-center sm:bg-none">
                 <div className="mt-12 md:flex md:flex-col justify-center items-center align-middle hidden ">
                     <div className="px-11 inline-block font-bold font-montserrat text-transparent opacity-90 sm:text-xl md:text-2xl lg:text-4xl xl:text-5xl  tracking-widest  bg-clip-text bg-gradient-to-tr from-blue-10 via-blue-12 to-blue-11 ">
-                        <label>CLAIMING YOUR</label>
+                        <label>CLAIM YOUR</label>
                     </div>
                     <div className="bg-blue-9 bg-opacity-75 p-0 sm:px-5 md:px-4 px-10 inline-block  font-thin font-bebas-nue text-white sm:text-xl  md:text-2xl lg:text-4xl xl:text-5xl  tracking-widest">
                         <label className="">COMPLIMENTARY TRIP </label>
