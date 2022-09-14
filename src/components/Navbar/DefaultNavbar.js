@@ -93,7 +93,7 @@ const DefaultNavbar = ({ authenticated, userData, logout, ...rest }) => {
             logout={logout}
         />
     )
-
+    console.log({ authenticated })
     return width > 768 ? (
         <GenericNavBar
             {...rest}
@@ -102,7 +102,7 @@ const DefaultNavbar = ({ authenticated, userData, logout, ...rest }) => {
                     <div className="flex-1 flex flex-row justify-between xl:mr-24">
                         {menuLinks.map((m) => {
                             if (
-                                m.authenticated &&
+                                m?.authenticated !== undefined &&
                                 m.authenticated !== authenticated
                             )
                                 return null
@@ -184,18 +184,25 @@ const DefaultNavbar = ({ authenticated, userData, logout, ...rest }) => {
                     )}
                     <Menu className="border-r-0 -mx-24px mt-10">
                         <Menu.Divider className="flex md:hidden" />
-                        {menuLinks.map((m) => (
-                            <Menu.Item
-                                key={`menulink-${m.id}`}
-                                onClick={() => {
-                                    if (m.id === 'claim') {
-                                        m.onClick(history)
-                                    } else m.onClick()
-                                }}
-                            >
-                                {m.label}
-                            </Menu.Item>
-                        ))}
+                        {menuLinks.map((m) => {
+                            if (
+                                m?.authenticated !== undefined &&
+                                m.authenticated !== authenticated
+                            )
+                                return null
+                            return (
+                                <Menu.Item
+                                    key={`menulink-${m.id}`}
+                                    onClick={() => {
+                                        if (m.id === 'claim') {
+                                            m.onClick(history)
+                                        } else m.onClick()
+                                    }}
+                                >
+                                    {m.label}
+                                </Menu.Item>
+                            )
+                        })}
                     </Menu>
                     <div className="mb-8 mt-6 flex justify-center">
                         <SocialMedia />

@@ -35,25 +35,25 @@ export const countries = [
     { key: 22, value: 'Turkey-Bodrum' },
     { key: 34, value: 'U.S.A.-Orlando' },
     { key: 37, value: 'U.S.A.-Chicago' },
-    { key: 42, value: 'Miami-Atlantic City' },
-    { key: 36, value: 'Miami-Hawaii' },
-    { key: 45, value: 'Miami-San Antonio' },
-    { key: 44, value: 'Miami-Gatlinburg' },
-    { key: 39, value: 'Miami-New Orleans' },
-    { key: 33, value: 'Miami-Daytona Beach' },
-    { key: 40, value: 'Miami-Branson' },
-    { key: 43, value: 'Miami-Myrtle Beach' },
-    { key: 35, value: 'Miami-Atlanta' },
-    { key: 41, value: 'Miami-Las Vegas' },
-    { key: 31, value: 'Miami-Phoenix' },
-    { key: 32, value: 'Miami-San Diego' },
+    { key: 42, value: 'U.S.A.-Atlantic City' },
+    { key: 36, value: 'U.S.A.-Hawaii' },
+    { key: 45, value: 'U.S.A.-San Antonio' },
+    { key: 44, value: 'U.S.A.-Gatlinburg' },
+    { key: 39, value: 'U.S.A.-New Orleans' },
+    { key: 33, value: 'U.S.A.-Daytona Beach' },
+    { key: 40, value: 'U.S.A.-Branson' },
+    { key: 43, value: 'U.S.A.-Myrtle Beach' },
+    { key: 35, value: 'U.S.A.-Atlanta' },
+    { key: 41, value: 'U.S.A.-Las Vegas' },
+    { key: 31, value: 'U.S.A.-Phoenix' },
+    { key: 32, value: 'U.S.A.-San Diego' },
     { key: 20, value: 'United Arab Emirates-Dubai' },
     { key: 167, value: 'Vanuatu-Vanuatu' },
 ]
 
 // 4- none
 // 15- Christchurch
-// 30- Miami, FL
+// 30- U.S.A., FL
 // 38- none
 // 47 - none
 // 51 - 60 - none
