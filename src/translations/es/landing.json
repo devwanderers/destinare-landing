@@ -1,0 +1,59 @@
+{
+    "section1": {
+        "description1": "Conectando el crypto y la utilidad del mundo real en una plataforma.",
+        "description2": "Compra, stakea, gane y viaje por el mundo con nosotros.",
+        "signUp": "Regístrate Gratis",
+        "trave_platform": "Plataforma de viajes"
+    },
+    "section2": {
+        "customer_support": {
+            "title": "Servicio al Cliente 24/7",
+            "description": "¿Necesitas ayuda o tienes alguna pregunta? Contacta nuestro equipo de servicio al cliente activo 24/7 vía discord o por el sistema de tickets en línea."
+        },
+        "price_guarantee": {
+            "title": "Best Price Guarantee",
+            "description": "Te garantizamos que no habrá mejores precios. Si encuentras un precio mejor en otra página después de que hayas reservado con nosotros, te daremos una estancia en el hotel de forma gratuita."
+        },
+        "payment_options": {
+            "title": "Opciones de pago múltiple",
+            "description": "Ofrecemos varios métodos de pago para reservar con nosotros. Escoge entre tarjetas de crédito, débito, y las principales cryptomonedas."
+        },
+        "rewards": {
+            "title": "Recompensas con valor real",
+            "description": "Gana recompensas fácil y rápidamente con nuestros innovadores programas de incentivos con tokens que incluyen descuentos y recompensas mensuales.",
+            "link": "Ver más"
+        }
+    },
+    "section3": {
+        "next": "TU SIGUIENTE",
+        "adventure": "AVENTURA",
+        "here": "ESTÁ AQUÍ"
+    },
+    "section4": {
+        "join": "Únete a",
+        "and": "y",
+        "smart_travel": "experimente la forma inteligente de viajar",
+        "description1": "Aquí es donde la aventura y la tecnología toman lugar.",
+        "description2": "La oportunidad de viajar por el mundo. No tenemos cuotas de afiliación."
+    },
+    "section5": {
+        "title": "Viajar de forma sencilla",
+        "subTitle": "Descubre el mundo y paga con crypto",
+        "description1": "Hemos creado con éxito una experiencia de reserva de viajes sin fricciones que incorpora la tecnología blockchain de última generación e incentivos tokenizados.",
+        "description2": "Al presentar una experiencia de usuario de vanguardia, múltiples cryptos y opciones de pago tradicionales junto con beneficios vinculados a nuestra propia crypto DDOT, nuestros clientes saben que están reservando en una plataforma del futuro con precios transparentes y respaldados por nuestra garantía de los mejores precios.",
+        "learn": "Ver más"
+    },
+    "section6": {
+        "title": "Viaja de forma sencilla",
+        "subTitle": "Descubre el mundo con Destinare",
+        "travel": "PLATAFORMA DE VIAJE"
+    },
+    "section7": {
+        "title": "Quédate con nosotros, suscríbete a nuestro boletín",
+        "description": "Conviértete en parte de nuestra comunidad de viaje, sé el primero en enterarse sobre nuestros lanzamientos o promociones.",
+        "inputSignup": {
+            "placeHolder": "Dirección de Email",
+            "label": "Registrarse"
+        }
+    }
+}

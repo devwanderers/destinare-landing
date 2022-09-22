@@ -1,0 +1,25 @@
+{
+    "navbar": {
+        "menus": {
+            "destinare_difference": "DESTINARE DIFFERENCE",
+            "white_paper": "WHITEPAPER",
+            "claim_trip": "CLAIM YOUR TRIP",
+            "travel_platform": "TRAVEL PLATFORM"
+        }
+    },
+    "footer": {
+        "description": "We are a business located in different parts of the world. Our team is working remotely."
+    },
+    "login": "Log In",
+    "logout": "Log Out",
+    "signUp": "Sign Up",
+    "inputs": {
+        "email": "Email Address",
+        "password": "Password",
+        "first_name": "First Name",
+        "last_name": "LastName",
+        "country": "Country of Residence",
+        "language": "Preferred Language",
+        "confirm_password": "Confirm Password"
+    }
+}

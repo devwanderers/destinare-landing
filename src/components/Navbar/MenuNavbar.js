@@ -7,18 +7,22 @@ import { IoMdAirplane } from 'react-icons/io'
 // import { BsBook } from 'react-icons/bs'
 import { LoginInPath, tripvixiaURL } from '../../constants/routerConstants'
 import { windowOpen } from '../../services/windowServices'
+import { useTranslation } from 'react-i18next'
 
 const menusOptions = {
     travel: {
         icon: IoMdAirplane,
         onClick: () => windowOpen(tripvixiaURL),
         name: 'Travel Platform',
+        t: 'navbar.menus.travel_platform',
     },
 }
 
 const menus = [menusOptions.travel]
 
-const MenuNavbar = ({ authenticated, isMobile, logout }) => {
+const MenuNavbar = ({ authenticated, isMobile, logout, dropdown }) => {
+    const { t } = useTranslation('commons')
+
     const history = useHistory()
     const _menu = menus
     let logOutItem =
@@ -28,7 +32,8 @@ const MenuNavbar = ({ authenticated, isMobile, logout }) => {
                     className="flex flex-row items-center"
                     onClick={() => history.push(LoginInPath)}
                 >
-                    <AiOutlineLogin className="mr-2 relative -mt-1" /> Log in
+                    <AiOutlineLogin className="mr-2 relative -mt-1" />
+                    {t('login')}
                 </div>
             </Menu.Item>
         ) : (
@@ -37,7 +42,8 @@ const MenuNavbar = ({ authenticated, isMobile, logout }) => {
                     className="flex flex-row items-center"
                     onClick={() => logout()}
                 >
-                    <AiOutlineLogout className="mr-2 relative -mt-1" /> Log out
+                    <AiOutlineLogout className="mr-2 relative -mt-1" />{' '}
+                    {t('logout')}
                 </div>
             </Menu.Item>
         )
@@ -58,7 +64,7 @@ const MenuNavbar = ({ authenticated, isMobile, logout }) => {
                             onClick={menu.onClick}
                         >
                             <menu.icon className="mr-2 relative -mt-1" />{' '}
-                            {menu.name}
+                            {menu?.t ? t(menu.t) : menu.name}
                         </div>
                     </Menu.Item>
                 )

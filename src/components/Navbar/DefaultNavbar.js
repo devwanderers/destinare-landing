@@ -12,16 +12,17 @@ import { nomadzLink, whitePaperLink } from './../../constants/linksConstranst'
 import { FaTwitter, FaDiscord } from 'react-icons/fa'
 import { cls } from './../../services/helpers'
 import { scrollTo } from './../../services/react-scroll-utils'
+import { useTranslation } from 'react-i18next'
 
 const menuLinks = [
     {
         id: 'tokenomic',
-        label: 'DESTINARE DIFFERENCE',
+        t: 'navbar.menus.destinare_difference',
         onClick: () => scrollTo('tokenomics'),
     },
     {
         id: 'whitepaper',
-        label: 'WHITEPAPER',
+        t: 'navbar.menus.white_paper',
         onClick: () => windowOpen(whitePaperLink),
     },
     {
@@ -31,7 +32,7 @@ const menuLinks = [
     },
     {
         id: 'claim',
-        label: 'CLAIM YOUR TRIP',
+        t: 'navbar.menus.claim_trip',
         onClick: (history) => history.push(ClaimPath),
         authenticated: true,
     },
@@ -69,6 +70,7 @@ const SocialMedia = () => {
 }
 
 const DefaultNavbar = ({ authenticated, userData, logout, ...rest }) => {
+    const { t } = useTranslation('commons')
     const [showDrawer, setShowDrawer] = useState(false)
     const history = useHistory()
     const { width } = useWindowSize()
@@ -86,14 +88,6 @@ const DefaultNavbar = ({ authenticated, userData, logout, ...rest }) => {
     if (name.length > 26) name = `${name.substring(0, 25)}...`
     if (avatarTitle === '') avatarTitle = 'U'
 
-    const menu = (
-        <MenuNavbar
-            isMobile={width < 1024}
-            authenticated={authenticated}
-            logout={logout}
-        />
-    )
-    console.log({ authenticated })
     return width > 768 ? (
         <GenericNavBar
             {...rest}
@@ -118,7 +112,7 @@ const DefaultNavbar = ({ authenticated, userData, logout, ...rest }) => {
                                 tracking-wide text-xs lg:text-base h-10 border-black-1 text-black-1 font-light px-6 hover:border-b
                             `)}
                                 >
-                                    {m.label}
+                                    {m?.label ? m.label : t(m.t)}
                                 </button>
                             )
                         })}
@@ -127,15 +121,22 @@ const DefaultNavbar = ({ authenticated, userData, logout, ...rest }) => {
                     <div className="ml-auto flex flex-row items-center">
                         {!authenticated ? (
                             <button
-                                className="h-10 bg-primary focus:bg-blue-8 text-white text-base lg:text-lg ml-6 2xl:ml-24 px-8 lg:px-16 tracking-wide border-none rounded-sm"
+                                className="h-10 bg-primary focus:bg-blue-8 text-white text-base lg:text-lg ml-6 2xl:ml-24 px-8 lg:px-12 tracking-wide border-none rounded-sm"
                                 onClick={() => history.push(LoginInPath)}
                             >
-                                Login
+                                {t('login')}
                             </button>
                         ) : (
                             <div className="h-full flex justify-center items-center ml-6">
                                 <Dropdown
-                                    overlay={menu}
+                                    overlay={
+                                        <MenuNavbar
+                                            isMobile={width < 1024}
+                                            authenticated={authenticated}
+                                            logout={logout}
+                                            dropdown
+                                        />
+                                    }
                                     trigger={['click']}
                                     placement="bottomRight"
                                 >
@@ -199,7 +200,7 @@ const DefaultNavbar = ({ authenticated, userData, logout, ...rest }) => {
                                         } else m.onClick()
                                     }}
                                 >
-                                    {m.label}
+                                    {m?.label ? m.label : t(m.t)}
                                 </Menu.Item>
                             )
                         })}
@@ -207,7 +208,11 @@ const DefaultNavbar = ({ authenticated, userData, logout, ...rest }) => {
                     <div className="mb-8 mt-6 flex justify-center">
                         <SocialMedia />
                     </div>
-                    {menu}
+                    <MenuNavbar
+                        isMobile={width < 1024}
+                        authenticated={authenticated}
+                        logout={logout}
+                    />
                 </React.Fragment>
             }
         />

@@ -10,6 +10,7 @@ import { LoginInPath } from '../../../constants/routerConstants'
 import { countrys } from './../../../constants/countrys'
 import { availableLangues } from './../../../constants/language'
 
+import { useTranslation } from 'react-i18next'
 import {
     AntInput,
     AntInputPassword,
@@ -43,11 +44,12 @@ const SigUp = ({
     disabled,
     walletAddress,
 }) => {
+    const { t } = useTranslation(['auth', 'commons'])
     const history = useHistory()
 
     return (
         <React.Fragment>
-            <div className="font-medium mb-2">Sign up</div>
+            <div className="font-medium mb-2">{t('commons:signUp')}</div>
             <Formik
                 validationSchema={schema}
                 initialValues={initialValues}
@@ -60,7 +62,9 @@ const SigUp = ({
                                 component={AntInput}
                                 type="text"
                                 name="firstName"
-                                placeholder="* First Name"
+                                placeholder={`* ${t(
+                                    'commons:inputs.first_name'
+                                )}`}
                                 className="h-12 rounded-lg"
                                 hasFeedback
                                 value={values?.firstName}
@@ -69,7 +73,9 @@ const SigUp = ({
                                 component={AntInput}
                                 type="text"
                                 name="lastName"
-                                placeholder="* Last Name"
+                                placeholder={`* ${t(
+                                    'commons:inputs.last_name'
+                                )}`}
                                 className="h-12 rounded-lg"
                                 hasFeedback
                                 value={values?.lastName}
@@ -79,7 +85,7 @@ const SigUp = ({
                             component={AntInput}
                             name="email"
                             type="email"
-                            placeholder="Email"
+                            placeholder={t('commons:inputs.email')}
                             className="h-12 rounded-lg"
                             hasFeedback
                             value={values?.email.toLowerCase()}
@@ -89,7 +95,7 @@ const SigUp = ({
                             name="country"
                             showSearch
                             // type="email"
-                            placeholder="Country of Residence"
+                            placeholder={t('commons:inputs.country')}
                             className="h-12 rounded-lg custom-ant-select"
                             selectOptions={countrys}
                             // hasFeedback
@@ -100,7 +106,7 @@ const SigUp = ({
                             name="language"
                             showSearch
                             // type="email"
-                            placeholder="Preferred Language"
+                            placeholder={t('commons:inputs.language')}
                             className="h-12 rounded-lg custom-ant-select"
                             selectOptions={availableLangues}
                             // hasFeedback
@@ -119,7 +125,7 @@ const SigUp = ({
                             component={AntInputPassword}
                             name="password"
                             type="password"
-                            placeholder="Password"
+                            placeholder={t('commons:inputs.password')}
                             className="h-12 rounded-lg"
                             hasFeedback
                             iconRender={(visible) =>
@@ -135,7 +141,7 @@ const SigUp = ({
                             component={AntInputPassword}
                             name="confirmPassword"
                             type="password"
-                            placeholder="Confirm Password"
+                            placeholder={t('commons:inputs.confirm_password')}
                             className="h-12 rounded-lg"
                             hasFeedback
                             iconRender={(visible) =>
@@ -168,7 +174,7 @@ const SigUp = ({
                                     paddingBottom: '9px',
                                 }}
                             >
-                                Register
+                                {t('commons:signUp')}
                             </Button>
                         </FormAnt.Item>
                     </Form>
@@ -180,7 +186,7 @@ const SigUp = ({
                     className="text-black-1 text-sm h-auto py-0 relative"
                     style={{ top: '-7px' }}
                 >
-                    Already have an account.
+                    {t('auth:signup.already_account')}
                     <a
                         className="font-medium text-blue-200 hover:text-info"
                         href="#"
@@ -191,7 +197,7 @@ const SigUp = ({
                         }}
                     >
                         {' '}
-                        Log in
+                        {t('commons:login')}
                     </a>
                 </span>
             </div>

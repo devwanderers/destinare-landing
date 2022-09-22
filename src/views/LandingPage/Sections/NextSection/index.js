@@ -9,8 +9,10 @@ import { useRefScrollProgress } from '../../../../hooks/useRefScrollProgress'
 import OverlayGallery from './../../../../components/Modals/OverlayGallery'
 import { GoPlay } from 'react-icons/go'
 import useTimeout from './../../../../hooks/useTimeout'
+import { useTranslation } from 'react-i18next'
 
 const NextSection = (props) => {
+    const { t } = useTranslation('landing')
     const [hideBg] = useResponsive({ base: true, md: false })
     const collectionConfig = {
         threshold: 0.4,
@@ -71,7 +73,7 @@ const NextSection = (props) => {
                                 className="font-bebas-nue leading-none text-black-3 text-6xl xl:text-9xl"
                                 transition={transitionConfig}
                             >
-                                YOUR NEXT
+                                {t('section3.next')}
                             </motion.div>
                         )}
                     </AnimatePresence>
@@ -92,7 +94,7 @@ const NextSection = (props) => {
                                 className="justify-between text-primary font-base font-bebas-nue tracking-wide text-7xl xl:text-10xl leading-none px-5"
                                 transition={transitionConfig}
                             >
-                                ADVENTURE
+                                {t('section3.adventure')}
                             </motion.div>
                         )}
                     </AnimatePresence>
@@ -115,7 +117,7 @@ const NextSection = (props) => {
                                 className="font-bebas-nue leading-none text-black-3 text-6xl xl:text-9xl h-full"
                                 transition={transitionConfig}
                             >
-                                IS HERE
+                                {t('section3.here')}
                             </motion.div>
                         )}
                     </AnimatePresence>

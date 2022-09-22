@@ -1,0 +1,25 @@
+{
+    "navbar": {
+        "menus": {
+            "destinare_difference": "PROPUESTA DE VALOR",
+            "white_paper": "WHITEPAPER",
+            "claim_trip": "RECLAMA TU VIAJE",
+            "travel_platform": "PLATAFORMA DE VIAJES"
+        }
+    },
+    "footer": {
+        "description": "Somos una empresa ubicada en diferentes partes del mundo. Nuestro equipo trabaja remotamente."
+    },
+    "login": "Iniciar Sesión",
+    "logout": "Cerrar Sesión",
+    "signUp": "Registrarse",
+    "inputs": {
+        "email": "Dirección de Email",
+        "password": "Contraseña",
+        "confirm_password": "Confirmar Contraseña",
+        "first_name": "Nombre",
+        "last_name": "Apellidos",
+        "country": "País de Residencia",
+        "language": "Lenguaje Preferido"
+    }
+}

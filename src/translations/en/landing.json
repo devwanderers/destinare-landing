@@ -1,0 +1,59 @@
+{
+    "section1": {
+        "description1": "Bridging crypto and real world utility on one platform.",
+        "description2": "Buy, stake, earn and travel the world with us.",
+        "signUp": "Sign up for Free",
+        "trave_platform": "Travel Platform"
+    },
+    "section2": {
+        "customer_support": {
+            "title": "24/7 Customer Support",
+            "description": "Do you need help or have a question? Contact our proactive 24/7 customer support team via discord or online ticket system."
+        },
+        "price_guarantee": {
+            "title": "Best Price Guarantee",
+            "description": "We guarantee we won't be beat on price. If you find a cheaper deal on another website after you book with us, we will give you a complimentary hotel stay."
+        },
+        "payment_options": {
+            "title": "Multi-Payment Options",
+            "description": "We offer various payment methods to make a booking with us. Choose from Credit and Debit Cards and the leading Cryptocurrencies(Q4)."
+        },
+        "rewards": {
+            "title": "Real Value Rewards",
+            "description": "Earn rewards easily and quickly with our innovative tokenised incentive programs including discounts, monthly rewards.",
+            "link": " Learn More."
+        }
+    },
+    "section3": {
+        "next": "YOUR NEXT",
+        "adventure": "ADVENTURE",
+        "here": "IS HERE"
+    },
+    "section4": {
+        "join": "Join",
+        "and": "and",
+        "smart_travel": "experience the smart way to travel.",
+        "description1": "Here is where adventure and technology take place.",
+        "description2": "The opportunity to travel the world. We do not have membership fees."
+    },
+    "section5": {
+        "title": "Travel made simple",
+        "subTitle": "Discover the world and pay with crypto",
+        "description1": "We have successfully created a frictionless travel booking experience that incorporates next-generation blockchain technology and tokenized incentives.",
+        "description2": " By introducing a cutting edge user experience and multiple cryptocurrencies and traditional payment options alongside benefits tied to our proprietary cryptocurrency DDOT, our customers know they are booking with a platform of the future with transparent pricing and backed up by our Best Price Guarantee.",
+        "learn": "Learn more"
+    },
+    "section6": {
+        "title": "Travel made simple",
+        "subTitle": "Discover the world with destinare",
+        "travel": "Travel Platform"
+    },
+    "section7": {
+        "title": "STAY WITH US, GET OUR NEWSLETTER",
+        "description": "Become part of our traveling community, be the first one to know about our launches or promotions.",
+        "inputSignup": {
+            "placeHolder": "Email address",
+            "label": "Sign up"
+        }
+    }
+}

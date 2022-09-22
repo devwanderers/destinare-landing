@@ -26,88 +26,16 @@ import utilitiesImages from '../../assets/images/utilities'
 import VideosSection from './Sections/VideosSection'
 import useScrollTop from './../../hooks/useScrollTop'
 import { Link } from 'react-router-dom'
-import { SignInPath, tripvixiaURL, dappURL } from '../../constants/routerConstants'
+import {
+    SignInPath,
+    tripvixiaURL,
+    dappURL,
+} from '../../constants/routerConstants'
 import { windowLocationPush, windowOpen } from './../../services/windowServices'
 import { nomadzLink } from '../../constants/linksConstranst'
+import { useTranslation } from 'react-i18next'
 
 const { Content } = Layout
-
-// const Card = ({ className, main }) => {
-//     const { width } = useWindowSize()
-//     return (
-//         <div
-//             className={`px-10 md:px-5 lg:px-10 py-10 lg:py-10 xl:py-12 bg-white shadow-xl  ${
-//                 !main ? 'bg-white' : 'gradient-g'
-//             } ${className}`}
-//             style={{
-//                 height: returnValueByScreenWidth(width, {
-//                     base: 'auto',
-//                     md: '400px',
-//                     lg: '500px',
-//                     xl: '535px',
-//                 }),
-//             }}
-//         >
-//             <div
-//                 className={`flex flex-col h-full justify-between ${
-//                     main ? 'text-white' : ''
-//                 }`}
-//             >
-//                 <div className="w-full">
-//                     <div className="italic font-extrabold  leading-none text-center text-4xl md:text-4xl xl:text-2.7">
-//                         TRAVELER
-//                     </div>
-//                     <div className=" font-semibold text-xl md:text-base lg:text-lg xl:text-xl text-center">
-//                         20$ / Month
-//                     </div>
-//                     <div className="w-full pb-12 md:pb-0 pt-8 lg:pt-10 xl:pt-12 text-xs lg:text-sm xl:text-base">
-//                         <div className="flex flex-row mb-3 break-words">
-//                             <span
-//                                 className="relative mr-2"
-//                                 style={{ top: '3px' }}
-//                             >
-//                                 <FaCheck />
-//                             </span>
-//                             <span>Lorem ipsum dolor sit amet. </span>
-//                         </div>
-//                         <div className="flex flex-row mb-3 break-words">
-//                             <span
-//                                 className="relative mr-2"
-//                                 style={{ top: '3px' }}
-//                             >
-//                                 <FaCheck />
-//                             </span>
-//                             <span>Lorem ipsum dolor sit amet. </span>
-//                         </div>
-//                         <div className="flex flex-row mb-3 break-words">
-//                             <span
-//                                 className="relative mr-2"
-//                                 style={{ top: '3px' }}
-//                             >
-//                                 <FaCheck />
-//                             </span>
-//                             <span>Lorem ipsum dolor sit amet. </span>
-//                         </div>
-//                     </div>
-//                 </div>
-//                 <div className="w-full flex justify-center">
-//                     <Button
-//                         shape="round"
-//                         className={`  h-auto md:text-base lg:text-lg px-10  ${
-//                             !main ? 'text-white bg-yellow-1' : ''
-//                         }`}
-//                         style={{
-//                             paddingTop: '0.6rem',
-//                             paddingBottom: '0.6rem',
-//                         }}
-//                     >
-//                         Get Started
-//                     </Button>
-//                 </div>
-//             </div>
-//         </div>
-//     )
-// }
 
 const BannerNFts = () => {
     return (
@@ -121,7 +49,8 @@ const BannerNFts = () => {
 }
 
 const LandingPage = ({ authenticated, userData, logout }) => {
-    // const { width } = useWindowSize()
+    const { t } = useTranslation('landing')
+
     useScrollTop()
     const [inputSize] = useResponsive({
         base: 'middle',
@@ -158,9 +87,9 @@ const LandingPage = ({ authenticated, userData, logout }) => {
                                     md="xl"
                                     lg="2xl"
                                 >
-                                    Bridging crypto and real world utility on
-                                    one platform. <br /> Buy, stake, earn and
-                                    travel the world with us.
+                                    {t('section1.description1')}
+                                    <br />
+                                    {t('section1.description2')}
                                 </Paragraph>
                             </div>
                             <div>
@@ -170,7 +99,7 @@ const LandingPage = ({ authenticated, userData, logout }) => {
                                         type="link"
                                         className="border border-yellow-2 text-yellow-2 text-2xl py-2 px-3 md:px-8 leading-none tracking-wide rounded-sm hover:text-yellow-2 "
                                     >
-                                        Sign up for Free
+                                        {t('section1.signUp')}
                                     </Link>
                                 ) : (
                                     <button
@@ -178,7 +107,7 @@ const LandingPage = ({ authenticated, userData, logout }) => {
                                         type="link"
                                         className="border border-yellow-2 text-yellow-2 text-2xl py-2 px-3 md:px-8 leading-none tracking-wide rounded-sm"
                                     >
-                                        Travel Platform
+                                        {t('section1.trave_platform')}
                                     </button>
                                 )}
                             </div>
@@ -227,7 +156,7 @@ const LandingPage = ({ authenticated, userData, logout }) => {
                                 <div className="font-montserrat text-center break-words leading-none text-white font-medium flex flex-col  items-center tracking-wider shadow-c ">
                                     <div className="flex flex-row mb-4 lg:mb-8">
                                         <strong className="mr-2 lg:mr-5">
-                                            Join
+                                            {t('section4.join')}
                                         </strong>
                                         <div className="mr-2 lg:mr-5 h-1.875 md:h-2.25 lg:h-3.5 pb-1">
                                             <LogoText
@@ -236,10 +165,10 @@ const LandingPage = ({ authenticated, userData, logout }) => {
                                                 height="100%"
                                             />
                                         </div>
-                                        <strong>and</strong>
+                                        <strong>{t('section4.and')}</strong>
                                     </div>
                                     <strong>
-                                        experience the smart way to travel.
+                                        {t('section4.smart_travel')}
                                     </strong>
                                 </div>
                             </div>
@@ -251,8 +180,7 @@ const LandingPage = ({ authenticated, userData, logout }) => {
                                         <AdventureSVG />
                                     </div>
                                     <div className="text-white text-2xl md:text-xl lg:text-3xl xl:text-3xl font-normal text-center md:text-left">
-                                        Here is where adventure and technology
-                                        take place.
+                                        {t('section4.description1')}
                                     </div>
                                 </div>
                             </div>
@@ -262,8 +190,7 @@ const LandingPage = ({ authenticated, userData, logout }) => {
                                         <MembersSVG />
                                     </div>
                                     <div className="text-white text-2xl md:text-xl lg:text-3xl xl:text-3xl font-normal text-center md:text-left">
-                                        The opportunity to travel the world. We
-                                        do not have membership fees.
+                                        {t('section4.description2')}
                                     </div>
                                 </div>
                             </div>
@@ -285,37 +212,25 @@ const LandingPage = ({ authenticated, userData, logout }) => {
                                 >
                                     <div className="mb-12">
                                         <p className="text-3xl lg:text-5xl blue-gradient leading-none font-extrabold mb-4">
-                                            Travel made simple
+                                            {t('section5.title')}
                                         </p>
                                         <p className="text-3xl lg:text-5xl text-black-6 leading-none font-extrabold">
-                                            Discover the world and pay with
-                                            crypto
+                                            {t('section5.subTitle')}
                                         </p>
                                     </div>
                                     <p className="text-xl text-black-6 mb-10">
-                                        We have successfully created a
-                                        frictionless travel booking experience
-                                        that incorporates next-generation
-                                        blockchain technology and tokenized
-                                        incentives.
+                                        {' '}
+                                        {t('section5.description1')}
                                     </p>
                                     <p className="text-xl text-black-6">
-                                        By introducing a cutting edge user
-                                        experience and multiple cryptocurrencies
-                                        and traditional payment options
-                                        alongside benefits tied to our
-                                        proprietary cryptocurrency DDOT, our
-                                        customers know they are booking with a
-                                        platform of the future with transparent
-                                        pricing and backed up by our Best Price
-                                        Guarantee.
+                                        {t('section5.description2')}
                                     </p>
                                     <button
                                         onClick={() => windowOpen(dappURL)}
                                         type="link"
                                         className="mt-5 bg-primary text-white py-3 text-lg lg:text-2xl leading-none px-6 lg:px-10 tracking-wide border-none rounded-sm"
                                     >
-                                        Learn more
+                                        {t('section5.learn')}
                                     </button>
                                 </Col>
                                 <Col
@@ -339,8 +254,9 @@ const LandingPage = ({ authenticated, userData, logout }) => {
                                 <div className="flex flex-row mb-16">
                                     <span>
                                         <strong>
-                                            Travel made simple <br /> Discover
-                                            the world with destinare
+                                            {t('section6.title')}
+                                            <br />
+                                            {t('section6.subTitle')}
                                         </strong>
                                     </span>
                                 </div>
@@ -348,21 +264,21 @@ const LandingPage = ({ authenticated, userData, logout }) => {
                         </div>
                         <div>
                             {!authenticated ? (
-                                    <Link
-                                        to={SignInPath}
-                                        type="link"
-                                        className="bg-primary text-white py-3 text-lg lg:text-2xl leading-none px-6 lg:px-10 tracking-wide border-none rounded-sm"
-                                    >
-                                        Travel Platform
-                                    </Link>
-                                ) : (
-                                    <button
-                                        onClick={() => windowOpen(tripvixiaURL)}
-                                        type="link"
-                                        className="bg-primary text-white py-3 text-lg lg:text-2xl leading-none px-6 lg:px-10 tracking-wide border-none rounded-sm"
-                                    >
-                                        Travel Platform
-                                    </button>
+                                <Link
+                                    to={SignInPath}
+                                    type="link"
+                                    className="bg-primary text-white py-3 text-lg lg:text-2xl leading-none px-6 lg:px-10 tracking-wide border-none rounded-sm"
+                                >
+                                    {t('section6.travel')}
+                                </Link>
+                            ) : (
+                                <button
+                                    onClick={() => windowOpen(tripvixiaURL)}
+                                    type="link"
+                                    className="bg-primary text-white py-3 text-lg lg:text-2xl leading-none px-6 lg:px-10 tracking-wide border-none rounded-sm"
+                                >
+                                    {t('section6.travel')}
+                                </button>
                             )}
                             {/* <button className="bg-primary text-white py-3 text-lg lg:text-2xl leading-none px-6 lg:px-10 tracking-wide border-none rounded-sm">
                                 Go to travel platfomr!
@@ -374,22 +290,24 @@ const LandingPage = ({ authenticated, userData, logout }) => {
                     <div className="max-w-1280px px-0 lg:px-25px flex mx-auto py-10 lg:pt-16 lg:pb-20">
                         <div className="flex-1 bg-gray-200 py-10 px-6 md:px-12 lg:px-20 xl:px-24">
                             <div className="font-bebas-nue text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-black-1">
-                                STAY WITH US, GET OUR NEWSLETTER
+                                {t('section7.title')}
                             </div>
                             <div className="mb-10">
                                 <div className="w-full md:w-6/12 break-words text-xs lg:text-sm xl:text-base">
-                                    Become part of our traveling community, be
-                                    the first one to know about our launches or
-                                    promotions.
+                                    {t('section7.description')}
                                 </div>
                             </div>
                             <Row>
                                 <Col xs={14} className="">
                                     <Input.Search
                                         size={inputSize}
-                                        className="h-auto custom-button-addon-black font-roboto fotn"
-                                        placeholder="Email address"
-                                        enterButton="Sign up"
+                                        className="h-auto custom-button-addon-black font-roboto"
+                                        placeholder={t(
+                                            'section7.inputSignup.placeHolder'
+                                        )}
+                                        enterButton={t(
+                                            'section7.inputSignup.label'
+                                        )}
                                     />
                                 </Col>
                                 <Col

@@ -10,6 +10,7 @@ import {
     AntInputPassword,
 } from './../../../components/CreateAntField/index'
 import { SignInPath } from '../../../constants/routerConstants'
+import { useTranslation } from 'react-i18next'
 
 const schema = Yup.object({
     emailOrUsername: validations.mail,
@@ -23,10 +24,11 @@ const initialValues = {
 
 const Login = ({ onSubmit, showError, errorMessage }) => {
     const history = useHistory()
+    const { t } = useTranslation(['auth', 'commons'])
 
     return (
         <React.Fragment>
-            <div className="font-medium mb-2">Log in</div>
+            <div className="font-medium mb-2">{t('commons:login')}</div>
             <Formik
                 validationSchema={schema}
                 initialValues={initialValues}
@@ -38,7 +40,7 @@ const Login = ({ onSubmit, showError, errorMessage }) => {
                             component={AntInput}
                             name="emailOrUsername"
                             type="email"
-                            placeholder="Email"
+                            placeholder={t('commons:inputs.email')}
                             className="h-12 rounded-lg"
                             hasFeedback
                             value={values?.emailOrUsername.toLowerCase()}
@@ -47,7 +49,7 @@ const Login = ({ onSubmit, showError, errorMessage }) => {
                             component={AntInputPassword}
                             name="password"
                             type="password"
-                            placeholder="Password"
+                            placeholder={t('commons:inputs.password')}
                             className="h-12 rounded-lg"
                             hasFeedback
                             iconRender={(visible) =>
@@ -80,7 +82,7 @@ const Login = ({ onSubmit, showError, errorMessage }) => {
                                     paddingBottom: '9px',
                                 }}
                             >
-                                LOGIN
+                                {t('commons:login')}
                             </Button>
                         </FormAnt.Item>
                         <div className="login-links flex flex-col text-center">
@@ -88,13 +90,13 @@ const Login = ({ onSubmit, showError, errorMessage }) => {
                                 type="link"
                                 className="text-sm h-auto py-0 text-black-1 hover:text-info"
                             >
-                                Forgot password?
+                                {t('auth:login.forgot_password')}
                             </a>
                             <span
                                 className="text-black-1 text-sm h-auto py-0 relative"
                                 style={{ top: '-7px' }}
                             >
-                                {"Don't have an account? "}
+                                {t('auth:login.no_account')}{' '}
                                 <a
                                     className="font-medium text-blue-900 hover:text-info"
                                     href="#"
@@ -104,7 +106,7 @@ const Login = ({ onSubmit, showError, errorMessage }) => {
                                         history.push(SignInPath)
                                     }}
                                 >
-                                    Sign up
+                                    {t('commons:signUp')}
                                 </a>
                             </span>
                         </div>
